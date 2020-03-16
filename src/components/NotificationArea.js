@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Info from "./common/Info";
 
-const NotificationBox = () => {
+const NotificationArea = () => {
   return (
     <Container>
       <h4>הודעות</h4>
@@ -40,4 +40,4 @@ const Container = styled.section`
   font-family: "Alef", sans-serif;
 `;
 
-export default NotificationBox;
+export default NotificationArea;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Decision from "./common/Decision";
 
-const DecisionBox = () => {
+const DecisionArea = () => {
   return (
     <Container>
       <h4>החלטות</h4>
@@ -24,4 +24,4 @@ const Container = styled.section`
   font-family: "Alef", sans-serif;
 `;
 
-export default DecisionBox;
+export default DecisionArea;

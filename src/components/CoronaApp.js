@@ -1,16 +1,16 @@
 import React from "react";
 import banner from "../images/cv06.png";
 import styled from "styled-components";
-import NotificationBox from "./NotificationBox";
-import DecisionBox from "./DecisionBox";
+import NotificationArea from "./NotificationArea";
+import DecisionArea from "./DecisionArea";
 import Footer from "./Footer";
 
 function CoronaApp() {
   return (
     <Container>
       <Banner src={banner} alt="Corona virus" />
-      <NotificationBox />
-      <DecisionBox />
+      <NotificationArea />
+      <DecisionArea />
       <Footer />
     </Container>
   );
