@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../images/cv04.png";
+import banner from "../images/cv06.png";
 import styled from "styled-components";
 import NotificationBox from "./NotificationBox";
 import DecisionBox from "./DecisionBox";
@@ -18,7 +18,6 @@ function CoronaApp() {
 export default CoronaApp;
 
 const Banner = styled.img`
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   width: 100vw;
 `;
 const Container = styled.div`
