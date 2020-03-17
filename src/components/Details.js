@@ -7,22 +7,19 @@ const Details = () => {
   return (
     <Container>
       <Day>
-        <Info label={"יום "} content1={"1"}></Info>
+        <Info label={"יום: "} number={"1"}></Info>
       </Day>
-      <Score>
-        <Info label={"יש׳ך 80 "} content1={"נקודות"}></Info>
-      </Score>
     </Container>
   );
 };
 
-const Score = styled.span`
-  color: red;
-`;
 const Day = styled.span`
-  font-size: 80%;
-  display: inline-block;
+  font-size: 120%;
 `;
-const Container = styled(Block)``;
+const Container = styled(Block)`
+  @media (max-width: 768px) {
+    max-height: 5em;
+  }
+`;
 
 export default Details;

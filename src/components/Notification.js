@@ -1,16 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import data from "../data/notifications.json";
-import Block from "./common/Block";
 
 const Notification = () => {
   return (
     <Container>
-      <h4>הודעות</h4>
       {data.map((notification, index) => {
         return (
           <>
-            <div>{notification.content}</div>
+            <Content>{notification.content}</Content>
           </>
         );
       })}
@@ -18,6 +16,12 @@ const Notification = () => {
   );
 };
 
-const Container = styled(Block)``;
+const Container = styled.div``;
+const Content = styled.div`
+  margin: 8px 1px;
+  padding: 6px 8px;
+  background: white;
+  box-shadow: 0 2px 2px 0 #888;
+`;
 
 export default Notification;

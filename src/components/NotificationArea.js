@@ -1,19 +1,24 @@
 import React from "react";
-// import styled from "styled-components";
+import Block from "./common/Block";
 import Notification from "./Notification";
+import styled from "styled-components";
 
 const NotificationArea = () => {
-  return <Notification />;
+  return (
+    <Container>
+      <h4>הודעות</h4>
+      <Scrollable>
+        <Notification />
+      </Scrollable>
+    </Container>
+  );
 };
 
-// const Source = styled.div`
-//   color: #666;
-// `;
-// const Container = styled.section`
-//   padding: 2em 1em;
-//   margin: 0;
-//   background: #eee;
-//   font-family: "Alef", sans-serif;
-// `;
+const Container = styled(Block)``;
+const Scrollable = styled.div`
+  overflow-y: scroll;
+  height: 130px;
+  box-shadow: 1px 1px 10px 2px #aaa;
+`;
 
 export default NotificationArea;
