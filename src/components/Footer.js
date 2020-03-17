@@ -4,16 +4,15 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <Container>
-      <p>זה הפוטר של האפליקציה, יו!</p>
+      <p>היי שלום אני הפוטר של האפליקציה</p>
     </Container>
   );
 };
 
 const Container = styled.section`
-  padding: 2em 1em;
-  margin: 0;
-  background: #eb7c66;
+  background: #ddd;
   font-family: "Alef", sans-serif;
+  text-align: center;
 `;
 
 export default Footer;

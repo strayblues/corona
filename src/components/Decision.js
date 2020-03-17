@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const Decision = ({ question, answer1, answer2, answer3 }) => {
+const Decision = ({ decision, option1, option2, option3, option4 }) => {
   return (
     <Container>
-      <p>{question}</p>
-      <Clickable>{answer1}</Clickable>
-      <Clickable>{answer2}</Clickable>
-      <Clickable>{answer3}</Clickable>
+      <p>{decision}</p>
+      <Clickable>{option1}</Clickable>
+      <Clickable>{option2}</Clickable>
+      <Clickable>{option3}</Clickable>
+      <Clickable>{option4}</Clickable>
     </Container>
   );
 };

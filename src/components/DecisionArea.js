@@ -1,27 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import Decision from "./common/Decision";
+import Decision from "./Decision";
+import data from "../data/decisions.json";
+import Block from "./common/Block";
 
 const DecisionArea = () => {
   return (
     <Container>
       <h4>החלטות</h4>
-      <Decision
-        question={"האם לבטל את הבידוד?"}
-        answer1={"כה"}
-        answer2={"נה"}
-        answer3={"הסתה נגד ערבים"}
-      />
+      {data.map((decision, index) => {
+        return (
+          <>
+            <Decision
+              decision={decision.content}
+              option1={decision.options.a}
+              option2={decision.options.b}
+              option3={decision.options.c}
+              option4={decision.options.d}
+            />
+          </>
+        );
+      })}
     </Container>
   );
 };
 
-const Container = styled.section`
-  padding: 4px 1em;
-  margin: 0;
-  margin-top: 0.5em;
-  background: white;
-  font-family: "Alef", sans-serif;
-`;
+const Container = styled(Block)``;
 
 export default DecisionArea;
