@@ -7,12 +7,16 @@ import Block from "./common/Block";
 const DecisionArea = () => {
   return (
     <Container>
-      <h4>הכרעות</h4>
       {data.map((decision, index) => {
         return (
           <>
+            <h4>
+              <span>מה לעשות בנושא </span>
+              {decision.content}
+              <span>?</span>
+            </h4>
+
             <Decision
-              decision={decision.content}
               option1={decision.options.a}
               option2={decision.options.b}
               option3={decision.options.c}
