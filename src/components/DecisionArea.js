@@ -7,7 +7,7 @@ import Block from "./common/Block";
 const DecisionArea = () => {
   return (
     <Container>
-      <h4>החלטות</h4>
+      <h4>הכרעות</h4>
       {data.map((decision, index) => {
         return (
           <>

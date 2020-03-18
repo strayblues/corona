@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Info from "./common/Info";
 import Block from "./common/Block";
 import Time from "./Time";
 
@@ -20,7 +19,9 @@ const Content = styled.span`
 `;
 const Container = styled(Block)`
   @media (max-width: 768px) {
-    max-height: 5em;
+    max-height: 2em;
+    padding: 0;
+    text-align: center;
   }
 `;
 

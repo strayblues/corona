@@ -21,10 +21,13 @@ const Notification = () => {
 };
 
 const StyledTime = styled(Time)``;
-const Container = styled.div``;
+const Container = styled.div`
+  margin-top: 3px;
+`;
 const Content = styled.div`
+  padding: 6px;
+  padding-top: 0;
   margin: 8px 1px;
-  padding: 6px 8px;
   background: white;
   box-shadow: 0 1px 1px 0 #888;
 `;
