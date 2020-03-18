@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../images/cv06.png";
+import banner from "../images/cv07.png";
 import styled from "styled-components";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
@@ -32,6 +32,7 @@ const Content = styled.div`
 `;
 const Banner = styled.img`
   width: 100vw;
+  background: linear-gradient(#b265d6, #dd2581, #46a5a3);
 `;
 const Container = styled.div`
   direction: rtl;
