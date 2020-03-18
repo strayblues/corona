@@ -7,7 +7,7 @@ import DecisionArea from "./DecisionArea";
 import Footer from "./Footer";
 
 function CoronaApp() {
-  const [gameRound, setGameRound] = useState(0);
+  const [gameRound, setGameRound] = useState(1);
   const [userAction, setuserAction] = useState(null);
   const [patientsNum, setPatientsNum] = useState(10);
   const [patientsData, setpatientsData] = useState(10);
@@ -21,9 +21,9 @@ function CoronaApp() {
     <Container>
       <Banner src={banner} alt="Corona virus" />
       <Content>
-        <Details />
+        <Details round={gameRound} />
         <Game>
-          <NotificationArea />
+          <NotificationArea round={gameRound} />
           <DecisionArea />
         </Game>
       </Content>

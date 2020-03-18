@@ -51,6 +51,8 @@ const Decision = ({ decision, option1, option2, option3, option4 }) => {
   );
 };
 
+export default Decision;
+
 const Topic = styled.p`
   margin: 0;
   text-align: center;
@@ -78,5 +80,3 @@ const Container = styled.div`
   background: white;
   box-shadow: 0 1px 1px 0 #888;
 `;
-
-export default Decision;

@@ -3,14 +3,14 @@ import styled from "styled-components";
 import data from "../data/notifications.json";
 import Time from "./Time";
 
-const Notification = () => {
+const Notification = ({ round }) => {
   return (
     <Container>
       {data.reverse().map((notification, index) => {
         return (
           <>
             <Content>
-              <StyledTime></StyledTime>
+              <StyledTime round={round}></StyledTime>
               <div>{notification.content}</div>
             </Content>
           </>

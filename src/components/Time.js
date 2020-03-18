@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Time = (day, hour, rand) => {
+const Time = ({ round }) => {
   const getDay = function() {
-    return 3; // TODO: track game rounds
+    return round;
   };
 
   const randomTime = function() {
@@ -11,18 +11,18 @@ const Time = (day, hour, rand) => {
       return Math.floor(Math.random() * (max - min) + min);
     };
 
-    let minuteDec = getRandomInRange(0, 5);
-    let minuteSec = getRandomInRange(0, 9);
+    let minuteDec = getRandomInRange(0, 6);
+    let minuteSec = getRandomInRange(0, 10);
     let randomMinute = ":" + minuteDec.toString() + minuteSec.toString();
-    let randomMorningTime = getRandomInRange(6, 11) + randomMinute;
-    let randomAfternoonTime = getRandomInRange(12, 16 + randomMinute);
-    let randomEveningTime = getRandomInRange(17, 23) + randomMinute;
+    let randomMorningTime = getRandomInRange(6, 12) + randomMinute;
+    let randomAfternoonTime = getRandomInRange(12, 17) + randomMinute;
+    let randomEveningTime = getRandomInRange(17, 24) + randomMinute;
 
     return [randomMorningTime, randomAfternoonTime, randomEveningTime];
   };
 
-  day = "יום " + getDay() + ", ";
-  hour = randomTime()[0]; // match notification number 0-2, assuming 3 each day
+  const day = "יום " + getDay() + ", ";
+  const hour = randomTime()[0]; // match notification number 0-2, assuming 3 each day
 
   return (
     <Container>

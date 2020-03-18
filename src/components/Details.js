@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Block from "./common/Block";
 import Info from "./common/Info";
 
-const Details = () => {
+const Details = ({ round }) => {
   return (
     <Container>
       <Content>
-        <Info label1={"יום "} number={5} label2=" למשבר הקורונה" />
+        <Info label1={"יום "} number={round} label2=" למשבר הקורונה" />
       </Content>
     </Container>
   );
