@@ -22,8 +22,10 @@ function CoronaApp() {
       <Banner src={banner} alt="Corona virus" />
       <Content>
         <Details />
-        <NotificationArea />
-        <DecisionArea />
+        <Game>
+          <NotificationArea />
+          <DecisionArea />
+        </Game>
       </Content>
     </Container>
   );
@@ -31,13 +33,15 @@ function CoronaApp() {
 export default CoronaApp;
 
 const Content = styled.div`
-  display: flex;
   min-height: 100%;
   padding: 20px;
   padding-bottom: 50px;
   @media (max-width: 768px) {
-    flex-direction: column;
   }
+`;
+const Game = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 const Banner = styled.img`
   width: 100vw;

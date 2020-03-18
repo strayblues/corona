@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Block from "./common/Block";
-import Time from "./Time";
+import Info from "./common/Info";
 
 const Details = () => {
   return (
     <Container>
       <Content>
-        <Time></Time>
+        <Info label1={"יום "} number={5} label2=" למשבר הקורונה" />
       </Content>
     </Container>
   );

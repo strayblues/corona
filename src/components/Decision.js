@@ -16,9 +16,11 @@ function handleClick() {
     alert("4");
     // handleOption4();
   }
+
+  // in any case, increase roundCount by 1 and start a new round
 }
 
-const round = 4;
+const round = 4; // what dis?
 
 function handleSkip() {
   round.setState(this.newRound);

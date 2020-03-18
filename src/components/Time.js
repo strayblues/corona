@@ -22,7 +22,7 @@ const Time = (day, hour, rand) => {
   };
 
   day = "יום " + getDay() + ", ";
-  hour = randomTime()[0];
+  hour = randomTime()[0]; // match notification number 0-2, assuming 3 each day
 
   return (
     <Container>
