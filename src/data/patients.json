@@ -1,0 +1,12 @@
+[
+  {
+    "id": 0,
+    "dayInfected": 0,
+    "health": "hospitalized"
+  },
+  {
+    "id": 1,
+    "dayInfected": 0,
+    "health": "has symptoms"
+  }
+]

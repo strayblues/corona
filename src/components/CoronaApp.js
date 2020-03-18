@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import banner from "../images/cv07.png";
 import styled from "styled-components";
 import Details from "./Details";
@@ -7,6 +7,16 @@ import DecisionArea from "./DecisionArea";
 import Footer from "./Footer";
 
 function CoronaApp() {
+  const [gameRound, setGameRound] = useState(0);
+  const [userAction, setuserAction] = useState(null);
+  const [patientsNum, setPatientsNum] = useState(10);
+  const [patientsData, setpatientsData] = useState(10);
+  const [economy, setEconomy] = useState(10);
+  const [nationalHappiness, setNationalHappiness] = useState(10);
+  const [healthcareSystem, setHealthcareSystem] = useState(10);
+  const [count, setCount] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+
   return (
     <Container>
       <Banner src={banner} alt="Corona virus" />
