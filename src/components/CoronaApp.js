@@ -32,7 +32,7 @@ const Content = styled.div`
 `;
 const Banner = styled.img`
   width: 100vw;
-  background: linear-gradient(#b265d6, #dd2581, #46a5a3);
+  background: linear-gradient(to right, #b265d6, #dd2581, #46a5a3);
 `;
 const Container = styled.div`
   direction: rtl;
