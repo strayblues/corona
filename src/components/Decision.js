@@ -32,7 +32,7 @@ const Clickable = styled.button`
   width: 100%;
   padding: 8px;
   margin: 2px;
-  background: #e4b4fa;
+  background: #eee;
   box-shadow: 0 1px 1px 0 #888;
 `;
 const Container = styled.div`
