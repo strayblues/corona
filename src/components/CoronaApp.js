@@ -4,10 +4,9 @@ import styled from "styled-components";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
 import DecisionArea from "./DecisionArea";
-import Footer from "./Footer";
 
 function CoronaApp() {
-  const [gameRound, setGameRound] = useState(1);
+  const [round, setRound] = useState(1);
   const [userAction, setuserAction] = useState(null);
   const [patientsNum, setPatientsNum] = useState(10);
   const [patientsData, setpatientsData] = useState(10);
@@ -21,10 +20,10 @@ function CoronaApp() {
     <Container>
       <Banner src={banner} alt="Corona virus" />
       <Content>
-        <Details round={gameRound} />
+        <Details round={round} />
         <Game>
-          <NotificationArea round={gameRound} />
-          <DecisionArea />
+          <NotificationArea round={round} />
+          <DecisionArea round={round} setRound={setRound} />
         </Game>
       </Content>
     </Container>

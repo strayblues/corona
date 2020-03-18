@@ -1,45 +1,45 @@
 import React from "react";
 import styled from "styled-components";
 
-function handleClick() {
-  if (this.option1) {
-    alert("1");
-    // handleOption1();
-    // more ppl get infected
-  } else if (this.option2) {
-    alert("2");
-    // handleOption2();
-  } else if (this.option3) {
-    alert("3");
-    // handleOption3();
-  } else if (this.option4) {
-    alert("4");
-    // handleOption4();
+const Decision = ({
+  round,
+  setRound,
+  decision,
+  option1,
+  option2,
+  option3,
+  option4
+}) => {
+  function handleClick(item) {
+    if (item === 1) {
+      alert("option 1");
+      // more ppl get infected
+    } else if (item === 2) {
+      alert("option 2");
+    } else if (item === 3) {
+      alert("option 3");
+    } else if (item === 4) {
+      alert("option 4");
+    }
+    // in any case, increase roundCount by 1 and start a new round
+    setRound(round + 1);
+    return round;
   }
 
-  // in any case, increase roundCount by 1 and start a new round
-}
-
-const round = 4; // what dis?
-
-function handleSkip() {
-  round.setState(this.newRound);
-}
-const Decision = ({ decision, option1, option2, option3, option4 }) => {
   return (
     <Container>
       <Topic>{decision}</Topic>
       <Options>
         <OptionsLine>
-          <Option onClick={handleClick}>{option1}</Option>
-          <Option onClick={handleClick}>{option2}</Option>
+          <Option onClick={e => handleClick(1)}>{option1}</Option>
+          <Option onClick={e => handleClick(2)}>{option2}</Option>
         </OptionsLine>
         <OptionsLine>
-          <Option onClick={handleClick}>{option3}</Option>
-          <Option onClick={handleClick}>{option4}</Option>
+          <Option onClick={e => handleClick(3)}>{option3}</Option>
+          <Option onClick={e => handleClick(4)}>{option4}</Option>
         </OptionsLine>
         <OptionsLine>
-          <Skip onClick={handleSkip}>
+          <Skip onClick={e => handleClick(5)}>
             <span role="img" aria-label="shrug">
               🤷🏼‍♂️
             </span>{" "}

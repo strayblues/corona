@@ -4,7 +4,7 @@ import Decision from "./Decision";
 import data from "../data/decisions.json";
 import Block from "./common/Block";
 
-const DecisionArea = () => {
+const DecisionArea = ({ round, setRound }) => {
   return (
     <Container>
       {data.map((decision, index) => {
@@ -17,6 +17,8 @@ const DecisionArea = () => {
             </h4>
 
             <Decision
+              round={round}
+              setRound={setRound}
               option1={decision.options.a}
               option2={decision.options.b}
               option3={decision.options.c}
