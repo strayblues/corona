@@ -25,7 +25,6 @@ function CoronaApp() {
         <NotificationArea />
         <DecisionArea />
       </Content>
-      <Footer />
     </Container>
   );
 }
