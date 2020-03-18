@@ -2,19 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import Info from "./common/Info";
 import Block from "./common/Block";
+import Time from "./Time";
 
 const Details = () => {
   return (
     <Container>
-      <Day>
-        <Info label={"יום: "} number={"1"}></Info>
-      </Day>
+      <Content>
+        <Time></Time>
+      </Content>
     </Container>
   );
 };
 
-const Day = styled.span`
+const Content = styled.span`
   font-size: 120%;
+  color: black;
 `;
 const Container = styled(Block)`
   @media (max-width: 768px) {
