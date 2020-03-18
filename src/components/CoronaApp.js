@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import banner from "../images/cv07.png";
+import banner from "../images/cv07-sm.png";
 import styled from "styled-components";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
@@ -44,7 +44,14 @@ const Game = styled.div`
 `;
 const Banner = styled.img`
   width: 100vw;
-  background: linear-gradient(to right, #b265d6, #dd2581, #46a5a3);
+  background: linear-gradient(
+    to right,
+    #b265d6,
+    #dd2581,
+    #46a5a3,
+    #46a5a3,
+    #46a5a3
+  );
 `;
 const Container = styled.div`
   direction: rtl;
