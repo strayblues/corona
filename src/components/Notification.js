@@ -21,13 +21,11 @@ const Notification = ({ round }) => {
 };
 
 const StyledTime = styled(Time)``;
-const Container = styled.div`
-  margin-top: 3px;
-`;
+const Container = styled.div``;
 const Content = styled.div`
-  padding: 6px;
+  padding: 6px 12px;
   padding-top: 0;
-  margin: 8px 1px;
+  margin: 2px 1px;
   background: white;
   box-shadow: 0 1px 1px 0 #888;
 `;

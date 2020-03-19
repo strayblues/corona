@@ -59,7 +59,6 @@ export default Decision;
 const Topic = styled.p`
   margin: 0;
   text-align: center;
-  padding: 10px 0 5px 0;
 `;
 const Options = styled.div`
   display: flex;
@@ -72,14 +71,10 @@ const Option = styled.button`
   width: 100%;
   padding: 8px;
   margin: 2px;
-  background: #eee;
+  background: #f7f7f7;
   box-shadow: 0 1px 1px 0 #888;
 `;
 const Skip = styled(Option)``;
 const Container = styled.div`
-  padding: 6px;
-  padding-top: 0;
-  margin: 8px 1px;
-  background: white;
-  box-shadow: 0 1px 1px 0 #888;
+  background: #eee;
 `;
