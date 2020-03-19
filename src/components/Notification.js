@@ -1,21 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import data from "../data/notifications.json";
 import Time from "./Time";
 
-const Notification = ({ round }) => {
+const Notification = ({ round, notifications }) => {
   return (
     <Container>
-      {data.reverse().map((notification, index) => {
-        return (
-          <>
-            <Content>
-              <StyledTime round={round}></StyledTime>
-              <div>{notification.content}</div>
-            </Content>
-          </>
-        );
-      })}
+      {notifications
+        .map((notification, index) => {
+          return (
+            <>
+              <Content>
+                <StyledTime
+                  round={notification.day}
+                  hour={notification.hour}
+                ></StyledTime>
+                <div>{notification.content}</div>
+              </Content>
+            </>
+          );
+        })
+        .reverse()}
     </Container>
   );
 };

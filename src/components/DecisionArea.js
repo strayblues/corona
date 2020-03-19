@@ -3,20 +3,24 @@ import styled from "styled-components";
 import Decision from "./Decision";
 import data from "../data/decisions.json";
 import Block from "./common/Block";
+import { randomTime } from "./Time";
 
 const DecisionArea = ({
   round,
   setRound,
   decisionVisibility,
-  setDecisionVisibility
+  setDecisionVisibility,
+  addNotification
 }) => {
   const nextRound = () => {
     setRound(round + 1);
     setDecisionVisibility(false);
-    //   setTimeout(() => {
-    //     this.setState({setDecisionVisibility(true)})
-    //   }, 1500)
-    // }
+    addNotification({
+      day: round + 1,
+      hour: randomTime()[0],
+      subject: "economy",
+      content: "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
+    });
   };
 
   return (

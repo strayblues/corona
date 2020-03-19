@@ -8,6 +8,15 @@ import DecisionArea from "./DecisionArea";
 function CoronaApp() {
   const [round, setRound] = useState(1);
   const [decisionVisibility, setDecisionVisibility] = useState(false);
+  const [notifications, setNotifications] = useState([
+    {
+      id: 0,
+      day: 1,
+      hour: "8:00",
+      subject: "first",
+      content: "בוקר טוב גברתי ראש הממשלה, המצב ככה וככה, המשחק מתחיל..."
+    }
+  ]);
   const [currentDecision, setDecision] = useState(0);
   const [userAction, setuserAction] = useState(null);
   const [patientsNum, setPatientsNum] = useState(10);
@@ -17,18 +26,23 @@ function CoronaApp() {
   const [healthcareSystem, setHealthcareSystem] = useState(10);
   const [gameOver, setGameOver] = useState(false);
 
+  const addNotification = notification => {
+    setNotifications(notifications.concat(notification));
+  };
+
   return (
     <Container>
       <Banner src={banner} alt="Corona virus" />
       <Content>
         <Details round={round} />
         <Game>
-          <NotificationArea round={round} />
+          <NotificationArea round={round} notifications={notifications} />
           <DecisionArea
             round={round}
             setRound={setRound}
             decisionVisibility={decisionVisibility}
             setDecisionVisibility={setDecisionVisibility}
+            addNotification={addNotification}
           />
         </Game>
       </Content>
