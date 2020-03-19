@@ -13,14 +13,33 @@ const DecisionArea = ({
   addNotification
 }) => {
   const nextRound = () => {
-    setRound(round + 1);
+    const tomorrow = round + 1;
+    setRound(tomorrow);
     setDecisionVisibility(false);
-    addNotification({
-      day: round + 1,
-      hour: randomTime()[0],
-      subject: "economy",
-      content: "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
-    });
+    const [morning, afternoon, evening] = randomTime();
+    addNotification([
+      {
+        day: tomorrow,
+        hour: morning,
+        subject: "economy",
+        content:
+          "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
+      },
+      {
+        day: tomorrow,
+        hour: afternoon,
+        subject: "economy",
+        content:
+          "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
+      },
+      {
+        day: tomorrow,
+        hour: evening,
+        subject: "economy",
+        content:
+          "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
+      }
+    ]);
   };
 
   return (

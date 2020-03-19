@@ -36,7 +36,7 @@ function CoronaApp() {
       <Content>
         <Details round={round} />
         <Game>
-          <NotificationArea round={round} notifications={notifications} />
+          <NotificationArea notifications={notifications} />
           <DecisionArea
             round={round}
             setRound={setRound}

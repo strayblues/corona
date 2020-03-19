@@ -3,12 +3,12 @@ import Block from "./common/Block";
 import Notification from "./Notification";
 import styled from "styled-components";
 
-const NotificationArea = ({ round, notifications }) => {
+const NotificationArea = ({ notifications }) => {
   return (
     <Container>
       <h5>התראות</h5>
       <Scrollable>
-        <Notification round={round} notifications={notifications} />
+        <Notification notifications={notifications} />
       </Scrollable>
     </Container>
   );

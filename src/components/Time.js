@@ -6,12 +6,15 @@ const randomTime = function() {
     return Math.floor(Math.random() * (max - min) + min);
   };
 
-  let minuteDec = getRandomInRange(0, 6);
-  let minuteSec = getRandomInRange(0, 10);
-  let randomMinute = ":" + minuteDec.toString() + minuteSec.toString();
-  let randomMorningTime = getRandomInRange(6, 12) + randomMinute;
-  let randomAfternoonTime = getRandomInRange(12, 17) + randomMinute;
-  let randomEveningTime = getRandomInRange(17, 24) + randomMinute;
+  const randomMinute = function() {
+    let minuteDec = getRandomInRange(0, 6);
+    let minuteSec = getRandomInRange(0, 10);
+    return ":" + minuteDec.toString() + minuteSec.toString();
+  };
+
+  let randomMorningTime = getRandomInRange(6, 12) + randomMinute();
+  let randomAfternoonTime = getRandomInRange(12, 17) + randomMinute();
+  let randomEveningTime = getRandomInRange(17, 24) + randomMinute();
 
   return [randomMorningTime, randomAfternoonTime, randomEveningTime];
 };
