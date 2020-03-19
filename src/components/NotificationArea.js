@@ -6,7 +6,7 @@ import styled from "styled-components";
 const NotificationArea = ({ round }) => {
   return (
     <Container>
-      <h4>התראות</h4>
+      <h5>התראות</h5>
       <Scrollable>
         <Notification round={round} />
       </Scrollable>

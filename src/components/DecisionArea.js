@@ -24,11 +24,11 @@ const DecisionArea = ({
       {data.map((decision, index) => {
         return (
           <>
-            <h4>
+            <h5>
               <span>מה לעשות בנושא </span>
               {decision.content}
               <span>?</span>
-            </h4>
+            </h5>
 
             <Decision
               round={round}
