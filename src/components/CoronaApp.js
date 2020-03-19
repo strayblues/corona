@@ -7,13 +7,14 @@ import DecisionArea from "./DecisionArea";
 
 function CoronaApp() {
   const [round, setRound] = useState(1);
+  const [decisionVisibility, setDecisionVisibility] = useState(false);
+  const [currentDecision, setDecision] = useState(0);
   const [userAction, setuserAction] = useState(null);
   const [patientsNum, setPatientsNum] = useState(10);
   const [patientsData, setpatientsData] = useState(10);
   const [economy, setEconomy] = useState(10);
   const [nationalHappiness, setNationalHappiness] = useState(10);
   const [healthcareSystem, setHealthcareSystem] = useState(10);
-  const [count, setCount] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
   return (
@@ -23,7 +24,12 @@ function CoronaApp() {
         <Details round={round} />
         <Game>
           <NotificationArea round={round} />
-          <DecisionArea round={round} setRound={setRound} />
+          <DecisionArea
+            round={round}
+            setRound={setRound}
+            decisionVisibility={decisionVisibility}
+            setDecisionVisibility={setDecisionVisibility}
+          />
         </Game>
       </Content>
     </Container>

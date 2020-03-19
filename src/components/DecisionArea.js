@@ -4,9 +4,23 @@ import Decision from "./Decision";
 import data from "../data/decisions.json";
 import Block from "./common/Block";
 
-const DecisionArea = ({ round, setRound }) => {
+const DecisionArea = ({
+  round,
+  setRound,
+  decisionVisibility,
+  setDecisionVisibility
+}) => {
+  const nextRound = () => {
+    setRound(round + 1);
+    setDecisionVisibility(false);
+    //   setTimeout(() => {
+    //     this.setState({setDecisionVisibility(true)})
+    //   }, 1500)
+    // }
+  };
+
   return (
-    <Container>
+    <Container className={decisionVisibility ? "inactive" : "active"}>
       {data.map((decision, index) => {
         return (
           <>
@@ -18,7 +32,7 @@ const DecisionArea = ({ round, setRound }) => {
 
             <Decision
               round={round}
-              setRound={setRound}
+              nextRound={nextRound}
               option1={decision.options.a}
               option2={decision.options.b}
               option3={decision.options.c}

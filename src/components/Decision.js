@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Decision = ({
   round,
-  setRound,
+  nextRound,
   decision,
   option1,
   option2,
@@ -12,18 +12,21 @@ const Decision = ({
 }) => {
   function handleClick(item) {
     if (item === 1) {
-      alert("option 1");
       // more ppl get infected
     } else if (item === 2) {
-      alert("option 2");
+      // something happens
     } else if (item === 3) {
-      alert("option 3");
+      // something happens
     } else if (item === 4) {
-      alert("option 4");
+      // something happens
     }
-    // in any case, increase roundCount by 1 and start a new round
-    setRound(round + 1);
+    // in any case, increase roundCount by 1
+    nextRound();
+
+    // add className="inactive" to parent
+
     return round;
+    // and start a new round
   }
 
   return (
