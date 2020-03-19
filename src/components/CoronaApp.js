@@ -14,7 +14,7 @@ function CoronaApp() {
       day: 1,
       hour: "8:00",
       subject: "first",
-      content: "בוקר טוב גברתי ראש הממשלה, המצב ככה וככה, המשחק מתחיל..."
+      content: "בוקר טוב ראש הממשלה, המצב ככה וככה, המשחק מתחיל..."
     }
   ]);
   const [currentDecision, setDecision] = useState(0);
