@@ -5,6 +5,8 @@ import data from "../data/decisions.json";
 import Block from "./common/Block";
 import { randomTime } from "./Time";
 import economy from "../data/economy.json";
+import happiness from "../data/happiness.json";
+import random from "../data/random.json";
 
 // const getRangomInt = () => {
 //   Math.round(Math.random() * 10);
@@ -31,22 +33,19 @@ const DecisionArea = ({
         isNew: true,
         day: tomorrow,
         hour: morning,
-        subject: "economy",
         content: selectRandomText(economy)
       },
       {
         isNew: true,
         day: tomorrow,
         hour: afternoon,
-        subject: "economy",
-        content: selectRandomText(economy)
+        content: selectRandomText(random)
       },
       {
         isNew: true,
         day: tomorrow,
         hour: evening,
-        subject: "economy",
-        content: selectRandomText(economy)
+        content: selectRandomText(happiness)
       }
     ]);
   };

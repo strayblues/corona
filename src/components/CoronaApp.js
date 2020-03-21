@@ -15,7 +15,6 @@ function CoronaApp() {
       id: 0,
       day: 1,
       hour: "8:00",
-      subject: "first",
       content: "בוקר טוב ראש הממשלה, המצב ככה וככה, המשחק מתחיל..."
     }
   ]);
