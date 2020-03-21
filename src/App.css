@@ -51,3 +51,13 @@ body {
   transition: opacity 1s linear;
   -webkit-transition: opacity 1s linear;
 }
+
+.incoming {
+  background-color: rgb(189, 241, 189);
+}
+
+.old {
+  background-color: white;
+  transition: background-color 2s linear;
+  -webkit-transition: background-color 2s linear;
+}

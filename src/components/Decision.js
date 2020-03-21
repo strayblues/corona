@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const Decision = ({
+  isNew,
+  setIsNew,
   round,
   nextRound,
   decision,
@@ -22,6 +24,7 @@ const Decision = ({
     }
     // in any case, increase roundCount by 1
     nextRound();
+    setIsNew(true);
 
     // add className="inactive" to parent
 

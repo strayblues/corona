@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Decision from "./Decision";
 import data from "../data/decisions.json";
@@ -10,13 +10,16 @@ const DecisionArea = ({
   setRound,
   decisionVisibility,
   setDecisionVisibility,
-  addNotification
+  addNotification,
+  isNew,
+  setIsNew
 }) => {
   const nextRound = () => {
     const tomorrow = round + 1;
     setRound(tomorrow);
     setDecisionVisibility(false);
     const [morning, afternoon, evening] = randomTime();
+
     addNotification([
       {
         day: tomorrow,
@@ -54,6 +57,8 @@ const DecisionArea = ({
             </h5>
 
             <Decision
+              isNew={isNew}
+              setIsNew={setIsNew}
               round={round}
               nextRound={nextRound}
               option1={decision.options.a}

@@ -9,6 +9,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
+    "react-transition-group": "^1.2.1",
     "styled-components": "^5.0.1",
     "usestate": "^1.1.3"
   },

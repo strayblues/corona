@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Time from "./Time";
 
-const Notification = ({ notifications }) => {
+const Notification = ({ notifications, isNew, setIsNew }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsNew(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  });
+
   return (
-    <Container>
+    <Container className={isNew ? "incoming" : "old"}>
       {notifications
         .map((notification, index) => {
           return (
@@ -30,7 +37,6 @@ const Content = styled.div`
   padding: 6px 12px;
   padding-top: 0;
   margin: 2px 1px;
-  background: white;
   box-shadow: 0 1px 1px 0 #888;
 `;
 

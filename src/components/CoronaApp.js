@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import banner from "../images/cv07-sm.png";
 import styled from "styled-components";
+import ReactCSSTransitionGroup from "react-transition-group";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
 import DecisionArea from "./DecisionArea";
@@ -8,6 +9,7 @@ import DecisionArea from "./DecisionArea";
 function CoronaApp() {
   const [round, setRound] = useState(1);
   const [decisionVisibility, setDecisionVisibility] = useState(false);
+  const [isNew, setIsNew] = useState(true);
   const [notifications, setNotifications] = useState([
     {
       id: 0,
@@ -36,13 +38,19 @@ function CoronaApp() {
       <Content>
         <Details round={round} />
         <Game>
-          <NotificationArea notifications={notifications} />
+          <NotificationArea
+            notifications={notifications}
+            isNew={isNew}
+            setIsNew={setIsNew}
+          />
           <DecisionArea
             round={round}
             setRound={setRound}
             decisionVisibility={decisionVisibility}
             setDecisionVisibility={setDecisionVisibility}
             addNotification={addNotification}
+            isNew={isNew}
+            setIsNew={setIsNew}
           />
         </Game>
       </Content>
