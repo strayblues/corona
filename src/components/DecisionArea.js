@@ -4,6 +4,14 @@ import Decision from "./Decision";
 import data from "../data/decisions.json";
 import Block from "./common/Block";
 import { randomTime } from "./Time";
+import economy from "../data/economy.json";
+
+// const getRangomInt = () => {
+//   Math.round(Math.random() * 10);
+// };
+const selectRandomText = subject => {
+  return subject[Math.floor(Math.random() * subject.length)].content;
+};
 
 const DecisionArea = ({
   round,
@@ -24,24 +32,21 @@ const DecisionArea = ({
         day: tomorrow,
         hour: morning,
         subject: "economy",
-        content:
-          "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
+        content: selectRandomText(economy)
       },
       {
         isNew: true,
         day: tomorrow,
         hour: afternoon,
         subject: "economy",
-        content:
-          "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
+        content: selectRandomText(economy)
       },
       {
         isNew: true,
         day: tomorrow,
         hour: evening,
         subject: "economy",
-        content:
-          "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
+        content: selectRandomText(economy)
       }
     ]);
   };
