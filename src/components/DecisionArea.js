@@ -8,11 +8,8 @@ import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
 
-// const getRangomInt = () => {
-//   Math.round(Math.random() * 10);
-// };
-const selectRandomText = subject => {
-  return subject[Math.floor(Math.random() * subject.length)].content;
+const selectRandomText = topic => {
+  return topic[Math.floor(Math.random() * topic.length)].content;
 };
 
 const DecisionArea = ({
