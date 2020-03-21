@@ -53,11 +53,10 @@ body {
 }
 
 .incoming {
-  background-color: rgb(189, 241, 189);
+  background-color: #afebe5;
 }
 
 .old {
   background-color: white;
-  transition: background-color 2s linear;
-  -webkit-transition: background-color 2s linear;
+  transition: background-color 1.5s linear;
 }

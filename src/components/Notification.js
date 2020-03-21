@@ -11,12 +11,12 @@ const Notification = ({ notifications, isNew, setIsNew }) => {
   });
 
   return (
-    <Container className={isNew ? "incoming" : "old"}>
+    <Container>
       {notifications
         .map((notification, index) => {
           return (
             <>
-              <Content>
+              <Content className={isNew ? "incoming" : "old"}>
                 <StyledTime
                   round={notification.day}
                   hour={notification.hour}

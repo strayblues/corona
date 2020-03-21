@@ -21,8 +21,7 @@ const NotificationArea = ({ notifications, isNew, setIsNew }) => {
 const Container = styled(Block)``;
 const Scrollable = styled.div`
   overflow-y: scroll;
-  max-height: 250px;
-  box-shadow: 1px 1px 10px 2px #aaa;
+  max-height: 240px;
   @media (max-width: 768px) {
     max-height: 210px;
   }
