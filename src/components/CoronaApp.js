@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import banner from "../images/cv07-sm.png";
 import styled from "styled-components";
-import ReactCSSTransitionGroup from "react-transition-group";
+// import ReactCSSTransitionGroup from "react-transition-group";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
 import DecisionArea from "./DecisionArea";
