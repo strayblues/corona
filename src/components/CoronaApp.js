@@ -67,7 +67,6 @@ const Banner = styled.img`
   background: linear-gradient(
     to right,
     #b265d6,
-    #b265d6,
     #dd2581,
     #b265d6,
     #46a5a3,
