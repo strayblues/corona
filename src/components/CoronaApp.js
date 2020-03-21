@@ -9,9 +9,9 @@ import DecisionArea from "./DecisionArea";
 function CoronaApp() {
   const [round, setRound] = useState(1);
   const [decisionVisibility, setDecisionVisibility] = useState(false);
-  const [isNew, setIsNew] = useState(true);
   const [notifications, setNotifications] = useState([
     {
+      isNew: true,
       id: 0,
       day: 1,
       hour: "8:00",
@@ -19,6 +19,13 @@ function CoronaApp() {
       content: "בוקר טוב ראש הממשלה, המצב ככה וככה, המשחק מתחיל..."
     }
   ]);
+
+  const setNotificationStatus = function() {
+    for (let i = 0; i < notifications.length; i++) {
+      notifications[i].isNew = false;
+    }
+    setNotifications(notifications.slice());
+  };
   const [currentDecision, setDecision] = useState(0);
   const [userAction, setuserAction] = useState(null);
   const [patientsNum, setPatientsNum] = useState(10);
@@ -40,8 +47,7 @@ function CoronaApp() {
         <Game>
           <NotificationArea
             notifications={notifications}
-            isNew={isNew}
-            setIsNew={setIsNew}
+            setNotificationStatus={setNotificationStatus}
           />
           <DecisionArea
             round={round}
@@ -49,8 +55,6 @@ function CoronaApp() {
             decisionVisibility={decisionVisibility}
             setDecisionVisibility={setDecisionVisibility}
             addNotification={addNotification}
-            isNew={isNew}
-            setIsNew={setIsNew}
           />
         </Game>
       </Content>

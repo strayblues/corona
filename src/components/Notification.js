@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import Time from "./Time";
 
-const Notification = ({ notifications, isNew, setIsNew }) => {
+const Notification = ({ notifications, setNotificationStatus }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsNew(false);
+      setNotificationStatus();
     }, 1000);
     return () => clearTimeout(timer);
   });
@@ -16,7 +16,7 @@ const Notification = ({ notifications, isNew, setIsNew }) => {
         .map((notification, index) => {
           return (
             <>
-              <Content className={isNew ? "incoming" : "old"}>
+              <Content className={notification.isNew ? "incoming" : "old"}>
                 <StyledTime
                   round={notification.day}
                   hour={notification.hour}

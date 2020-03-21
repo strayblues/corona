@@ -10,9 +10,7 @@ const DecisionArea = ({
   setRound,
   decisionVisibility,
   setDecisionVisibility,
-  addNotification,
-  isNew,
-  setIsNew
+  addNotification
 }) => {
   const nextRound = () => {
     const tomorrow = round + 1;
@@ -22,6 +20,7 @@ const DecisionArea = ({
 
     addNotification([
       {
+        isNew: true,
         day: tomorrow,
         hour: morning,
         subject: "economy",
@@ -29,6 +28,7 @@ const DecisionArea = ({
           "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
       },
       {
+        isNew: true,
         day: tomorrow,
         hour: afternoon,
         subject: "economy",
@@ -36,6 +36,7 @@ const DecisionArea = ({
           "לשכת שר האוצר: ״מצבנו מעולם לא היה טוב יותר, ה-OECD מתקנא בנו.״"
       },
       {
+        isNew: true,
         day: tomorrow,
         hour: evening,
         subject: "economy",
@@ -57,8 +58,6 @@ const DecisionArea = ({
             </h5>
 
             <Decision
-              isNew={isNew}
-              setIsNew={setIsNew}
               round={round}
               nextRound={nextRound}
               option1={decision.options.a}
