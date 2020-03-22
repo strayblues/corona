@@ -50,7 +50,10 @@ const Container = styled.div`
   margin-bottom: 3px;
   font-size: 90%;
 `;
-const Content = styled.span``;
+const Content = styled.div`
+  margin-left: 8px;
+  padding: 5px;
+`;
 
 export default Time;
 export { getRandomTime };

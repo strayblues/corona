@@ -17,11 +17,13 @@ const Notification = ({ notifications, setNotificationStatus }) => {
           return (
             <>
               <Content className={notification.isNew ? "incoming" : "old"}>
-                <StyledTime
+                <NotificationTime
                   round={notification.day}
                   hour={notification.hour}
-                ></StyledTime>
-                <div>{notification.content}</div>
+                ></NotificationTime>
+                <NotificationContent>
+                  {notification.content}
+                </NotificationContent>
               </Content>
             </>
           );
@@ -31,9 +33,17 @@ const Notification = ({ notifications, setNotificationStatus }) => {
   );
 };
 
-const StyledTime = styled(Time)``;
+const NotificationTime = styled(Time)`
+  justify-content: flex-start;
+`;
+const NotificationContent = styled.div`
+  justify-content: flex-start;
+  margin-top: 6px;
+`;
 const Container = styled.div``;
 const Content = styled.div`
+  display: flex;
+
   padding: 6px 12px;
   padding-top: 0;
   margin: 2px 1px;
