@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Decision from "./Decision";
 import data from "../data/decisions.json";
 import Block from "./common/Block";
-import { getRandomTime, setFadeoutTime } from "./Time";
+import { getRandomTime } from "./Time";
 import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
@@ -30,22 +30,19 @@ const DecisionArea = ({
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: selectRandomText(economy),
-        fadeoutTime: setFadeoutTime(600)
+        content: selectRandomText(economy)
       },
       {
         isNew: true,
         day: tomorrow,
         hour: afternoon,
-        content: selectRandomText(random),
-        fadeoutTime: setFadeoutTime(900)
+        content: selectRandomText(random)
       },
       {
         isNew: true,
         day: tomorrow,
         hour: evening,
-        content: selectRandomText(happiness),
-        fadeoutTime: setFadeoutTime(1200)
+        content: selectRandomText(happiness)
       }
     ]);
   };

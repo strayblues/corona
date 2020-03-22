@@ -1,12 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-
-const setFadeoutTime = function(time) {
-  const timer = setTimeout(() => {
-    setFadeoutTime(time);
-  }, time);
-  return () => clearTimeout(timer);
-};
 
 const getRandomTime = function() {
   const getRandomInRange = function(min, max) {
@@ -57,4 +50,3 @@ const Content = styled.div`
 
 export default Time;
 export { getRandomTime };
-export { setFadeoutTime };
