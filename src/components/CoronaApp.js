@@ -5,6 +5,9 @@ import Details from "./Details";
 import NotificationArea from "./NotificationArea";
 import DecisionArea from "./DecisionArea";
 import { setFadeoutTime } from "./Time";
+import Decision from "./Decision";
+import ImmediateAction from "./ImmediateAction";
+import Policy from "./Policy";
 
 function CoronaApp() {
   const [round, setRound] = useState(1);
@@ -48,6 +51,71 @@ function CoronaApp() {
             notifications={notifications}
             setNotificationStatus={setNotificationStatus}
           />
+          <DecisionPanel>
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a
+                  class="nav-item nav-link active"
+                  id="nav-home-tab"
+                  data-toggle="tab"
+                  href="#nav-home"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                >
+                  צעדים מיידיים
+                </a>
+                <a
+                  class="nav-item nav-link"
+                  id="nav-profile-tab"
+                  data-toggle="tab"
+                  href="#nav-profile"
+                  role="tab"
+                  aria-controls="nav-profile"
+                  aria-selected="false"
+                >
+                  שינוי מדיניות
+                </a>
+                <a
+                  class="nav-item nav-link"
+                  id="nav-contact-tab"
+                  data-toggle="tab"
+                  href="#nav-contact"
+                  role="tab"
+                  aria-controls="nav-contact"
+                  aria-selected="false"
+                >
+                  אישור
+                </a>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="nav-home"
+                role="tabpanel"
+                aria-labelledby="nav-home-tab"
+              >
+                <ImmediateAction />
+              </div>
+              <div
+                class="tab-pane fade show"
+                id="nav-profile"
+                role="tabpanel"
+                aria-labelledby="nav-profile-tab"
+              >
+                <Policy />
+              </div>
+              <div
+                class="tab-pane fade show"
+                id="nav-contact"
+                role="tabpanel"
+                aria-labelledby="nav-contact-tab"
+              >
+                <Skip />
+              </div>
+            </div>
+          </DecisionPanel>
           <DecisionArea
             round={round}
             setRound={setRound}
@@ -61,6 +129,8 @@ function CoronaApp() {
   );
 }
 export default CoronaApp;
+
+const DecisionPanel = styled.div``;
 
 const Content = styled.div`
   min-height: 100%;
@@ -88,3 +158,4 @@ const Banner = styled.img`
 const Container = styled.div`
   direction: rtl;
 `;
+const Skip = styled.div``;
