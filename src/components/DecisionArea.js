@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Decision from "./Decision";
 import data from "../data/decisions.json";
 import Block from "./common/Block";
-import { randomTime } from "./Time";
+import { getRandomTime, setFadeoutTime } from "./Time";
 import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
@@ -23,26 +23,29 @@ const DecisionArea = ({
     const tomorrow = round + 1;
     setRound(tomorrow);
     setDecisionVisibility(false);
-    const [morning, afternoon, evening] = randomTime();
+    const [morning, afternoon, evening] = getRandomTime();
 
     addNotification([
       {
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: selectRandomText(economy)
+        content: selectRandomText(economy),
+        fadeoutTime: setFadeoutTime(600)
       },
       {
         isNew: true,
         day: tomorrow,
         hour: afternoon,
-        content: selectRandomText(random)
+        content: selectRandomText(random),
+        fadeoutTime: setFadeoutTime(900)
       },
       {
         isNew: true,
         day: tomorrow,
         hour: evening,
-        content: selectRandomText(happiness)
+        content: selectRandomText(happiness),
+        fadeoutTime: setFadeoutTime(1200)
       }
     ]);
   };

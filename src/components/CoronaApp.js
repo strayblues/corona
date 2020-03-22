@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import banner from "../images/cv07-sm.png";
 import styled from "styled-components";
-// import ReactCSSTransitionGroup from "react-transition-group";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
 import DecisionArea from "./DecisionArea";
+import { setFadeoutTime } from "./Time";
 
 function CoronaApp() {
   const [round, setRound] = useState(1);
@@ -12,10 +12,10 @@ function CoronaApp() {
   const [notifications, setNotifications] = useState([
     {
       isNew: true,
-      id: 0,
       day: 1,
-      hour: "8:00",
-      content: "בוקר טוב ראש הממשלה, המצב ככה וככה, המשחק מתחיל..."
+      hour: "7:00",
+      content:
+        "בוקר טוב, ראש הממשלה. מבין 8.7 מיליון תושבים, ידועים לנו כרגע 7 חולי קורונה שחזרו מספינת הדיאמונד פרינסס. אנחנו ממתינים להוראותיך איך כדאי להתקדם. בכל סיבוב תוכל לבצע פעולה אחת, ותקבל הודעות מגורמים שונים במערכת הפוליטית ומחוץ לה. האם תצליח לנצח את המגיפה בלי שהמדינה תקרוס? בוא נגלה!"
     }
   ]);
 

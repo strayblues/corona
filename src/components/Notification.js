@@ -13,7 +13,7 @@ const Notification = ({ notifications, setNotificationStatus }) => {
   return (
     <Container>
       {notifications
-        .map((notification, index) => {
+        .map(notification => {
           return (
             <>
               <Content className={notification.isNew ? "incoming" : "old"}>
