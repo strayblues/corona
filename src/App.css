@@ -60,3 +60,18 @@ body {
   background-color: white;
   transition: background-color 1.5s linear;
 }
+
+.btn-expand {
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+}
+
+.card-header {
+  padding: 0;
+}
+
+.card-body {
+  padding: 8px;
+}
