@@ -23,7 +23,6 @@ const Time = ({ round, hour }) => {
   const getDay = function() {
     return round;
   };
-
   const day = "יום " + getDay() + ", ";
 
   return (
@@ -39,14 +38,17 @@ const Time = ({ round, hour }) => {
 const Day = styled.span``;
 const Hour = styled.span``;
 const Container = styled.div`
-  color: blue;
+  color: white;
   margin-bottom: 3px;
-  font-size: 90%;
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 110%;
+  background: #f08080;
+  padding: 2px 10px;
+  border-radius: 2px;
+  font-weight: 700;
 `;
-const Content = styled.div`
-  margin-left: 8px;
-  padding: 5px;
-`;
+const Content = styled.div``;
 
 export default Time;
 export { getRandomTime };

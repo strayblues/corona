@@ -6,11 +6,11 @@ const ImmediateAction = ({ round, nextRound }) => {
     <Container>
       <PolicyChange>
         <div id="accordion">
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h5 class="mb-0">
+          <div className="card">
+            <div className="card-header" id="headingOne">
+              <h5 className="mb-0">
                 <button
-                  class="btn btn-expand collapsed"
+                  className="btn btn-expand collapsed"
                   data-toggle="collapse"
                   data-target="#collapseOne"
                   aria-expanded="true"
@@ -22,48 +22,48 @@ const ImmediateAction = ({ round, nextRound }) => {
             </div>
             <div
               id="collapseOne"
-              class="collapse show"
+              className="collapse show"
               aria-labelledby="headingOne"
               data-parent="#accordion"
             >
-              <div class="card-body">
-                <div class="form-check">
+              <div className="card-body">
+                <div className="form-check">
                   <input
                     type="checkbox"
-                    class="form-check-input"
+                    className="form-check-input"
                     id="exampleCheck1"
                   />
-                  <label class="form-check-label" for="exampleCheck1">
+                  <label className="form-check-label" htmlFor="exampleCheck1">
                     תשובה א
                   </label>
                 </div>
-                <div class="form-check">
+                <div className="form-check">
                   <input
                     type="checkbox"
-                    class="form-check-input"
+                    className="form-check-input"
                     id="exampleCheck1"
                   />
-                  <label class="form-check-label" for="exampleCheck1">
+                  <label className="form-check-label" htmlFor="exampleCheck1">
                     תשובה ב
                   </label>
                 </div>
-                <div class="form-check">
+                <div className="form-check">
                   <input
                     type="checkbox"
-                    class="form-check-input"
+                    className="form-check-input"
                     id="exampleCheck1"
                   />
-                  <label class="form-check-label" for="exampleCheck1">
+                  <label className="form-check-label" htmlFor="exampleCheck1">
                     תשובה ג
                   </label>
                 </div>
-                <div class="form-check">
+                <div className="form-check">
                   <input
                     type="checkbox"
-                    class="form-check-input"
+                    className="form-check-input"
                     id="exampleCheck1"
                   />
-                  <label class="form-check-label" for="exampleCheck1">
+                  <label className="form-check-label" htmlFor="exampleCheck1">
                     תשובה ד
                   </label>
                 </div>

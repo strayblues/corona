@@ -34,7 +34,12 @@ const Notification = ({ notifications, setNotificationStatus }) => {
 };
 
 const NotificationTime = styled(Time)`
-  justify-content: flex-start;
+  background: #ccc;
+  color: blue;
+  margin-bottom: 3px;
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 100%;
 `;
 const NotificationContent = styled.div`
   justify-content: flex-start;
@@ -43,7 +48,6 @@ const NotificationContent = styled.div`
 const Container = styled.div``;
 const Content = styled.div`
   display: flex;
-
   padding: 6px 12px;
   padding-top: 0;
   margin: 2px 1px;

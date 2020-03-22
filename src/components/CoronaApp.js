@@ -53,9 +53,9 @@ function CoronaApp() {
           />
           <DecisionPanel>
             <nav>
-              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <div className="nav nav-tabs" id="nav-tab" role="tablist">
                 <a
-                  class="nav-item nav-link active"
+                  className="nav-item nav-link active"
                   id="nav-home-tab"
                   data-toggle="tab"
                   href="#nav-home"
@@ -66,7 +66,7 @@ function CoronaApp() {
                   צעדים מיידיים
                 </a>
                 <a
-                  class="nav-item nav-link"
+                  className="nav-item nav-link"
                   id="nav-profile-tab"
                   data-toggle="tab"
                   href="#nav-profile"
@@ -77,7 +77,7 @@ function CoronaApp() {
                   שינוי מדיניות
                 </a>
                 <a
-                  class="nav-item nav-link"
+                  className="nav-item nav-link"
                   id="nav-contact-tab"
                   data-toggle="tab"
                   href="#nav-contact"
@@ -89,9 +89,9 @@ function CoronaApp() {
                 </a>
               </div>
             </nav>
-            <div class="tab-content" id="nav-tabContent">
+            <div className="tab-content" id="nav-tabContent">
               <div
-                class="tab-pane fade show active"
+                className="tab-pane fade show active"
                 id="nav-home"
                 role="tabpanel"
                 aria-labelledby="nav-home-tab"
@@ -99,7 +99,7 @@ function CoronaApp() {
                 <ImmediateAction />
               </div>
               <div
-                class="tab-pane fade show"
+                className="tab-pane fade show"
                 id="nav-profile"
                 role="tabpanel"
                 aria-labelledby="nav-profile-tab"
@@ -107,7 +107,7 @@ function CoronaApp() {
                 <Policy />
               </div>
               <div
-                class="tab-pane fade show"
+                className="tab-pane fade show"
                 id="nav-contact"
                 role="tabpanel"
                 aria-labelledby="nav-contact-tab"
