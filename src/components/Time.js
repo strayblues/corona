@@ -23,7 +23,7 @@ const Time = ({ round, hour }) => {
   const getDay = function() {
     return round;
   };
-  const day = "יום " + getDay() + ", ";
+  const day = "יום " + getDay();
 
   return (
     <Container>
@@ -35,18 +35,23 @@ const Time = ({ round, hour }) => {
   );
 };
 
-const Day = styled.span``;
-const Hour = styled.span``;
-const Container = styled.div`
+const Day = styled.div`
   color: white;
-  margin-bottom: 3px;
-  margin-top: 5px;
-  margin-left: 10px;
-  font-size: 110%;
+`;
+const Hour = styled.div`
+  color: white;
+`;
+const Container = styled.div`
+  margin: 7px 8px 1px 0;
   background: #f08080;
-  padding: 2px 10px;
+  background: #cc304e;
+  padding: 4px;
   border-radius: 2px;
   font-weight: 700;
+  font-size: 105%;
+  height: 48px;
+  width: 48px;
+  text-align: center;
 `;
 const Content = styled.div``;
 

@@ -3,9 +3,7 @@ import banner from "../images/cv07-sm.png";
 import styled from "styled-components";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
-import DecisionArea from "./DecisionArea";
-import { setFadeoutTime } from "./Time";
-import Decision from "./Decision";
+import DecisionArea from "./DecisionPanel";
 import ImmediateAction from "./ImmediateAction";
 import Policy from "./Policy";
 
@@ -130,12 +128,17 @@ function CoronaApp() {
 }
 export default CoronaApp;
 
-const DecisionPanel = styled.div``;
+const DecisionPanel = styled.div`
+  margin-top: 20px;
+`;
 
 const Content = styled.div`
   min-height: 100%;
   padding: 20px;
   padding-bottom: 50px;
+  margin: 12px -10px;
+  font-size: 84%;
+  line-height: 1.3;
   @media (max-width: 768px) {
   }
 `;

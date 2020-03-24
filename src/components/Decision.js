@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Block from "./common/Block";
 
 const Decision = ({ round, nextRound }) => {
   function handleClick(item) {
@@ -38,8 +39,7 @@ const Decision = ({ round, nextRound }) => {
 export default Decision;
 
 const PolicyLine = styled.div``;
-
 const Skip = styled.button``;
-const Container = styled.div`
+const Container = styled(Block)`
   background: #eee;
 `;
