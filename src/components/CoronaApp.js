@@ -136,7 +136,7 @@ const Content = styled.div`
   min-height: 100%;
   padding: 20px;
   padding-bottom: 50px;
-  margin: 12px -10px;
+  margin: 12px 0;
   font-size: 84%;
   line-height: 1.3;
   @media (max-width: 768px) {
