@@ -3,9 +3,10 @@ import banner from "../images/benner02-sm.png";
 import styled from "styled-components";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
-import DecisionArea from "./DecisionPanel";
+import NextRound from "./NextRound";
 import ImmediateAction from "./ImmediateAction";
 import Policy from "./Policy";
+import Debug from "./Debug";
 
 function CoronaApp() {
   const [round, setRound] = useState(1);
@@ -26,6 +27,7 @@ function CoronaApp() {
     }
     setNotifications(notifications.slice());
   };
+  const [infectionRate, setInfectionRate] = useState(0.3);
   const [currentDecision, setDecision] = useState(0);
   const [userAction, setuserAction] = useState(null);
   const [patientsNum, setPatientsNum] = useState(10);
@@ -43,13 +45,22 @@ function CoronaApp() {
     <Container>
       <Banner src={banner} alt="Corona virus" />
       <Content>
+        {/* <Debug infectionRate={infectionRate} /> */}
         <Details round={round} />
         <Game>
           <NotificationArea
             notifications={notifications}
             setNotificationStatus={setNotificationStatus}
           />
-          <DecisionPanel>
+          <DecisionPanel
+            round={round}
+            setRound={setRound}
+            decisionVisibility={decisionVisibility}
+            setDecisionVisibility={setDecisionVisibility}
+            addNotification={addNotification}
+            infectionRate={infectionRate}
+            setInfectionRate={setInfectionRate}
+          >
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
                 <a
@@ -114,12 +125,14 @@ function CoronaApp() {
               </div>
             </div>
           </DecisionPanel>
-          <DecisionArea
+          <NextRound
             round={round}
             setRound={setRound}
             decisionVisibility={decisionVisibility}
             setDecisionVisibility={setDecisionVisibility}
             addNotification={addNotification}
+            infectionRate={infectionRate}
+            setInfectionRate={setInfectionRate}
           />
         </Game>
       </Content>
@@ -131,12 +144,10 @@ export default CoronaApp;
 const DecisionPanel = styled.div`
   margin-top: 20px;
 `;
-
 const Content = styled.div`
   min-height: 100%;
   padding: 20px;
   padding-bottom: 50px;
-  /* margin: 12px 0; */
   font-size: 84%;
   line-height: 1.3;
   @media (max-width: 768px) {

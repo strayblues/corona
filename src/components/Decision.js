@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Block from "./common/Block";
 
-const Decision = ({ round, nextRound }) => {
-  function handleClick(item) {
-    if (item === 1) {
-      // more ppl get infected
-    } else if (item === 2) {
-      // something happens
-    } else if (item === 3) {
-      // something happens
-    } else if (item === 4) {
-      // something happens
+const Decision = ({ round, nextRound, infectionRate, setInfectionRate }) => {
+  function handleClick() {
+    if (document.getElementById("isolationLevel0").checked) {
+      setInfectionRate(0.3);
+    } else if (document.getElementById("isolationLevel1").checked) {
+      setInfectionRate(0.3);
+    } else if (document.getElementById("isolationLevel2").checked) {
+      setInfectionRate(0.2);
+    } else if (document.getElementById("isolationLevel3").checked) {
+      setInfectionRate(0.15);
     }
     // in any case, increase roundCount by 1
     nextRound();

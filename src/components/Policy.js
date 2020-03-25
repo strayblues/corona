@@ -31,9 +31,9 @@ const Policy = () => {
                   <input
                     type="checkbox"
                     className="form-check-input"
-                    id="exampleCheck1"
+                    id="isolationLevel0"
                   />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
+                  <label className="form-check-label" htmlFor="isolationLevel0">
                     בלי בידוד חובה
                   </label>
                 </div>
@@ -41,9 +41,9 @@ const Policy = () => {
                   <input
                     type="checkbox"
                     className="form-check-input"
-                    id="exampleCheck1"
+                    id="isolationLevel1"
                   />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
+                  <label className="form-check-label" htmlFor="isolationLevel1">
                     לבודד ל-14 יום חולים סימפטומטיים
                   </label>
                 </div>
@@ -51,9 +51,9 @@ const Policy = () => {
                   <input
                     type="checkbox"
                     className="form-check-input"
-                    id="exampleCheck1"
+                    id="isolationLevel2"
                   />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
+                  <label className="form-check-label" htmlFor="isolationLevel2">
                     לבודד ל-14 יום חולים סימפטומטיים ומי שהיה במגע עם חולה
                   </label>
                 </div>
@@ -61,9 +61,9 @@ const Policy = () => {
                   <input
                     type="checkbox"
                     className="form-check-input"
-                    id="exampleCheck1"
+                    id="isolationLevel3"
                   />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
+                  <label className="form-check-label" htmlFor="isolationLevel3">
                     לבודד ל-14 יום חולים סימפטומטיים, מי שהיה במגע עם חולה וכל
                     מי שחוזר מחו"ל
                   </label>

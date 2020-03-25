@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import Decision from "./Decision";
-import data from "../data/decisions.json";
 import Block from "./common/Block";
 import { getRandomTime } from "./Time";
 import economy from "../data/economy.json";
@@ -12,17 +11,17 @@ const selectRandomText = topic => {
   return topic[Math.floor(Math.random() * topic.length)].content;
 };
 
-const DecisionArea = ({
+const NextRound = ({
   round,
   setRound,
-  decisionVisibility,
-  setDecisionVisibility,
-  addNotification
+  addNotification,
+  infectionRate,
+  setInfectionRate
 }) => {
   const nextRound = () => {
     const tomorrow = round + 1;
     setRound(tomorrow);
-    setDecisionVisibility(false);
+
     const [morning, afternoon, evening] = getRandomTime();
 
     addNotification([
@@ -48,25 +47,19 @@ const DecisionArea = ({
   };
 
   return (
-    <Container className={decisionVisibility ? "inactive" : "active"}>
-      {data.map((decision, index) => {
-        return (
-          <>
-            <Decision
-              round={round}
-              nextRound={nextRound}
-              option1={decision.options.a}
-              option2={decision.options.b}
-              option3={decision.options.c}
-              option4={decision.options.d}
-            />
-          </>
-        );
-      })}
+    <Container>
+      <>
+        <Decision
+          infectionRate={infectionRate}
+          setInfectionRate={setInfectionRate}
+          round={round}
+          nextRound={nextRound}
+        />
+      </>
     </Container>
   );
 };
 
 const Container = styled(Block)``;
 
-export default DecisionArea;
+export default NextRound;
