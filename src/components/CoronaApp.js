@@ -7,10 +7,13 @@ import NextRound from "./NextRound";
 import ImmediateAction from "./ImmediateAction";
 import Policy from "./Policy";
 import Debug from "./Debug";
+import { getRandomTime } from "./Time";
+import economy from "../data/economy.json";
+import happiness from "../data/happiness.json";
+import random from "../data/random.json";
 
 function CoronaApp() {
   const [round, setRound] = useState(1);
-  const [decisionVisibility, setDecisionVisibility] = useState(false);
   const [notifications, setNotifications] = useState([
     {
       isNew: true,
@@ -28,24 +31,64 @@ function CoronaApp() {
     setNotifications(notifications.slice());
   };
   const [infectionRate, setInfectionRate] = useState(0.3);
-  const [currentDecision, setDecision] = useState(0);
-  const [userAction, setuserAction] = useState(null);
-  const [patientsNum, setPatientsNum] = useState(10);
-  const [patientsData, setpatientsData] = useState(10);
-  const [economy, setEconomy] = useState(10);
-  const [nationalHappiness, setNationalHappiness] = useState(10);
-  const [healthcareSystem, setHealthcareSystem] = useState(10);
-  const [gameOver, setGameOver] = useState(false);
+
+  // const [patientsNum, setPatientsNum] = useState(10);
+  // const [patientsData, setpatientsData] = useState(10);
+  // const [nationalHappiness, setNationalHappiness] = useState(10);
+  // const [healthcareSystem, setHealthcareSystem] = useState(10);
+  // const [gameOver, setGameOver] = useState(false);
 
   const addNotification = notification => {
     setNotifications(notifications.concat(notification));
   };
 
+  const selectRandomText = topic => {
+    return topic[Math.floor(Math.random() * topic.length)].content;
+  };
+
+  function handleClick() {
+    if (document.getElementById("isolationLevel0").checked) {
+      setInfectionRate(0.3);
+    } else if (document.getElementById("isolationLevel1").checked) {
+      setInfectionRate(0.3);
+    } else if (document.getElementById("isolationLevel2").checked) {
+      setInfectionRate(0.2);
+    } else if (document.getElementById("isolationLevel3").checked) {
+      setInfectionRate(0.15);
+    }
+
+    const tomorrow = round + 1;
+    setRound(tomorrow);
+
+    const [morning, afternoon, evening] = getRandomTime();
+
+    addNotification([
+      {
+        isNew: true,
+        day: tomorrow,
+        hour: morning,
+        content: selectRandomText(economy)
+      },
+      {
+        isNew: true,
+        day: tomorrow,
+        hour: afternoon,
+        content: selectRandomText(random)
+      },
+      {
+        isNew: true,
+        day: tomorrow,
+        hour: evening,
+        content: selectRandomText(happiness)
+      }
+    ]);
+  }
+
   return (
     <Container>
       <Banner src={banner} alt="Corona virus" />
       <Content>
-        {/* <Debug infectionRate={infectionRate} /> */}
+        <Debug infectionRate={infectionRate} />
         <Details round={round} />
         <Game>
           <NotificationArea
@@ -55,11 +98,10 @@ function CoronaApp() {
           <DecisionPanel
             round={round}
             setRound={setRound}
-            decisionVisibility={decisionVisibility}
-            setDecisionVisibility={setDecisionVisibility}
             addNotification={addNotification}
             infectionRate={infectionRate}
             setInfectionRate={setInfectionRate}
+            handleClick={handleClick}
           >
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -120,16 +162,13 @@ function CoronaApp() {
                 id="nav-contact"
                 role="tabpanel"
                 aria-labelledby="nav-contact-tab"
-              >
-                <Skip />
-              </div>
+              ></div>
             </div>
           </DecisionPanel>
           <NextRound
+            handleClick={handleClick}
             round={round}
             setRound={setRound}
-            decisionVisibility={decisionVisibility}
-            setDecisionVisibility={setDecisionVisibility}
             addNotification={addNotification}
             infectionRate={infectionRate}
             setInfectionRate={setInfectionRate}
@@ -172,4 +211,3 @@ const Banner = styled.img`
 const Container = styled.div`
   direction: rtl;
 `;
-const Skip = styled.div``;
