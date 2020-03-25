@@ -43,14 +43,14 @@ const Hour = styled.div`
 `;
 const Container = styled.div`
   margin: 7px 8px 1px 0;
-  background: #f08080;
-  background: #cc304e;
-  padding: 4px;
+  background: #f09047;
+  background: #ee6f9c;
+  background: #9f5fd4;
+  padding: 1px;
   border-radius: 2px;
   font-weight: 700;
-  font-size: 105%;
-  height: 48px;
-  width: 48px;
+  height: 38px;
+  width: 40px;
   text-align: center;
 `;
 const Content = styled.div``;

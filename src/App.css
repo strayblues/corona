@@ -77,3 +77,7 @@ body {
 .card-body {
   padding: 8px;
 }
+
+.fa-envelope {
+  color: #666;
+}

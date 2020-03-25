@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import banner from "../images/cv07-sm.png";
+import banner from "../images/benner02-sm.png";
 import styled from "styled-components";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
@@ -136,7 +136,7 @@ const Content = styled.div`
   min-height: 100%;
   padding: 20px;
   padding-bottom: 50px;
-  margin: 12px 0;
+  /* margin: 12px 0; */
   font-size: 84%;
   line-height: 1.3;
   @media (max-width: 768px) {
