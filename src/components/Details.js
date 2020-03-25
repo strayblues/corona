@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Block from "./common/Block";
 import Info from "./common/Info";
-import crown from "../images/crown.png";
 
 const Details = ({ round }) => {
   return (
@@ -10,7 +9,9 @@ const Details = ({ round }) => {
       <Content>
         <Pretty>
           <div className="hr-line"></div>
-          <Crown src={crown} alt="Crown" />
+          <Crown alt="Crown">
+            <i className="fas fa-crown fa-lg" aria-hidden="true"></i>
+          </Crown>
           <div className="hr-line"></div>
         </Pretty>
         <Info label1={"יום "} number={round} label2=" למשבר הקורונה" />
@@ -29,24 +30,20 @@ const Content = styled.span`
 `;
 const Pretty = styled.div`
   display: flex;
-
+  color: #222;
   .hr-line {
     width: 100%;
     position: relative;
     margin: 15px;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #222;
   }
 `;
-const Crown = styled.img`
-  width: 80px;
-  height: 40px;
+const Crown = styled.div`
+  /* width: 80px;
+  height: 40px; */
   margin-bottom: 6px;
   position: relative;
   top: 3px;
-  color: #ff0000;
-
-  @media (max-width: 768px) {
-  }
 `;
 const Container = styled(Block)`
   @media (max-width: 768px) {
