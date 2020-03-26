@@ -49,9 +49,14 @@ const Container = styled.div`
   padding: 1px;
   border-radius: 2px;
   font-weight: 700;
-  height: 38px;
-  width: 40px;
+  line-height: 1.3;
+  font-size: 90%;
+  height: 36px;
+  width: 35px;
   text-align: center;
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+    height: 37px;
+  }
 `;
 const Content = styled.div``;
 

@@ -185,7 +185,7 @@ const DecisionPanel = styled.div`
 `;
 const Content = styled.div`
   min-height: 100%;
-  padding: 20px;
+  padding: 20px 4px;
   padding-bottom: 50px;
   font-size: 84%;
   line-height: 1.3;

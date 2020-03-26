@@ -18,7 +18,7 @@ const Notification = ({ notifications, setNotificationStatus }) => {
             <>
               <Content className={notification.isNew ? "incoming" : "old"}>
                 <NotificationIcon>
-                  <i className="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                  <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
                 </NotificationIcon>
                 <NotificationContent>
                   {notification.content}
@@ -39,7 +39,7 @@ const Notification = ({ notifications, setNotificationStatus }) => {
 const Container = styled.div``;
 const Content = styled.div`
   display: flex;
-  padding: 6px 12px;
+  padding: 6px;
   padding-top: 0;
   margin: 2px 1px;
   box-shadow: 0 1px 1px 0 #888;
