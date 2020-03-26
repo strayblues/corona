@@ -139,7 +139,14 @@ function CoronaApp() {
                   aria-controls="nav-contact"
                   aria-selected="false"
                 >
-                  אישור
+                  <NextRound
+                    handleClick={handleClick}
+                    round={round}
+                    setRound={setRound}
+                    addNotification={addNotification}
+                    infectionRate={infectionRate}
+                    setInfectionRate={setInfectionRate}
+                  />
                 </a>
               </div>
             </nav>
@@ -168,14 +175,6 @@ function CoronaApp() {
               ></div>
             </div>
           </DecisionPanel>
-          <NextRound
-            handleClick={handleClick}
-            round={round}
-            setRound={setRound}
-            addNotification={addNotification}
-            infectionRate={infectionRate}
-            setInfectionRate={setInfectionRate}
-          />
         </Game>
       </Content>
     </Container>
