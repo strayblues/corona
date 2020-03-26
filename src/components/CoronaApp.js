@@ -47,13 +47,13 @@ function CoronaApp() {
   };
 
   function handleClick() {
-    if (document.getElementById("isolationLevel0").checked) {
+    if (document.getElementById("policy_isolation_0").checked) {
       setInfectionRate(0.3);
-    } else if (document.getElementById("isolationLevel1").checked) {
+    } else if (document.getElementById("policy_isolation_1").checked) {
       setInfectionRate(0.3);
-    } else if (document.getElementById("isolationLevel2").checked) {
+    } else if (document.getElementById("policy_isolation_2").checked) {
       setInfectionRate(0.2);
-    } else if (document.getElementById("isolationLevel3").checked) {
+    } else if (document.getElementById("policy_isolation_3").checked) {
       setInfectionRate(0.15);
     }
 

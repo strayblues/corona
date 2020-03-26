@@ -29,44 +29,65 @@ const ImmediateAction = ({ round, nextRound }) => {
               <div className="card-body">
                 <div className="form-check">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="immediate_action"
                     className="form-check-input"
-                    id="exampleCheck1"
+                    id="action0"
                   />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
+                  <label className="form-check-label" htmlFor="action0">
                     תשובה א
                   </label>
                 </div>
                 <div className="form-check">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="immediate_action"
                     className="form-check-input"
-                    id="exampleCheck1"
+                    id="action1"
                   />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
+                  <label className="form-check-label" htmlFor="action1">
                     תשובה ב
                   </label>
                 </div>
                 <div className="form-check">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="immediate_action"
                     className="form-check-input"
-                    id="exampleCheck1"
+                    id="action2"
                   />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
+                  <label className="form-check-label" htmlFor="action2">
                     תשובה ג
                   </label>
                 </div>
                 <div className="form-check">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="immediate_action"
                     className="form-check-input"
-                    id="exampleCheck1"
+                    id="action3"
                   />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
+                  <label className="form-check-label" htmlFor="action3">
                     תשובה ד
                   </label>
                 </div>
+                {/* <div>
+                  <input className="nodisplay" type="radio" id="action0" />
+                  <label htmlFor="action0">תשובה א</label>
+                </div>
+                <div>
+                  <input className="nodisplay" type="radio" id="action1" />
+                  <label htmlFor="action1">תשובה ב</label>
+                </div>
+
+                <div>
+                  <input className="nodisplay" type="radio" id="action2" />
+                  <label htmlFor="action2">תשובה ג</label>
+                </div>
+                <div>
+                  <input className="nodisplay" type="radio" id="action3" />
+                  <label htmlFor="action3">תשובה ד</label>
+                </div> */}
               </div>
             </div>
           </div>

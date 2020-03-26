@@ -81,3 +81,26 @@ body {
 .fa-envelope {
   color: #666;
 }
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  background-color: #6db8f9;
+  color: white;
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  padding: 10px;
+  display: inherit;
+  margin-bottom: 2px;
+  background-color: #ddd;
+}
+
+.form-check {
+  padding-right: 0;
+}
