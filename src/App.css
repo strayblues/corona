@@ -41,7 +41,7 @@ body {
   }
 }
 
-.active {
+/* .active {
   opacity: 1;
   transition: opacity 1s linear;
   -webkit-transition: opacity 1s linear;
@@ -51,7 +51,7 @@ body {
   opacity: 0;
   transition: opacity 1s linear;
   -webkit-transition: opacity 1s linear;
-}
+} */
 
 .incoming {
   background-color: #afebe5;
@@ -60,6 +60,10 @@ body {
 .old {
   background-color: white;
   transition: background-color 1.5s linear;
+}
+
+.hide {
+  display: none;
 }
 
 .btn-expand {

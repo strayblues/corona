@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import banner from "../images/benner02-sm.png";
 import styled from "styled-components";
+import NewGame from "./NewGame";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
 import NextRound from "./NextRound";
@@ -13,6 +14,7 @@ import happiness from "../data/happiness.json";
 import random from "../data/random.json";
 
 function CoronaApp() {
+  const [gameStart, setGameStart] = useState(false);
   const [round, setRound] = useState(1);
   const [notifications, setNotifications] = useState([
     {
@@ -87,7 +89,8 @@ function CoronaApp() {
   return (
     <Container>
       <Banner src={banner} alt="Corona virus" />
-      <Content>
+      <NewGame gameStart={gameStart} setGameStart={setGameStart} />
+      <Content className={gameStart ? "show" : "hide"}>
         <Debug infectionRate={infectionRate} />
         <Details round={round} />
         <Game>
@@ -189,8 +192,6 @@ const Content = styled.div`
   padding-bottom: 50px;
   font-size: 84%;
   line-height: 1.3;
-  @media (max-width: 768px) {
-  }
 `;
 const Game = styled.div`
   display: flex;
