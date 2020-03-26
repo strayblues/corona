@@ -88,8 +88,8 @@ body {
 
 .card-header,
 .card-body {
-  padding: 2px;
-  font-size: 96%;
+  padding: 0 2px;
+  font-size: 120%;
 }
 
 .form-check {
