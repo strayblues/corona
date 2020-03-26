@@ -89,7 +89,7 @@ body {
 .card-header,
 .card-body {
   padding: 2px;
-  font-size: 90%;
+  font-size: 96%;
 }
 
 .form-check {
@@ -97,7 +97,7 @@ body {
 }
 
 .fa-envelope {
-  color: #666;
+  color: #777;
 }
 
 input[type="radio"],
