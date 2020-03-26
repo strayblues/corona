@@ -17,6 +17,10 @@ const ImmediateAction = ({ round, nextRound }) => {
                   aria-controls="collapseOne"
                 >
                   שאלה חד פעמית
+                  <span>
+                    {" "}
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
                 </button>
               </h5>
             </div>
@@ -71,23 +75,6 @@ const ImmediateAction = ({ round, nextRound }) => {
                     תשובה ד
                   </label>
                 </div>
-                {/* <div>
-                  <input className="nodisplay" type="radio" id="action0" />
-                  <label htmlFor="action0">תשובה א</label>
-                </div>
-                <div>
-                  <input className="nodisplay" type="radio" id="action1" />
-                  <label htmlFor="action1">תשובה ב</label>
-                </div>
-
-                <div>
-                  <input className="nodisplay" type="radio" id="action2" />
-                  <label htmlFor="action2">תשובה ג</label>
-                </div>
-                <div>
-                  <input className="nodisplay" type="radio" id="action3" />
-                  <label htmlFor="action3">תשובה ד</label>
-                </div> */}
               </div>
             </div>
           </div>
