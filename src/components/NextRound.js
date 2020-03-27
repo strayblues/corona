@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const NextRound = ({ handleClick }) => {
+const NextRound = ({ updateState }) => {
   return (
     <Container>
       <>
-        <Next className="btn btn-primary" onClick={handleClick}>
+        <Next className="btn btn-primary" onClick={updateState}>
           אישור
         </Next>
       </>

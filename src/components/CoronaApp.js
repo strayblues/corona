@@ -58,19 +58,7 @@ function CoronaApp() {
     return topic[Math.floor(Math.random() * topic.length)].content;
   };
 
-  function handleClick() {
-    if (document.getElementById("policy_isolation_0").checked) {
-      setInfectionRate(0.3);
-    } else if (document.getElementById("policy_isolation_1").checked) {
-      setInfectionRate(0.3);
-    } else if (document.getElementById("policy_isolation_2").checked) {
-      setInfectionRate(0.2);
-      setEconomicState(economicState - 3);
-    } else if (document.getElementById("policy_isolation_3").checked) {
-      setEconomicState(economicState - 5);
-      setInfectionRate(0.15);
-    }
-
+  const addUknownPatients = () => {
     let isolatedPatients = 0;
     let unIsolatedPatients = 0;
     let unknownWithNoSymptoms = 0;
@@ -85,6 +73,20 @@ function CoronaApp() {
     unIsolatedPatients = unIsolatedPatients * infectionRate;
     unknownWithNoSymptoms = (isolatedPatients + unIsolatedPatients).toFixed(4);
     alert("unknownWithNoSymptoms: " + unknownWithNoSymptoms);
+  };
+
+  const implementPolicyEffect = () => {
+    if (document.getElementById("policy_isolation_0").checked) {
+      setInfectionRate(0.3);
+    } else if (document.getElementById("policy_isolation_1").checked) {
+      setInfectionRate(0.3);
+    } else if (document.getElementById("policy_isolation_2").checked) {
+      setInfectionRate(0.2);
+      setEconomicState(economicState - 3);
+    } else if (document.getElementById("policy_isolation_3").checked) {
+      setEconomicState(economicState - 5);
+      setInfectionRate(0.15);
+    }
 
     if (document.getElementById("policy_surveillance_0").checked) {
       setInfectionRate(infectionRate * 0.9);
@@ -133,10 +135,10 @@ function CoronaApp() {
       setNationalHappiness(nationalHappiness - 6);
       setInfectionRate(infectionRate * 0.88);
     }
+  };
 
+  const createNotifications = () => {
     const tomorrow = round + 1;
-    setRound(tomorrow);
-
     const [morning, afternoon, evening] = getRandomTime();
 
     addNotification([
@@ -159,6 +161,16 @@ function CoronaApp() {
         content: selectRandomText(happiness)
       }
     ]);
+  };
+
+  function updateState() {
+    implementPolicyEffect();
+    addUknownPatients();
+
+    const tomorrow = round + 1;
+    setRound(tomorrow);
+
+    createNotifications();
   }
 
   return (
@@ -166,12 +178,12 @@ function CoronaApp() {
       <Banner src={banner} alt="Corona virus" />
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
       <Content className={gameStart ? "show" : "hide"}>
-        <Debug
+        {/* <Debug
           infectionRate={infectionRate}
           economicState={economicState}
           nationalHappiness={nationalHappiness}
           patients={patients}
-        />
+        /> */}
         <Details round={round} />
         <Game>
           <NotificationArea
@@ -184,7 +196,7 @@ function CoronaApp() {
             addNotification={addNotification}
             infectionRate={infectionRate}
             setInfectionRate={setInfectionRate}
-            handleClick={handleClick}
+            updateState={updateState}
           >
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -220,7 +232,7 @@ function CoronaApp() {
                   aria-selected="false"
                 >
                   <NextRound
-                    handleClick={handleClick}
+                    updateState={updateState}
                     round={round}
                     setRound={setRound}
                     addNotification={addNotification}
