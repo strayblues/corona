@@ -71,18 +71,20 @@ function CoronaApp() {
       setInfectionRate(0.15);
     }
 
-    // for (let i = 0; i < patients.length; i++){
-    //   if (patients[i].isolated) {
-    //     let isolatedPatients =
-    //     isolatedPatients = isolatedPatients*(r/10);
-    //     alert("isolated: " + isolatedPatients);
-    //   } else {
-    //     let unIsolatedPatients = unIsolatedPatients * r;
-    //     alert("unIsolated: "+ unIsolatedPatients);
-    //   }
-    //   let unknownWithNoSymptoms = isolatedPatients + unIsolatedPatients;
-    //   return unknownWithNoSymptoms;
-    // }
+    let isolatedPatients = 0;
+    let unIsolatedPatients = 0;
+    let unknownWithNoSymptoms = 0;
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].isolated) {
+        isolatedPatients++;
+      } else {
+        unIsolatedPatients++;
+      }
+    }
+    isolatedPatients = isolatedPatients * (infectionRate / 10);
+    unIsolatedPatients = unIsolatedPatients * infectionRate;
+    unknownWithNoSymptoms = (isolatedPatients + unIsolatedPatients).toFixed(4);
+    alert("unknownWithNoSymptoms: " + unknownWithNoSymptoms);
 
     if (document.getElementById("policy_surveillance_0").checked) {
       setInfectionRate(infectionRate * 0.9);
@@ -164,12 +166,12 @@ function CoronaApp() {
       <Banner src={banner} alt="Corona virus" />
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
       <Content className={gameStart ? "show" : "hide"}>
-        {/* <Debug
+        <Debug
           infectionRate={infectionRate}
           economicState={economicState}
           nationalHappiness={nationalHappiness}
           patients={patients}
-        /> */}
+        />
         <Details round={round} />
         <Game>
           <NotificationArea
