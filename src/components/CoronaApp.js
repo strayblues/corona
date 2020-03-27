@@ -72,7 +72,7 @@ function CoronaApp() {
     isolatedPatients = isolatedPatients * (infectionRate / 10);
     unIsolatedPatients = unIsolatedPatients * infectionRate;
     unknownWithNoSymptoms = (isolatedPatients + unIsolatedPatients).toFixed(4);
-    alert("unknownWithNoSymptoms: " + unknownWithNoSymptoms);
+    // alert("unknownWithNoSymptoms: " + unknownWithNoSymptoms);
     if (unknownWithNoSymptoms >= 1) {
       addPatient({
         infectionDay: round,
