@@ -33,10 +33,12 @@ function CoronaApp() {
     setNotifications(notifications.slice());
   };
   const [infectionRate, setInfectionRate] = useState(0.3);
+  const [economicState, setEconomicState] = useState(80);
+  const [nationalHappiness, setNationalHappiness] = useState(80);
 
   // const [patientsNum, setPatientsNum] = useState(10);
   // const [patientsData, setpatientsData] = useState(10);
-  // const [nationalHappiness, setNationalHappiness] = useState(10);
+
   // const [healthcareSystem, setHealthcareSystem] = useState(10);
   // const [gameOver, setGameOver] = useState(false);
 
@@ -55,8 +57,58 @@ function CoronaApp() {
       setInfectionRate(0.3);
     } else if (document.getElementById("policy_isolation_2").checked) {
       setInfectionRate(0.2);
+      setEconomicState(economicState - 3);
     } else if (document.getElementById("policy_isolation_3").checked) {
+      setEconomicState(economicState - 5);
       setInfectionRate(0.15);
+    }
+
+    if (document.getElementById("policy_surveillance_0").checked) {
+      setInfectionRate(infectionRate * 0.9);
+    } else if (document.getElementById("policy_surveillance_1").checked) {
+      setInfectionRate(infectionRate * 0.8);
+      setNationalHappiness(nationalHappiness - 3);
+    } else if (document.getElementById("policy_surveillance_2").checked) {
+      setInfectionRate(infectionRate * 0.7);
+      setNationalHappiness(nationalHappiness - 5);
+    }
+
+    if (document.getElementById("policy_close_0").checked) {
+      setEconomicState(economicState - 5);
+      setNationalHappiness(nationalHappiness - 3);
+      setInfectionRate(infectionRate * 0.9);
+    } else if (document.getElementById("policy_close_1").checked) {
+      setEconomicState(economicState - 3);
+      setNationalHappiness(nationalHappiness - 3);
+      setInfectionRate(infectionRate * 0.9);
+    } else if (document.getElementById("policy_close_2").checked) {
+      setEconomicState(economicState - 5);
+      setNationalHappiness(nationalHappiness - 3);
+      setInfectionRate(infectionRate * 0.85);
+    } else if (document.getElementById("policy_close_3").checked) {
+      setEconomicState(economicState - 7);
+      setInfectionRate(infectionRate * 0.8);
+    } else if (document.getElementById("policy_close_4").checked) {
+      setEconomicState(economicState - 2);
+      setNationalHappiness(nationalHappiness - 3);
+      setInfectionRate(infectionRate * 0.9);
+    } else if (document.getElementById("policy_close_5").checked) {
+      setEconomicState(economicState - 10);
+      setNationalHappiness(nationalHappiness - 7);
+      setInfectionRate(infectionRate * 0.99);
+    } else if (document.getElementById("policy_close_6").checked) {
+      setEconomicState(economicState - 8);
+      setNationalHappiness(nationalHappiness - 5);
+      setInfectionRate(infectionRate * 0.99);
+    } else if (document.getElementById("policy_close_7").checked) {
+      setNationalHappiness(nationalHappiness - 7);
+      setInfectionRate(infectionRate * 0.8);
+    } else if (document.getElementById("policy_close_8").checked) {
+      setNationalHappiness(nationalHappiness - 15);
+      setInfectionRate(infectionRate * 0.8);
+    } else if (document.getElementById("policy_close_9").checked) {
+      setNationalHappiness(nationalHappiness - 6);
+      setInfectionRate(infectionRate * 0.88);
     }
 
     const tomorrow = round + 1;
@@ -91,7 +143,11 @@ function CoronaApp() {
       <Banner src={banner} alt="Corona virus" />
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
       <Content className={gameStart ? "show" : "hide"}>
-        <Debug infectionRate={infectionRate} />
+        <Debug
+          infectionRate={infectionRate}
+          economicState={economicState}
+          nationalHappiness={nationalHappiness}
+        />
         <Details round={round} />
         <Game>
           <NotificationArea
