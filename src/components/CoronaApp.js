@@ -38,9 +38,9 @@ function CoronaApp() {
   const [nationalHappiness, setNationalHappiness] = useState(80);
   const [patients, setPatients] = useState(initialPatients);
 
-  // const addPatient = patient => {
-  //   setPatients(patients.concat(patient));
-  // };
+  const addPatient = patient => {
+    setPatients(patients.concat(patient));
+  };
 
   // const [healthcareSystem, setHealthcareSystem] = useState(10);
   // const [gameOver, setGameOver] = useState(false);
@@ -73,6 +73,14 @@ function CoronaApp() {
     unIsolatedPatients = unIsolatedPatients * infectionRate;
     unknownWithNoSymptoms = (isolatedPatients + unIsolatedPatients).toFixed(4);
     alert("unknownWithNoSymptoms: " + unknownWithNoSymptoms);
+    if (unknownWithNoSymptoms >= 1) {
+      addPatient({
+        infectionDay: round,
+        healthCond: "no symptoms",
+        known: false,
+        isolated: false
+      });
+    }
   };
 
   const implementPolicyEffect = () => {
@@ -190,14 +198,7 @@ function CoronaApp() {
             notifications={notifications}
             setNotificationStatus={setNotificationStatus}
           />
-          <DecisionPanel
-            round={round}
-            setRound={setRound}
-            addNotification={addNotification}
-            infectionRate={infectionRate}
-            setInfectionRate={setInfectionRate}
-            updateState={updateState}
-          >
+          <DecisionPanel>
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
                 <a
@@ -231,14 +232,7 @@ function CoronaApp() {
                   aria-controls="nav-contact"
                   aria-selected="false"
                 >
-                  <NextRound
-                    updateState={updateState}
-                    round={round}
-                    setRound={setRound}
-                    addNotification={addNotification}
-                    infectionRate={infectionRate}
-                    setInfectionRate={setInfectionRate}
-                  />
+                  <NextRound updateState={updateState} />
                 </a>
               </div>
             </nav>
