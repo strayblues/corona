@@ -12,6 +12,7 @@ import { getRandomTime } from "./Time";
 import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
+import initialPatients from "../data/patients.json";
 
 function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
@@ -35,12 +36,19 @@ function CoronaApp() {
   const [infectionRate, setInfectionRate] = useState(0.3);
   const [economicState, setEconomicState] = useState(80);
   const [nationalHappiness, setNationalHappiness] = useState(80);
+  const [patients, setPatients] = useState(initialPatients);
 
-  // const [patientsNum, setPatientsNum] = useState(10);
-  // const [patientsData, setpatientsData] = useState(10);
+  // const addPatient = patient => {
+  //   setPatients(patients.concat(patient));
+  // };
 
   // const [healthcareSystem, setHealthcareSystem] = useState(10);
   // const [gameOver, setGameOver] = useState(false);
+
+  // const setNumPatients = function() {
+  //   for (let i = 0; i < patients.length; i++) {
+  //     patients[i].isNew = false;
+  // }
 
   const addNotification = notification => {
     setNotifications(notifications.concat(notification));
@@ -62,6 +70,19 @@ function CoronaApp() {
       setEconomicState(economicState - 5);
       setInfectionRate(0.15);
     }
+
+    // for (let i = 0; i < patients.length; i++){
+    //   if (patients[i].isolated) {
+    //     let isolatedPatients =
+    //     isolatedPatients = isolatedPatients*(r/10);
+    //     alert("isolated: " + isolatedPatients);
+    //   } else {
+    //     let unIsolatedPatients = unIsolatedPatients * r;
+    //     alert("unIsolated: "+ unIsolatedPatients);
+    //   }
+    //   let unknownWithNoSymptoms = isolatedPatients + unIsolatedPatients;
+    //   return unknownWithNoSymptoms;
+    // }
 
     if (document.getElementById("policy_surveillance_0").checked) {
       setInfectionRate(infectionRate * 0.9);
@@ -143,11 +164,12 @@ function CoronaApp() {
       <Banner src={banner} alt="Corona virus" />
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
       <Content className={gameStart ? "show" : "hide"}>
-        <Debug
+        {/* <Debug
           infectionRate={infectionRate}
           economicState={economicState}
           nationalHappiness={nationalHappiness}
-        />
+          patients={patients}
+        /> */}
         <Details round={round} />
         <Game>
           <NotificationArea
@@ -173,7 +195,7 @@ function CoronaApp() {
                   aria-controls="nav-home"
                   aria-selected="true"
                 >
-                  צעדים מיידיים
+                  צעד מיידי
                 </a>
                 <a
                   className="nav-item nav-link"

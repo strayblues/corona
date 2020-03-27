@@ -1,12 +1,62 @@
 [
   {
-    "id": 0,
-    "dayInfected": 0,
-    "health": "hospitalized"
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": true,
+    "isolated": true
   },
   {
-    "id": 1,
-    "dayInfected": 0,
-    "health": "has symptoms"
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": true,
+    "isolated": true
+  },
+  {
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": true,
+    "isolated": true
+  },
+  {
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": true,
+    "isolated": true
+  },
+  {
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": true,
+    "isolated": true
+  },
+  {
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": true,
+    "isolated": true
+  },
+  {
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": true,
+    "isolated": true
+  },
+  {
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": false,
+    "isolated": false
+  },
+  {
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": false,
+    "isolated": false
+  },
+  {
+    "infectionDay": 0,
+    "healthCond": "no symptoms",
+    "known": false,
+    "isolated": false
   }
 ]
