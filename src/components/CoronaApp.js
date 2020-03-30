@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import banner from "../images/benner06-sm.png";
+import banner from "../images/benner07-sm.png";
 import styled from "styled-components";
 import NewGame from "./NewGame";
 import Details from "./Details";
