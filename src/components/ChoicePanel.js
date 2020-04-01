@@ -2,8 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import ImmediateAction from "./ImmediateAction";
 import Policy from "./Policy";
+import NextRound from "./NextRound";
 
-const ChoicePanel = ({ gameStart, setGameStart, handleGameStart }) => {
+const ChoicePanel = ({
+  gameStart,
+  setGameStart,
+  handleGameStart,
+  updateState
+}) => {
   return (
     <Container className={gameStart ? "show" : "hide"}>
       <div className="modal-dialog" role="document">
@@ -70,6 +76,9 @@ const ChoicePanel = ({ gameStart, setGameStart, handleGameStart }) => {
                 <label className="form-check-label" htmlFor="action4">
                   לדלג למחר
                 </label>
+                <div className="modal-footer">
+                  <NextRound updateState={updateState} />
+                </div>
               </div>
             </ActionType>
           </div>
