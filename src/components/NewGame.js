@@ -15,51 +15,18 @@ const NewGame = ({ gameStart, setGameStart }) => {
               מבין 8.7 מיליון תושבים, ידועים לנו כרגע 7 חולי קורונה שחזרו מספינת
               הדיאמונד פרינסס. אנחנו ממתינים להוראותיך כיצד להתקדם. בכל סיבוב
               תוכל לבצע פעולה אחת, ותקבל הודעות מגורמים שונים במערכת הפוליטית
-              ומחוץ לה. האם תצליח לנצח את המגיפה בלי שהמדינה תקרוס? בוא נגלה!{" "}
+              ומחוץ לה. האם תצליח לנצח את המגיפה בלי שהמדינה תקרוס?{" "}
             </p>
           </Intro>
         </div>
         <div className="modal-footer">
           <ActionType>
-            <p>פעולות אפשריות:</p>
             <button
               type="button"
-              className="btn btn-orange"
+              className="btn btn-purple"
               onClick={handleGameStart}
             >
-              פעולה מיידית
-            </button>{" "}
-            <button
-              type="button"
-              className="btn btn-lightblue"
-              onClick={handleGameStart}
-            >
-              {" "}
-              מדיניות: בידוד
-            </button>
-            <button
-              type="button"
-              className="btn btn-lightblue"
-              onClick={handleGameStart}
-            >
-              {" "}
-              מדיניות: מעקב אלקטרוני
-            </button>
-            <button
-              type="button"
-              className="btn btn-lightblue"
-              onClick={handleGameStart}
-            >
-              {" "}
-              מדיניות: פעילות מוסדות ושירותים{" "}
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={handleGameStart}
-            >
-              {" "}
-              לדלג למחר{" "}
+              בוא נגלה!
             </button>
           </ActionType>
         </div>

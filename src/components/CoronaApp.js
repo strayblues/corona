@@ -7,6 +7,8 @@ import NotificationArea from "./NotificationArea";
 import NextRound from "./NextRound";
 import ImmediateAction from "./ImmediateAction";
 import Policy from "./Policy";
+import ChoicePanel from "./ChoicePanel";
+import DecisionPanel from "./DecisionPanel";
 import Debug from "./Debug";
 import { getRandomTime } from "./Time";
 import economy from "../data/economy.json";
@@ -194,69 +196,8 @@ function CoronaApp() {
         /> */}
         <Details round={round} />
         <Game>
-          <DecisionPanel>
-            <nav>
-              <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                <a
-                  className="nav-item nav-link active"
-                  id="nav-home-tab"
-                  data-toggle="tab"
-                  href="#nav-home"
-                  role="tab"
-                  aria-controls="nav-home"
-                  aria-selected="true"
-                >
-                  צעד מיידי
-                </a>
-                <a
-                  className="nav-item nav-link"
-                  id="nav-profile-tab"
-                  data-toggle="tab"
-                  href="#nav-profile"
-                  role="tab"
-                  aria-controls="nav-profile"
-                  aria-selected="false"
-                >
-                  שינוי מדיניות
-                </a>
-                <a
-                  className="nav-item nav-link"
-                  id="nav-contact-tab"
-                  data-toggle="tab"
-                  href="#nav-contact"
-                  role="tab"
-                  aria-controls="nav-contact"
-                  aria-selected="false"
-                >
-                  <NextRound updateState={updateState} />
-                </a>
-              </div>
-            </nav>
-            <div className="tab-content" id="nav-tabContent">
-              <div
-                className="tab-pane fade show active"
-                id="nav-home"
-                role="tabpanel"
-                aria-labelledby="nav-home-tab"
-              >
-                <ImmediateAction />
-              </div>
-              <div
-                className="tab-pane fade show"
-                id="nav-profile"
-                role="tabpanel"
-                aria-labelledby="nav-profile-tab"
-              >
-                <Policy />
-              </div>
-              <div
-                className="tab-pane fade show"
-                id="nav-contact"
-                role="tabpanel"
-                aria-labelledby="nav-contact-tab"
-              ></div>
-            </div>
-          </DecisionPanel>
+          <ChoicePanel gameStart={gameStart} updateState={updateState} />
+          <DecisionPanel gameStart={gameStart} updateState={updateState} />
           <NotificationArea
             notifications={notifications}
             setNotificationStatus={setNotificationStatus}
@@ -268,9 +209,6 @@ function CoronaApp() {
 }
 export default CoronaApp;
 
-const DecisionPanel = styled.div`
-  margin-top: 20px;
-`;
 const Content = styled.div`
   min-height: 100%;
   padding: 20px 4px;

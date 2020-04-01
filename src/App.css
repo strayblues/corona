@@ -66,6 +66,13 @@ body {
   display: none;
 }
 
+.btn {
+  font-family: "Alef", sans-serif;
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  box-shadow: 0 1px 1px 0 #aaa;
+}
+
 .btn-expand {
   background-color: #53bdb2;
   background-color: #9f5fd4;
@@ -73,6 +80,35 @@ body {
   width: 100%;
   height: 100%;
   text-align: center;
+}
+
+/* .btn-purple {
+  background-color: #9f5fd4;
+  color: white;
+} */
+
+.btn-teal {
+  background-color: #53bdb2;
+  color: white;
+  margin-bottom: 7px;
+}
+
+.btn-lightblue {
+  background-color: #6db8f9;
+  color: white;
+  margin-bottom: 7px;
+}
+
+.btn-pink {
+  background-color: #e64595;
+  color: white;
+  margin-bottom: 7px;
+}
+
+.btn-orange {
+  background-color: orange;
+  color: white;
+  margin-bottom: 7px;
 }
 
 .btn-purple {

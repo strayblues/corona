@@ -5,7 +5,7 @@ const NextRound = ({ updateState }) => {
   return (
     <Container>
       <>
-        <Next className="btn btn-primary" onClick={updateState}>
+        <Next className="btn btn-purple" onClick={updateState}>
           אישור
         </Next>
       </>
