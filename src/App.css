@@ -172,7 +172,21 @@ input[type="checkbox"] + label {
 .modal-content-messages {
   background: #ddd;
 }
-
+/* 
 i.fa-angle-down {
   vertical-align: middle;
+}
+*/
+
+.meazben {
+  margin: 12px;
+  padding: 2px;
+  width: 100%;
+}
+
+.fb-btn-share {
+  background-color: #3b5998 !important;
+  color: white !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
 }

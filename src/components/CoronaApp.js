@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import banner from "../images/benner08-sm.png";
 import styled from "styled-components";
+import SocialLinks from "./common/SocialLinks";
 import NewGame from "./NewGame";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
@@ -196,30 +197,7 @@ function CoronaApp() {
           patients={patients}
         /> */}
           <Details round={round} />
-          <div
-            class="fb-like"
-            data-href="https://www.facebook.com/%D7%94%D7%97%D7%99%D7%99%D7%9D-%D7%A2%D7%A6%D7%9E%D7%9D-104461374549252/"
-            data-width="400"
-            data-layout="button_count"
-            data-action="recommend"
-            data-size="large"
-            data-share="true"
-          ></div>
-          <div
-            class="fb-share-button"
-            data-href="https://corona.codepink.dev"
-            data-layout="button_count"
-            data-size="large"
-          >
-            <a
-              target="_blank"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmandala-app.com%2F&amp;src=sdkpreparse"
-              class="fb-xfbml-parse-ignore"
-            >
-              Share
-            </a>
-          </div>
-
+          <SocialLinks />
           <ChoicePanel gameStart={gameStart} updateState={updateState} />
         </Content>
 
