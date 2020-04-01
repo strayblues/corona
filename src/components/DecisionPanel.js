@@ -5,7 +5,7 @@ import ImmediateAction from "./ImmediateAction";
 import Policy from "./Policy";
 const DecisionPanel = ({ gameStart, setGameStart, updateState }) => {
   return (
-    <Container>
+    <Container className={gameStart ? "hide" : "hide"}>
       <Decision>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
@@ -13,8 +13,8 @@ const DecisionPanel = ({ gameStart, setGameStart, updateState }) => {
               <h5 className="modal-title">החלטה</h5>
             </div>
             <div className="modal-body">
-              <ImmediateAction />
               <Policy />
+              <ImmediateAction />
             </div>
             <div className="modal-footer">
               <NextRound updateState={updateState} />

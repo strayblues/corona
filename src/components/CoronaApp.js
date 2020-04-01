@@ -187,23 +187,29 @@ function CoronaApp() {
     <Container>
       <Banner src={banner} alt="Corona virus" />
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
-      <Content className={gameStart ? "show" : "hide"}>
-        {/* <Debug
+      <Game>
+        <Content className={gameStart ? "show" : "hide"}>
+          {/* <Debug
           infectionRate={infectionRate}
           economicState={economicState}
           nationalHappiness={nationalHappiness}
           patients={patients}
         /> */}
-        <Details round={round} />
-        <Game>
+          <Details round={round} />
           <ChoicePanel gameStart={gameStart} updateState={updateState} />
+        </Content>
+
+        <Content>
           <DecisionPanel gameStart={gameStart} updateState={updateState} />
+        </Content>
+        <Content>
           <NotificationArea
+            gameStart={gameStart}
             notifications={notifications}
             setNotificationStatus={setNotificationStatus}
           />
-        </Game>
-      </Content>
+        </Content>
+      </Game>
     </Container>
   );
 }
@@ -211,9 +217,9 @@ export default CoronaApp;
 
 const Content = styled.div`
   min-height: 100%;
-  padding: 20px 4px;
-  padding-bottom: 50px;
-  font-size: 84%;
+  /* padding: 20px 4px; */
+  /* padding-bottom: 50px; */
+  font-size: 88%;
   line-height: 1.3;
 `;
 const Game = styled.div`

@@ -9,45 +9,68 @@ const ChoicePanel = ({ gameStart, setGameStart, handleGameStart }) => {
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">סוג פעולה</h5>
+            <h5 className="modal-title">פעולה</h5>
           </div>
           <div className="modal-body">
             <ActionType>
-              <button
-                type="button"
-                className="btn btn-orange"
-                onClick={handleGameStart}
-              >
-                פעולה מיידית
-              </button>
-              <button
-                type="button"
-                className="btn btn-lightblue"
-                onClick={handleGameStart}
-              >
-                מדיניות: בידוד
-              </button>
-              <button
-                type="button"
-                className="btn btn-lightblue"
-                onClick={handleGameStart}
-              >
-                מדיניות: מעקב אלקטרוני
-              </button>
-              <button
-                type="button"
-                className="btn btn-lightblue"
-                onClick={handleGameStart}
-              >
-                מדיניות: פעילות מוסדות ושירותים
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={handleGameStart}
-              >
-                לדלג למחר
-              </button>
+              <div className="form-check">
+                <input
+                  type="radio"
+                  name="action_type"
+                  className="form-check-input"
+                  id="action0"
+                />
+                <label className="form-check-label" htmlFor="action0">
+                  פעולה מיידית
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  type="radio"
+                  name="action_type"
+                  className="form-check-input"
+                  id="action1"
+                />
+                <label className="form-check-label" htmlFor="action1">
+                  מדיניות: בידוד
+                </label>
+              </div>
+
+              <div className="form-check">
+                <input
+                  type="radio"
+                  name="action_type"
+                  className="form-check-input"
+                  id="action2"
+                />
+                <label className="form-check-label" htmlFor="action2">
+                  מדיניות: מעקב אלקטרוני
+                </label>
+              </div>
+
+              <div className="form-check">
+                <input
+                  type="radio"
+                  name="action_type"
+                  className="form-check-input"
+                  id="action3"
+                />
+                <label className="form-check-label" htmlFor="action3">
+                  מדיניות: מוסדות ושירותים
+                </label>
+              </div>
+
+              <div className="form-check">
+                <input
+                  type="radio"
+                  name="action_type"
+                  className="form-check-input"
+                  id="action4"
+                />
+                <label className="form-check-label" htmlFor="action4">
+                  לדלג למחר
+                </label>
+              </div>
             </ActionType>
           </div>
         </div>

@@ -3,9 +3,13 @@ import Block from "./common/Block";
 import Notification from "./Notification";
 import styled from "styled-components";
 
-const NotificationArea = ({ notifications, setNotificationStatus }) => {
+const NotificationArea = ({
+  notifications,
+  setNotificationStatus,
+  gameStart
+}) => {
   return (
-    <Container>
+    <Container className={gameStart ? "show" : "hide"}>
       <div className="modal-dialog" role="document">
         <div className="modal-content modal-content-messages">
           <div className="modal-header messages">
