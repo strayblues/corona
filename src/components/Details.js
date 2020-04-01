@@ -10,19 +10,20 @@ const Details = ({ round }) => {
         <Pretty>
           <div className="hr-line"></div>
           <Crown alt="Crown">
-            <i className="fas fa-crown fa-lg" aria-hidden="true"></i>
+            <i className="fas fa-crown fa-md" aria-hidden="true"></i>
           </Crown>
           <div className="hr-line"></div>
         </Pretty>
-        <Info label1={"יום "} number={round} label2=" למשבר הקורונה" />
+        <Day label1={"יום "} number={round} label2=" למשבר הקורונה" />
       </Content>
     </Container>
   );
 };
 
+const Day = styled(Info)``;
 const Content = styled.span`
   display: inline;
-  font-size: 180%;
+  font-size: 130%;
   color: black;
   text-align: center;
   @media (max-width: 768px) {

@@ -6,7 +6,7 @@ import styled from "styled-components";
 const NotificationArea = ({ notifications, setNotificationStatus }) => {
   return (
     <Container>
-      {/* <h5>התראות</h5> */}
+      <h6>הודעות</h6>
       <Scrollable>
         <Notification
           notifications={notifications}
@@ -17,7 +17,9 @@ const NotificationArea = ({ notifications, setNotificationStatus }) => {
   );
 };
 
-const Container = styled(Block)``;
+const Container = styled(Block)`
+  margin-top: 1em;
+`;
 const Scrollable = styled.div`
   overflow-y: scroll;
   max-height: 245px;

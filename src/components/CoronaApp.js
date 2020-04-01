@@ -154,7 +154,7 @@ function CoronaApp() {
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: selectRandomText(economy)
+        content: selectRandomText(economy) //healthcare
       },
       {
         isNew: true,
@@ -194,10 +194,6 @@ function CoronaApp() {
         /> */}
         <Details round={round} />
         <Game>
-          <NotificationArea
-            notifications={notifications}
-            setNotificationStatus={setNotificationStatus}
-          />
           <DecisionPanel>
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -261,6 +257,10 @@ function CoronaApp() {
               ></div>
             </div>
           </DecisionPanel>
+          <NotificationArea
+            notifications={notifications}
+            setNotificationStatus={setNotificationStatus}
+          />
         </Game>
       </Content>
     </Container>
