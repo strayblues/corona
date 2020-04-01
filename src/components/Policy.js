@@ -18,7 +18,7 @@ const Policy = () => {
                 מדיניות הבידוד
                 <span>
                   {" "}
-                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  <i className="fa fa-angle-down" aria-hidden="true"></i>
                 </span>
               </button>
             </h5>
@@ -103,7 +103,7 @@ const Policy = () => {
                 מעקב אלקטרוני
                 <span>
                   {" "}
-                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  <i className="fa fa-angle-down" aria-hidden="true"></i>
                 </span>
               </button>
             </h5>
@@ -173,7 +173,7 @@ const Policy = () => {
                 סגירת מוסדות (בחירה מרובה)
                 <span>
                   {" "}
-                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  <i className="fa fa-angle-down" aria-hidden="true"></i>
                 </span>
               </button>
             </h5>

@@ -133,7 +133,7 @@ body {
 }
 
 .fa-envelope {
-  color: #777;
+  color: #9f5fd4;
 }
 
 input[type="radio"],
@@ -166,6 +166,11 @@ input[type="checkbox"] + label {
   margin: 5%;
   box-shadow: 0 1px 1px 0 #bbb;
   /* font-size: 110%; */
+  font-family: "Alef", sans-serif;
+}
+
+.modal-content-messages {
+  background: #ddd;
 }
 
 i.fa-angle-down {

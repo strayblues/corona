@@ -7,12 +7,12 @@ const DecisionPanel = ({ gameStart, setGameStart, updateState }) => {
   return (
     <Container>
       <Decision>
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">פעולות אפשריות:</h5>
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">החלטה</h5>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <ImmediateAction />
               <Policy />
             </div>

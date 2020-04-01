@@ -19,7 +19,7 @@ const ImmediateAction = ({ round, nextRound }) => {
                   שאלה חד פעמית
                   <span>
                     {" "}
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    <i className="fa fa-angle-down" aria-hidden="true"></i>
                   </span>
                 </button>
               </h5>

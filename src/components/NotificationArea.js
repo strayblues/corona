@@ -6,16 +6,27 @@ import styled from "styled-components";
 const NotificationArea = ({ notifications, setNotificationStatus }) => {
   return (
     <Container>
-      <h6>הודעות</h6>
-      <Scrollable>
-        <Notification
-          notifications={notifications}
-          setNotificationStatus={setNotificationStatus}
-        />
-      </Scrollable>
+      <div className="modal-dialog" role="document">
+        <div className="modal-content modal-content-messages">
+          <div className="modal-header messages">
+            <h5 className="modal-title">הודעות</h5>
+            <i className="fa fa-envelope fa-2x" aria-hidden="true"></i>
+          </div>
+          <div className="modal-body">
+            <Scrollable>
+              <Notification
+                notifications={notifications}
+                setNotificationStatus={setNotificationStatus}
+              />
+            </Scrollable>
+          </div>
+          <div className="modal-footer"></div>
+        </div>
+      </div>
     </Container>
   );
 };
+export default NotificationArea;
 
 const Container = styled(Block)`
   margin-top: 1em;
@@ -27,5 +38,3 @@ const Scrollable = styled.div`
     max-height: 215px;
   }
 `;
-
-export default NotificationArea;
