@@ -41,8 +41,8 @@ function CoronaApp() {
   const [nationalHappiness, setNationalHappiness] = useState(80);
   const [patients, setPatients] = useState(initialPatients);
 
-  const addPatient = patient => {
-    setPatients(patients.concat(patient));
+  const addPatients = newPatients => {
+    setPatients(patients.concat(newPatients));
   };
 
   // const [healthcareSystem, setHealthcareSystem] = useState(10);
@@ -74,15 +74,18 @@ function CoronaApp() {
     }
     isolatedPatients = isolatedPatients * (infectionRate / 10);
     unIsolatedPatients = unIsolatedPatients * infectionRate;
-    unknownWithNoSymptoms = (isolatedPatients + unIsolatedPatients).toFixed(4);
-    // alert("unknownWithNoSymptoms: " + unknownWithNoSymptoms);
+    unknownWithNoSymptoms = Math.floor(isolatedPatients + unIsolatedPatients);
     if (unknownWithNoSymptoms >= 1) {
-      addPatient({
-        infectionDay: round,
-        healthCond: "no symptoms",
-        known: false,
-        isolated: false
-      });
+      let newPatients = [];
+      for (let i = 0; i < unknownWithNoSymptoms; i++) {
+        newPatients.push({
+          infectionDay: round,
+          healthCond: "no symptoms",
+          known: false,
+          isolated: false
+        });
+      }
+      addPatients(newPatients);
     }
   };
 
@@ -191,11 +194,11 @@ function CoronaApp() {
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
           {/* <Debug
-          infectionRate={infectionRate}
-          economicState={economicState}
-          nationalHappiness={nationalHappiness}
-          patients={patients}
-        /> */}
+            infectionRate={infectionRate}
+            economicState={economicState}
+            nationalHappiness={nationalHappiness}
+            patients={patients}
+          /> */}
           <Details round={round} />
           <ChoicePanel gameStart={gameStart} updateState={updateState} />
         </Content>
