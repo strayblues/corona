@@ -197,7 +197,6 @@ function CoronaApp() {
           patients={patients}
         /> */}
           <Details round={round} />
-          <SocialLinks />
           <ChoicePanel gameStart={gameStart} updateState={updateState} />
         </Content>
 
@@ -211,6 +210,7 @@ function CoronaApp() {
             setNotificationStatus={setNotificationStatus}
           />
         </Content>
+        {/* <SocialLinks /> */}
       </Game>
     </Container>
   );
@@ -221,8 +221,9 @@ const Content = styled.div`
   min-height: 100%;
   /* padding: 20px 4px; */
   /* padding-bottom: 50px; */
-  font-size: 88%;
+  font-size: 90%;
   line-height: 1.3;
+  margin-top: -24px;
 `;
 const Game = styled.div`
   display: flex;

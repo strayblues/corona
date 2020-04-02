@@ -6,7 +6,7 @@ const NewGame = ({ gameStart, setGameStart }) => {
   };
   return (
     <Container className={gameStart ? "hide" : "show"}>
-      <div className="modal-content">
+      <div className="modal-content intro">
         <div className="modal-header">
           <Intro>
             <p className="modal-title">בוקר טוב ראש הממשלה,</p>

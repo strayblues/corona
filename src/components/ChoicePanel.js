@@ -76,7 +76,7 @@ const ChoicePanel = ({
                 <label className="form-check-label" htmlFor="action4">
                   לדלג למחר
                 </label>
-                <div className="modal-footer">
+                <div className="modal-footer choice">
                   <NextRound updateState={updateState} />
                 </div>
               </div>

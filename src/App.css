@@ -41,20 +41,8 @@ body {
   }
 }
 
-/* .active {
-  opacity: 1;
-  transition: opacity 1s linear;
-  -webkit-transition: opacity 1s linear;
-}
-
-.inactive {
-  opacity: 0;
-  transition: opacity 1s linear;
-  -webkit-transition: opacity 1s linear;
-} */
-
 .incoming {
-  background-color: #afebe5;
+  background-color: #a7d3fa;
 }
 
 .old {
@@ -81,11 +69,6 @@ body {
   height: 100%;
   text-align: center;
 }
-
-/* .btn-purple {
-  background-color: #9f5fd4;
-  color: white;
-} */
 
 .btn-teal {
   background-color: #53bdb2;
@@ -133,7 +116,7 @@ body {
 }
 
 .fa-envelope {
-  color: #9f5fd4;
+  color: #666;
 }
 
 input[type="radio"],
@@ -172,6 +155,16 @@ input[type="checkbox"] + label {
 .modal-content-messages {
   background: #ddd;
 }
+
+.modal-content.intro {
+  width: 40%;
+  margin: 1.5em 30%;
+}
+
+.modal-footer.choice {
+  padding-bottom: 0;
+}
+
 /* 
 i.fa-angle-down {
   vertical-align: middle;
@@ -189,4 +182,8 @@ i.fa-angle-down {
   color: white !important;
   padding: 4px 8px !important;
   border-radius: 4px !important;
+}
+
+.modal-header.messages {
+  background-color: white;
 }
