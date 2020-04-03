@@ -5,7 +5,7 @@ import ImmediateAction from "./ImmediateAction";
 import Policy from "./Policy";
 const DecisionPanel = ({ gameStart, setGameStart, updateState }) => {
   return (
-    <Container className={gameStart ? "hide" : "hide"}>
+    <Container className={gameStart ? "show" : "hide"}>
       <Decision>
         <div className="modal-dialog" role="document">
           <div className="modal-content">

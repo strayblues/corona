@@ -193,6 +193,7 @@ function CoronaApp() {
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
+          <SocialLinks />
           {/* <Debug
             infectionRate={infectionRate}
             economicState={economicState}
@@ -213,7 +214,6 @@ function CoronaApp() {
             setNotificationStatus={setNotificationStatus}
           />
         </Content>
-        {/* <SocialLinks /> */}
       </Game>
     </Container>
   );

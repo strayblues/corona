@@ -170,20 +170,35 @@ i.fa-angle-down {
   vertical-align: middle;
 }
 */
-
-.meazben {
-  margin: 12px;
-  padding: 2px;
-  width: 100%;
-}
-
-.fb-btn-share {
-  background-color: #3b5998 !important;
-  color: white !important;
-  padding: 4px 8px !important;
-  border-radius: 4px !important;
-}
-
 .modal-header.messages {
   background-color: white;
+}
+
+.social-container {
+  border-radius: 4px;
+  margin: 0 4px;
+  box-shadow: 0 2px 2px 0 #888;
+}
+
+.btn-share {
+  color: white !important;
+  margin: 6px 8px;
+}
+
+.facebook-container,
+.btn-facebook {
+  background-color: #3b5998 !important;
+  padding: 0 0 0 4px;
+}
+
+.twitter-container,
+.btn-twitter {
+  background-color: #00acee !important;
+}
+
+.btn-count {
+  background-color: white !important;
+  padding: 1px 2px;
+  border-radius: 2px;
+  color: #3b5998;
 }
