@@ -9,32 +9,51 @@ import PolicyClose from "./decisions/PolicyClose";
 import PolicyIsolate from "./decisions/PolicyIsolate";
 import PolicySurveil from "./decisions/PolicySurveil";
 
-const DecisionPanel = ({ gameStart, setGameStart, updateState }) => {
-  return (
-    <Container className={gameStart ? "show" : "hide"}>
-      <Decision>
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">החלטה</h5>
-            </div>
-            <div className="modal-body">
-              <Economy />
-              <Healthcare />
-              <PressConf />
-              <PublicData />
-              <PolicyClose />
-              <PolicyIsolate />
-              <PolicySurveil />
-            </div>
-            <div className="modal-footer">
-              <NextRound updateState={updateState} />
+const DecisionPanel = ({
+  gameStart,
+  setGameStart,
+  updateState,
+  action,
+  setAction
+}) => {
+  let component;
+  if (action === "isolate") {
+    component = <PolicyIsolate />;
+  } else if (action === "surveil") {
+    component = <PolicySurveil />;
+  } else if (action === "close") {
+    component = <PolicyClose />;
+  } else if (action === "immediateAction") {
+    // TODO
+  }
+
+  if (action !== "initialAction") {
+    return (
+      <Container className={gameStart ? "show" : "hide"}>
+        <Decision>
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">החלטה</h5>
+              </div>
+              <div className="modal-body">
+                {component}
+                {/* <Economy show={false} />
+              <Healthcare show={false} />
+              <PressConf show={false} />
+              <PublicData show={false} />*/}
+              </div>
+              <div className="modal-footer">
+                <NextRound updateState={updateState} />
+              </div>
             </div>
           </div>
-        </div>
-      </Decision>
-    </Container>
-  );
+        </Decision>
+      </Container>
+    );
+  } else {
+    return null;
+  }
 };
 export default DecisionPanel;
 

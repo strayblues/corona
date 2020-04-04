@@ -21,6 +21,7 @@ import initialPatients from "../data/patients.json";
 function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
   const [round, setRound] = useState(1);
+  const [action, setAction] = useState("initialAction"); // "initialAction", "immediateAction", "close", "isolate", "surveil", "skip"
   const [notifications, setNotifications] = useState([
     {
       isNew: true,
@@ -204,11 +205,20 @@ function CoronaApp() {
             patients={patients}
           /> */}
           <Details round={round} />
-          <ChoicePanel gameStart={gameStart} updateState={updateState} />
+          <ChoicePanel
+            gameStart={gameStart}
+            updateState={updateState}
+            action={action}
+            setAction={setAction}
+          />
         </Content>
-
         <Content>
-          <DecisionPanel gameStart={gameStart} updateState={updateState} />
+          <DecisionPanel
+            gameStart={gameStart}
+            updateState={updateState}
+            action={action}
+            setAction={setAction}
+          />
         </Content>
         <Content>
           <NotificationArea
