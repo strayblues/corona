@@ -36,7 +36,12 @@ const NewGame = ({ gameStart, setGameStart }) => {
 };
 
 export default NewGame;
-const Container = styled.div``;
+const Container = styled.div`
+  align-self: center;
+  text-align: right;
+  width: 90%;
+  margin: 5%;
+`;
 const ActionType = styled.div`
   display: flex;
   flex-direction: column;

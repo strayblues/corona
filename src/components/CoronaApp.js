@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import banner from "../images/benner08-sm.png";
 import styled from "styled-components";
-import SocialLinks from "./common/SocialLinks";
+import Like from "./common/Like";
+import Share from "./common/Share";
 import NewGame from "./NewGame";
 import Details from "./Details";
 import NotificationArea from "./NotificationArea";
@@ -193,7 +194,9 @@ function CoronaApp() {
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
-          <SocialLinks />
+          <Content>
+            <Like />
+          </Content>
           {/* <Debug
             infectionRate={infectionRate}
             economicState={economicState}
@@ -214,6 +217,9 @@ function CoronaApp() {
             setNotificationStatus={setNotificationStatus}
           />
         </Content>
+        {/* <Content className={gameStart ? "show" : "hide"}>
+          <Share />
+        </Content> */}
       </Game>
     </Container>
   );
@@ -222,8 +228,6 @@ export default CoronaApp;
 
 const Content = styled.div`
   min-height: 100%;
-  /* padding: 20px 4px; */
-  /* padding-bottom: 50px; */
   font-size: 90%;
   line-height: 1.3;
   margin-top: -24px;

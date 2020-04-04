@@ -157,8 +157,8 @@ input[type="checkbox"] + label {
 }
 
 .modal-content.intro {
-  width: 40%;
-  margin: 1.5em 30%;
+  /* width: 40%; */
+  /* margin: 1.5em 30%; */
 }
 
 .modal-footer.choice {
@@ -178,6 +178,9 @@ i.fa-angle-down {
   border-radius: 4px;
   margin: 0 4px;
   box-shadow: 0 2px 2px 0 #888;
+  font-size: 80% !important;
+  margin-top: 12px;
+  text-align: center;
 }
 
 .btn-share {
@@ -201,4 +204,12 @@ i.fa-angle-down {
   padding: 1px 2px;
   border-radius: 2px;
   color: #3b5998;
+}
+
+.like-count {
+  color: white;
+}
+
+#u_0_3 {
+  color: white;
 }

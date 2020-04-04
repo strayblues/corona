@@ -1,14 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import ReactFBLike from "react-fb-like";
-
 import {
   FacebookShareCount,
   FacebookShareButton,
   TwitterShareButton
 } from "react-share";
 
-const SocialLinks = () => {
+const Share = () => {
   return (
     <Container>
       <Facebook className="social-container facebook-container">
@@ -35,12 +33,13 @@ const SocialLinks = () => {
   );
 };
 
-export default SocialLinks;
+export default Share;
 
 const Container = styled.div`
   width: 25%;
   margin: auto;
   display: flex;
+
   /* background: white; */
   /* flex-direction: column; */
 `;
