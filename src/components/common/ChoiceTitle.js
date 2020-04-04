@@ -6,19 +6,7 @@ const ChoiceTitle = ({ title }) => {
     <Container>
       <div className="card-header" id="headingTwo">
         <h5 className="mb-0">
-          <button
-            className="btn btn-expand collapsed"
-            data-toggle="collapse"
-            data-target="#collapseThree"
-            aria-expanded="false"
-            aria-controls="collapseThree"
-          >
-            {title}
-            <span>
-              {" "}
-              <i className="fa fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
+          <button className="btn btn-purple title">{title}</button>
         </h5>
       </div>
     </Container>

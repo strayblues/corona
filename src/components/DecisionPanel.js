@@ -1,8 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import NextRound from "./NextRound";
-import ImmediateAction from "./ImmediateAction";
-import Policy from "./Policy";
+import Economy from "./decisions/Economy";
+import Healthcare from "./decisions/Healthcare";
+import PressConf from "./decisions/PressConf";
+import PublicData from "./decisions/PublicData";
+import PolicyClose from "./decisions/PolicyClose";
+import PolicyIsolate from "./decisions/PolicyIsolate";
+import PolicySurveil from "./decisions/PolicySurveil";
+
 const DecisionPanel = ({ gameStart, setGameStart, updateState }) => {
   return (
     <Container className={gameStart ? "show" : "hide"}>
@@ -13,8 +19,13 @@ const DecisionPanel = ({ gameStart, setGameStart, updateState }) => {
               <h5 className="modal-title">החלטה</h5>
             </div>
             <div className="modal-body">
-              <Policy />
-              <ImmediateAction />
+              <Economy />
+              <Healthcare />
+              <PressConf />
+              <PublicData />
+              <PolicyClose />
+              <PolicyIsolate />
+              <PolicySurveil />
             </div>
             <div className="modal-footer">
               <NextRound updateState={updateState} />

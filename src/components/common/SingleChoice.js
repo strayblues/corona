@@ -7,7 +7,7 @@ const SingleChoice = ({ option, id }) => {
       <div className="form-check">
         <input
           type="radio"
-          name="policy_surveillance"
+          name="single-choice"
           className="form-check-input"
           id={id}
         />

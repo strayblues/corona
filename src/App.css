@@ -206,10 +206,20 @@ i.fa-angle-down {
   color: #3b5998;
 }
 
-.like-count {
+/* .like-count {
   color: white;
 }
 
 #u_0_3 {
   color: white;
+} */
+
+.decision {
+  background-color: #ccc;
+  /* background-color: brown; */
+  font-family: "Alef", sans-serif;
+}
+
+.btn-purple.title {
+  width: 100%;
 }
