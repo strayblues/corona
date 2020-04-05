@@ -38,7 +38,7 @@ const Content = styled.div`
   display: flex;
   padding: 6px;
   padding-top: 0;
-  margin: 2px 1px;
+  margin: 0;
   box-shadow: 0 1px 1px 0 #888;
 `;
 

@@ -19,7 +19,11 @@ const Like = () => {
 export default Like;
 
 const Container = styled.div`
-  width: 50%;
-  margin: auto;
+  text-align: center;
   margin-top: 12px;
+  @media screen and (min-device-width: 375px) and (max-device-width: 812px) {
+    margin-top: 18px;
+    width: 30%;
+    margin: auto;
+  }
 `;

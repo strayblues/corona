@@ -115,18 +115,28 @@ body {
   padding: 0;
 }
 
-.fa-envelope {
-  color: #666;
+.form-check-label {
+  /* background-color: white !important; */
 }
+
+/* .fa-envelope {
+  color: #666;
+} */
 
 input[type="radio"],
 input[type="checkbox"] {
   display: none;
 }
 
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  padding: 8px !important;
+  background-color: white !important;
+}
+
 input[type="radio"]:checked + label,
 input[type="checkbox"]:checked + label {
-  background-color: #6db8f9;
+  background-color: #6db8f9 !important;
   color: white;
 }
 
@@ -166,15 +176,11 @@ input[type="checkbox"] + label {
 }
 
 .modal-footer.choice {
-  padding-bottom: 0;
+  padding: 8px 0 0 0;
 }
 
 .modal-header {
   padding: 4px 20px;
-}
-
-.modal-footer.choice {
-  padding: 4px 0px;
 }
 
 .modal-header.messages {

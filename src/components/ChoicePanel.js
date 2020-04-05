@@ -25,9 +25,12 @@ const ChoicePanel = ({
                     type="radio"
                     name="action_type"
                     className="form-check-input"
-                    id="action0"
+                    id="immediate_action"
                   />
-                  <label className="form-check-label" htmlFor="action0">
+                  <label
+                    className="form-check-label"
+                    htmlFor="immediate_action"
+                  >
                     פעולה מיידית
                   </label>
                 </div>
@@ -36,9 +39,9 @@ const ChoicePanel = ({
                     type="radio"
                     name="action_type"
                     className="form-check-input"
-                    id="action1"
+                    id="isolate"
                   />
-                  <label className="form-check-label" htmlFor="action1">
+                  <label className="form-check-label" htmlFor="isolate">
                     מדיניות: בידוד
                   </label>
                 </div>
@@ -48,9 +51,9 @@ const ChoicePanel = ({
                     type="radio"
                     name="action_type"
                     className="form-check-input"
-                    id="action2"
+                    id="surveil"
                   />
-                  <label className="form-check-label" htmlFor="action2">
+                  <label className="form-check-label" htmlFor="surveil">
                     מדיניות: מעקב אלקטרוני
                   </label>
                 </div>
@@ -60,9 +63,9 @@ const ChoicePanel = ({
                     type="radio"
                     name="action_type"
                     className="form-check-input"
-                    id="action3"
+                    id="close"
                   />
-                  <label className="form-check-label" htmlFor="action3">
+                  <label className="form-check-label" htmlFor="close">
                     מדיניות: מוסדות ושירותים
                   </label>
                 </div>
@@ -72,9 +75,9 @@ const ChoicePanel = ({
                     type="radio"
                     name="action_type"
                     className="form-check-input"
-                    id="action4"
+                    id="skip"
                   />
-                  <label className="form-check-label" htmlFor="action4">
+                  <label className="form-check-label" htmlFor="skip">
                     לדלג למחר
                   </label>
                   <div className="modal-footer choice">
