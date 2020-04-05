@@ -19,5 +19,7 @@ const Like = () => {
 export default Like;
 
 const Container = styled.div`
-  margin-top: 54px;
+  width: 50%;
+  margin: auto;
+  margin-top: 12px;
 `;

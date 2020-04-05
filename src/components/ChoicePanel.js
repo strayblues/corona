@@ -12,7 +12,7 @@ const ChoicePanel = ({
 }) => {
   if (action === "initialAction") {
     return (
-      <Container className={gameStart ? "show" : "hide"}>
+      <Container className={gameStart ? "show top-container" : "hide"}>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">

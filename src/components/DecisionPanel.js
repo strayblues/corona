@@ -24,12 +24,13 @@ const DecisionPanel = ({
   } else if (action === "close") {
     component = <PolicyClose />;
   } else if (action === "immediateAction") {
-    // TODO
+    // TODO: show 1 of 4 (perhaps at random)
+    // don't repeat unless all were used
   }
 
   if (action !== "initialAction") {
     return (
-      <Container className={gameStart ? "show" : "hide"}>
+      <Container className={gameStart ? "show top-container" : "hide"}>
         <Decision>
           <div className="modal-dialog" role="document">
             <div className="modal-content">

@@ -9,12 +9,12 @@ const NotificationArea = ({
   gameStart
 }) => {
   return (
-    <Container className={gameStart ? "show" : "hide"}>
+    <Container className={gameStart ? "show top-container" : "hide"}>
       <div className="modal-dialog" role="document">
         <div className="modal-content modal-content-messages">
           <div className="modal-header messages">
             <h5 className="modal-title">הודעות</h5>
-            <i className="fa fa-envelope fa-2x" aria-hidden="true"></i>
+            {/* <i className="fa fa-envelope fa-2x" aria-hidden="true"></i> */}
           </div>
           <div className="modal-body">
             <Scrollable>

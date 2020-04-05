@@ -152,8 +152,12 @@ input[type="checkbox"] + label {
   font-family: "Alef", sans-serif;
 }
 
-.modal-content-messages {
-  background: #ddd;
+.modal-body {
+  background-color: #ddd;
+}
+
+.modal-content {
+  background: white;
 }
 
 .modal-content.intro {
@@ -165,11 +169,14 @@ input[type="checkbox"] + label {
   padding-bottom: 0;
 }
 
-/* 
-i.fa-angle-down {
-  vertical-align: middle;
+.modal-header {
+  padding: 4px 20px;
 }
-*/
+
+.modal-footer.choice {
+  padding: 4px 0px;
+}
+
 .modal-header.messages {
   background-color: white;
 }
@@ -207,9 +214,8 @@ i.fa-angle-down {
 }
 
 /* .like-count {
-  color: white;
-}
-
+} */
+/*
 #u_0_3 {
   color: white;
 } */
@@ -222,4 +228,12 @@ i.fa-angle-down {
 
 .btn-purple.title {
   width: 100%;
+}
+
+.content-like {
+  margin-top: -24px 0;
+}
+
+.top-container {
+  margin-bottom: -12px 0;
 }

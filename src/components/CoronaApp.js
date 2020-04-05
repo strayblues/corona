@@ -240,7 +240,6 @@ const Content = styled.div`
   min-height: 100%;
   font-size: 90%;
   line-height: 1.3;
-  margin-top: -24px;
 `;
 const Game = styled.div`
   display: flex;
