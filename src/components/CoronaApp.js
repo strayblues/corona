@@ -195,9 +195,9 @@ function CoronaApp() {
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
-          <Content>
+          {/* <Content>
             <Like />
-          </Content>
+          </Content> */}
           {/* <Debug
             infectionRate={infectionRate}
             economicState={economicState}
