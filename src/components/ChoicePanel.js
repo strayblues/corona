@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import NextRound from "./NextRound";
+import ConfirmButton from "./common/ConfirmButton";
 
 const ChoicePanel = ({
   gameStart,
@@ -8,8 +8,23 @@ const ChoicePanel = ({
   handleGameStart,
   updateState,
   action,
-  actionChanged = true
+  setAction,
+  actionChanged = true,
 }) => {
+  const readChoice = () => {
+    if (document.getElementById("immediate_action").checked) {
+      setAction("immediateAction");
+    } else if (document.getElementById("close").checked) {
+      setAction("close");
+    } else if (document.getElementById("isolate").checked) {
+      setAction("isolate");
+    } else if (document.getElementById("surveil").checked) {
+      setAction("surveil");
+    } else if (document.getElementById("skip").checked) {
+      updateState();
+    }
+  };
+
   if (action === "initialAction") {
     return (
       <Container className={gameStart ? "show top-container" : "hide"}>
@@ -81,7 +96,7 @@ const ChoicePanel = ({
                     לדלג למחר
                   </label>
                   <div className="modal-footer choice">
-                    <NextRound updateState={updateState} />
+                    <ConfirmButton handleClick={readChoice} />
                   </div>
                 </div>
               </ActionType>

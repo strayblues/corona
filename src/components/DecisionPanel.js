@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import NextRound from "./NextRound";
+import ConfirmButton from "./common/ConfirmButton";
 import Economy from "./decisions/Economy";
 import Healthcare from "./decisions/Healthcare";
 import PressConf from "./decisions/PressConf";
@@ -14,8 +14,79 @@ const DecisionPanel = ({
   setGameStart,
   updateState,
   action,
-  setAction
+  setAction,
+  infectionRate,
+  setInfectionRate,
+  economicState,
+  setEconomicState,
+  nationalHappiness,
+  setNationalHappiness,
 }) => {
+  const implementPolicyEffect = () => {
+    if (action === "isolate") {
+      if (document.getElementById("policy_isolation_0").checked) {
+        setInfectionRate(0.3);
+      } else if (document.getElementById("policy_isolation_1").checked) {
+        setInfectionRate(0.3);
+      } else if (document.getElementById("policy_isolation_2").checked) {
+        setInfectionRate(0.2);
+        setEconomicState(economicState - 3);
+      } else if (document.getElementById("policy_isolation_3").checked) {
+        setEconomicState(economicState - 5);
+        setInfectionRate(0.15);
+      }
+    } else if (action === "surveil") {
+      if (document.getElementById("policy_surveillance_0").checked) {
+        setInfectionRate(infectionRate * 0.9);
+      } else if (document.getElementById("policy_surveillance_1").checked) {
+        setInfectionRate(infectionRate * 0.8);
+        setNationalHappiness(nationalHappiness - 3);
+      } else if (document.getElementById("policy_surveillance_2").checked) {
+        setInfectionRate(infectionRate * 0.7);
+        setNationalHappiness(nationalHappiness - 5);
+      }
+    } else if (action === "close") {
+      if (document.getElementById("policy_close_0").checked) {
+        setEconomicState(economicState - 5);
+        setNationalHappiness(nationalHappiness - 3);
+        setInfectionRate(infectionRate * 0.9);
+      } else if (document.getElementById("policy_close_1").checked) {
+        setEconomicState(economicState - 3);
+        setNationalHappiness(nationalHappiness - 3);
+        setInfectionRate(infectionRate * 0.9);
+      } else if (document.getElementById("policy_close_2").checked) {
+        setEconomicState(economicState - 5);
+        setNationalHappiness(nationalHappiness - 3);
+        setInfectionRate(infectionRate * 0.85);
+      } else if (document.getElementById("policy_close_3").checked) {
+        setEconomicState(economicState - 7);
+        setInfectionRate(infectionRate * 0.8);
+      } else if (document.getElementById("policy_close_4").checked) {
+        setEconomicState(economicState - 2);
+        setNationalHappiness(nationalHappiness - 3);
+        setInfectionRate(infectionRate * 0.9);
+      } else if (document.getElementById("policy_close_5").checked) {
+        setEconomicState(economicState - 10);
+        setNationalHappiness(nationalHappiness - 7);
+        setInfectionRate(infectionRate * 0.99);
+      } else if (document.getElementById("policy_close_6").checked) {
+        setEconomicState(economicState - 8);
+        setNationalHappiness(nationalHappiness - 5);
+        setInfectionRate(infectionRate * 0.99);
+      } else if (document.getElementById("policy_close_7").checked) {
+        setNationalHappiness(nationalHappiness - 7);
+        setInfectionRate(infectionRate * 0.8);
+      } else if (document.getElementById("policy_close_8").checked) {
+        setNationalHappiness(nationalHappiness - 15);
+        setInfectionRate(infectionRate * 0.8);
+      } else if (document.getElementById("policy_close_9").checked) {
+        setNationalHappiness(nationalHappiness - 6);
+        setInfectionRate(infectionRate * 0.88);
+      }
+    }
+    updateState();
+  };
+
   let component;
   if (action === "isolate") {
     component = <PolicyIsolate />;
@@ -45,7 +116,7 @@ const DecisionPanel = ({
               <PublicData show={false} />*/}
               </div>
               <div className="modal-footer">
-                <NextRound updateState={updateState} />
+                <ConfirmButton handleClick={implementPolicyEffect} />
               </div>
             </div>
           </div>
