@@ -23,25 +23,73 @@ const DecisionPanel = ({
   setNationalHappiness,
 }) => {
   const implementPolicyEffect = () => {
-    if (action === "isolate") {
-      if (document.getElementById("policy_isolation_0").checked) {
+    if (action === "economy") {
+      if (document.getElementById("economy_0").checked) {
+        setNationalHappiness(nationalHappiness + 10);
+        setEconomicState(economicState + 3);
+      } else if (document.getElementById("economy_1").checked) {
+        setNationalHappiness(nationalHappiness + 8);
+        setEconomicState(economicState + 5);
+      } else if (document.getElementById("economy_2").checked) {
+        setNationalHappiness(nationalHappiness - 8);
+        setEconomicState(economicState + 8);
+      }
+    } else if (action === "healthcare") {
+      if (document.getElementById("healthcare_0").checked) {
+        setEconomicState(economicState - 5);
+      } else if (document.getElementById("healthcare_1").checked) {
+        // setNumOfBeds(numOfBeds + 10);
+        setEconomicState(economicState - 3);
+      } else if (document.getElementById("healthcare_2").checked) {
+        setEconomicState(economicState - 3);
+        setNationalHappiness(nationalHappiness + 5);
+      } else if (document.getElementById("healthcare_3").checked) {
+        setEconomicState(economicState - 5);
+        // increase known patients by 10%
+      }
+    } else if (action === "press_conf") {
+      if (document.getElementById("press_conf_0").checked) {
+        setNationalHappiness(nationalHappiness + 3);
+        setInfectionRate(setInfectionRate - 0.2);
+      } else if (document.getElementById("press_conf_1").checked) {
+        setNationalHappiness(nationalHappiness - 3);
+        setInfectionRate(setInfectionRate - 0.1);
+      } else if (document.getElementById("press_conf_2").checked) {
+        setNationalHappiness(nationalHappiness + 5);
+      } else if (document.getElementById("press_conf_3").checked) {
+        setNationalHappiness(nationalHappiness + 5);
+      }
+    } else if (action === "public_data") {
+      if (document.getElementById("public_data_0").checked) {
+        setNationalHappiness(nationalHappiness + 5);
+      } else if (document.getElementById("public_data_1").checked) {
+        setNationalHappiness(nationalHappiness + 3);
+      } else if (document.getElementById("public_data_2").checked) {
+        if (nationalHappiness < 50) {
+          setNationalHappiness(nationalHappiness - 4);
+        } else {
+          setNationalHappiness(nationalHappiness + 4);
+        }
+      }
+    } else if (action === "isolate") {
+      if (document.getElementById("policy_isolate_0").checked) {
         setInfectionRate(0.3);
-      } else if (document.getElementById("policy_isolation_1").checked) {
+      } else if (document.getElementById("policy_isolate_1").checked) {
         setInfectionRate(0.3);
-      } else if (document.getElementById("policy_isolation_2").checked) {
+      } else if (document.getElementById("policy_isolate_2").checked) {
         setInfectionRate(0.2);
         setEconomicState(economicState - 3);
-      } else if (document.getElementById("policy_isolation_3").checked) {
+      } else if (document.getElementById("policy_isolate_3").checked) {
         setEconomicState(economicState - 5);
         setInfectionRate(0.15);
       }
     } else if (action === "surveil") {
-      if (document.getElementById("policy_surveillance_0").checked) {
+      if (document.getElementById("policy_surveil_0").checked) {
         setInfectionRate(infectionRate * 0.9);
-      } else if (document.getElementById("policy_surveillance_1").checked) {
+      } else if (document.getElementById("policy_surveil_1").checked) {
         setInfectionRate(infectionRate * 0.8);
         setNationalHappiness(nationalHappiness - 3);
-      } else if (document.getElementById("policy_surveillance_2").checked) {
+      } else if (document.getElementById("policy_surveil_2").checked) {
         setInfectionRate(infectionRate * 0.7);
         setNationalHappiness(nationalHappiness - 5);
       }
@@ -85,7 +133,8 @@ const DecisionPanel = ({
       }
     }
     updateState();
-    setAction("initialAction");
+    alert("updating...");
+    setAction("initial_action");
   };
 
   let component;
@@ -95,12 +144,17 @@ const DecisionPanel = ({
     component = <PolicySurveil />;
   } else if (action === "close") {
     component = <PolicyClose />;
-  } else if (action === "immediateAction") {
-    // TODO: show 1 of 4 (perhaps at random)
-    // don't repeat unless all were used
+  } else if (action === "economy") {
+    component = <Economy />;
+  } else if (action === "healthcare") {
+    component = <Healthcare />;
+  } else if (action === "press_conf") {
+    component = <PressConf />;
+  } else if (action === "public_data") {
+    component = <PublicData />;
   }
 
-  if (action !== "initialAction") {
+  if (action !== "initial_action") {
     return (
       <Container className={gameStart ? "show top-container" : "hide"}>
         <Decision>
@@ -109,13 +163,7 @@ const DecisionPanel = ({
               <div className="modal-header">
                 <h5 className="modal-title">החלטה</h5>
               </div>
-              <div className="modal-body">
-                {component}
-                {/* <Economy show={false} />
-              <Healthcare show={false} />
-              <PressConf show={false} />
-              <PublicData show={false} />*/}
-              </div>
+              <div className="modal-body">{component}</div>
               <div className="modal-footer">
                 <ConfirmButton handleClick={implementPolicyEffect} />
               </div>

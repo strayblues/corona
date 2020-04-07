@@ -19,7 +19,7 @@ import initialPatients from "../data/patients.json";
 function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
   const [round, setRound] = useState(1);
-  const [action, setAction] = useState("initialAction"); // "initialAction", "immediateAction", "close", "isolate", "surveil", "skip"
+  const [action, setAction] = useState("initial_action"); // "initial_action", "immediate_action" ("economy", "health_care", "Press_conf", "public_data"), "close", "isolate", "surveil", "skip"
   const [notifications, setNotifications] = useState([
     {
       isNew: true,

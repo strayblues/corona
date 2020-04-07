@@ -9,13 +9,13 @@ const ChoicePanel = ({
   updateState,
   action,
   setAction,
-  actionChanged = true,
 }) => {
   const readChoice = () => {
     if (document.getElementById("immediate_action").checked) {
-      setAction("immediateAction");
-    } else if (document.getElementById("close").checked) {
-      setAction("close");
+      const decisions = ["economy", "healthcare", "press_conf", "public_data"];
+      let random_decision =
+        decisions[Math.floor(Math.random() * decisions.length)];
+      setAction(random_decision);
     } else if (document.getElementById("isolate").checked) {
       setAction("isolate");
     } else if (document.getElementById("surveil").checked) {
@@ -25,7 +25,7 @@ const ChoicePanel = ({
     }
   };
 
-  if (action === "initialAction") {
+  if (action === "initial_action") {
     return (
       <Container className={gameStart ? "show top-container" : "hide"}>
         <div className="modal-dialog" role="document">
