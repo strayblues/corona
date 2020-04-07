@@ -4,11 +4,7 @@ import styled from "styled-components";
 const ChoiceTitle = ({ title }) => {
   return (
     <Container>
-      <div className="card-header" id="headingTwo">
-        <h5 className="mb-0">
-          <button className="btn btn-purple title">{title}</button>
-        </h5>
-      </div>
+      <h5 className="modal-title">{title}</h5>
     </Container>
   );
 };

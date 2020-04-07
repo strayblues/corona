@@ -151,19 +151,29 @@ input[type="checkbox"] + label {
   margin: 5%;
   box-shadow: 0 1px 1px 0 #bbb;
   font-family: "Alef", sans-serif;
+  background: white;
 }
 
 .modal-body {
   background-color: #ddd;
 }
 
-.modal-content {
-  background: white;
+.modal-body.decision {
+  padding-bottom: 0;
+}
+
+.modal-footer.choice,
+.modal-footer.decision {
+  background-color: #ddd;
 }
 
 .modal-footer.choice {
   padding: 8px 0 0 0;
 }
+
+/* .modal-footer.decision {
+  padding: 8px 0 0 0;
+} */
 
 .modal-header {
   padding: 4px 20px;
@@ -206,7 +216,7 @@ input[type="checkbox"] + label {
 }
 
 .decision {
-  background-color: #ccc;
+  background-color: #ddd !important;
   font-family: "Alef", sans-serif;
 }
 

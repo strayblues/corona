@@ -20,6 +20,8 @@ const ChoicePanel = ({
       setAction("isolate");
     } else if (document.getElementById("surveil").checked) {
       setAction("surveil");
+    } else if (document.getElementById("close").checked) {
+      setAction("close");
     } else if (document.getElementById("skip").checked) {
       updateState();
     }
@@ -81,7 +83,7 @@ const ChoicePanel = ({
                     id="close"
                   />
                   <label className="form-check-label" htmlFor="close">
-                    מדיניות: מוסדות ושירותים
+                    מדיניות: סגירת מוסדות ושירותים
                   </label>
                 </div>
 

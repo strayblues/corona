@@ -5,7 +5,7 @@ import Like from "./common/Like";
 import Share from "./common/Share";
 import NewGame from "./NewGame";
 import Details from "./Details";
-import NotificationArea from "./NotificationArea";
+import NotificationPanel from "./NotificationPanel";
 // import ConfirmButton from "../common/ConfirmButton";
 import ChoicePanel from "./ChoicePanel";
 import DecisionPanel from "./DecisionPanel";
@@ -164,7 +164,7 @@ function CoronaApp() {
           />
         </Content>
         <Content>
-          <NotificationArea
+          <NotificationPanel
             gameStart={gameStart}
             notifications={notifications}
             setNotificationStatus={setNotificationStatus}

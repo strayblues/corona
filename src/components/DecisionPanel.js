@@ -133,7 +133,6 @@ const DecisionPanel = ({
       }
     }
     updateState();
-    alert("updating...");
     setAction("initial_action");
   };
 
@@ -157,19 +156,16 @@ const DecisionPanel = ({
   if (action !== "initial_action") {
     return (
       <Container className={gameStart ? "show top-container" : "hide"}>
-        <Decision>
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">החלטה</h5>
-              </div>
-              <div className="modal-body">{component}</div>
-              <div className="modal-footer">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content modal-content-messages">
+            <Decision>
+              <div className="modal-body decision">{component}</div>
+              <div className="modal-footer decision">
                 <ConfirmButton handleClick={implementPolicyEffect} />
               </div>
-            </div>
+            </Decision>
           </div>
-        </Decision>
+        </div>
       </Container>
     );
   } else {
@@ -179,7 +175,7 @@ const DecisionPanel = ({
 export default DecisionPanel;
 
 const Container = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 const Decision = styled.div`
   display: flex;
