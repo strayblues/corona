@@ -85,6 +85,7 @@ const DecisionPanel = ({
       }
     }
     updateState();
+    setAction("initialAction");
   };
 
   let component;
