@@ -13,7 +13,7 @@ const Notification = ({ notifications, setNotificationStatus }) => {
   return (
     <Container>
       {notifications
-        .map(notification => {
+        .map((notification) => {
           return (
             <>
               <Content className={notification.isNew ? "incoming" : "old"}>
@@ -37,8 +37,8 @@ const Container = styled.div``;
 const Content = styled.div`
   display: flex;
   padding: 6px;
-  padding-top: 0;
-  margin: 0;
+  padding-top: 10px;
+  margin: 2px 0;
   box-shadow: 0 1px 1px 0 #888;
 `;
 
