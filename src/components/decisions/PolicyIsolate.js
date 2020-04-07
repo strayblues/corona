@@ -7,16 +7,16 @@ const PolicyIsolate = () => {
   return (
     <Container className={"decision"}>
       <Title title={"מדיניות הבידוד"} />
-      <Choice option={"בלי בידוד חובה"} id={"policy_isolation_0"} />
+      <Choice option={"בלי בידוד חובה"} id={"policy_isolate_0"} />
       <Choice
         option={"לבודד ל-14 יום חולים סימפטומטיים ומי שהיה במגע עם חולה"}
-        id={"policy_isolation_1"}
+        id={"policy_isolate_1"}
       />
       <Choice
         option={
           "לבודד ל-14 יום חולים סימפטומטיים, מי שהיה במגע עם חולה וכל מי שחוזר מחו״ל"
         }
-        id={"policy_isolation_2"}
+        id={"policy_isolate_2"}
       />
     </Container>
   );

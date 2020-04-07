@@ -7,12 +7,9 @@ const PolicySurveil = () => {
   return (
     <Container className={"decision"}>
       <Title title={"מעקב אלקטרוני"} />
-      <Choice option={"על חולים"} id={"policy_surveillance_0"} />
-      <Choice
-        option={"על חולים ומי שהיה איתם במגע"}
-        id={"policy_surveillance_1"}
-      />
-      <Choice option={"על כולם"} id={"policy_surveillance_2"} />
+      <Choice option={"על חולים"} id={"policy_surveil_0"} />
+      <Choice option={"על חולים ומי שהיה איתם במגע"} id={"policy_surveil_1"} />
+      <Choice option={"על כולם"} id={"policy_surveil_2"} />
     </Container>
   );
 };
