@@ -179,6 +179,10 @@ input[type="checkbox"] + label {
   padding: 4px 20px;
 }
 
+.modal-header.new-game {
+  padding: 20px;
+}
+
 .modal-header.messages {
   background-color: white;
 }
