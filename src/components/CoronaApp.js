@@ -138,12 +138,12 @@ function CoronaApp() {
           {/* <Content>
             <Like />
           </Content> */}
-          {/* <Debug
+          <Debug
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
-          /> */}
+          />
           <Details round={round} />
           <ChoicePanel
             gameStart={gameStart}
