@@ -187,6 +187,39 @@ input[type="checkbox"] + label {
   background-color: white;
 }
 
+.modal-title.win,
+.modal-title.lose {
+  padding: 4px 8px;
+  margin-bottom: 0;
+  color: white;
+  width: fit-content;
+  width: 100%;
+  align-self: center;
+}
+
+.modal-title.win {
+  background-color: rgb(109, 206, 109);
+}
+
+.modal-title.lose {
+  background-color: rgb(243, 109, 109);
+}
+
+.win {
+  background-color: rgb(208, 252, 208);
+  color: green;
+}
+
+.lose {
+  background-color: rgb(255, 214, 214);
+  color: red;
+}
+
+.win p,
+.lose p {
+  padding: 8px;
+}
+
 .social-container {
   border-radius: 4px;
   margin: 0 4px;

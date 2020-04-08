@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Like from "./common/Like";
 import Share from "./common/Share";
 import NewGame from "./NewGame";
+import GameOver from "./GameOver";
 import Details from "./Details";
 import NotificationPanel from "./NotificationPanel";
 // import ConfirmButton from "../common/ConfirmButton";
@@ -18,6 +19,7 @@ import initialPatients from "../data/patients.json";
 
 function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [round, setRound] = useState(1);
   // actions: "initial_action", "immediate_action" ("economy",
   // "health_care", "Press_conf", "public_data"), "close", "isolate",
@@ -49,8 +51,6 @@ function CoronaApp() {
   };
 
   // const [healthcareSystem, setHealthcareSystem] = useState(10);
-  // const [gameOver, setGameOver] = useState(false);
-
   // const setNumPatients = function() {
   //   for (let i = 0; i < patients.length; i++) {
   //     patients[i].isNew = false;
@@ -133,17 +133,23 @@ function CoronaApp() {
     <Container>
       <Banner src={banner} alt="Corona virus" />
       <NewGame gameStart={gameStart} setGameStart={setGameStart} />
+      <GameOver
+        gameStart={gameStart}
+        setGameStart={setGameStart}
+        gameOver={gameOver}
+        setGameOver={setGameOver}
+      />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
           {/* <Content>
             <Like />
           </Content> */}
-          {/* <Debug
+          <Debug
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
-          /> */}
+          />
           <Details round={round} />
           <ChoicePanel
             gameStart={gameStart}

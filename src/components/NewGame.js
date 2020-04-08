@@ -9,7 +9,7 @@ const NewGame = ({ gameStart, setGameStart }) => {
       <div className="modal-content intro">
         <div className="modal-header new-game">
           <Intro>
-            <p className="modal-title">בוקר טוב ראש הממשלה,</p>
+            <h5 className="modal-title">בוקר טוב ראש הממשלה,</h5>
             <p>
               מבין 8.7 מיליון תושבים, ידועים לנו כרגע 7 חולי קורונה שחזרו מספינת
               הדיאמונד פרינסס. אנו ממתינים להוראותיך כיצד להתקדם. בכל סיבוב ניתן
