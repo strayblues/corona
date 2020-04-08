@@ -1,19 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-const NextRound = ({ updateState }) => {
+const ConfirmButton = ({ handleClick }) => {
   return (
     <Container>
       <>
-        <Next className="btn btn-purple" onClick={updateState}>
+        <button className="btn btn-purple" onClick={handleClick}>
           אישור
-        </Next>
+        </button>
       </>
     </Container>
   );
 };
 
-export default NextRound;
+export default ConfirmButton;
 
 const Container = styled.div``;
-const Next = styled.button``;

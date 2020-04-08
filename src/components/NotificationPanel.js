@@ -3,18 +3,17 @@ import Block from "./common/Block";
 import Notification from "./Notification";
 import styled from "styled-components";
 
-const NotificationArea = ({
+const NotificationPanel = ({
   notifications,
   setNotificationStatus,
-  gameStart
+  gameStart,
 }) => {
   return (
-    <Container className={gameStart ? "show" : "hide"}>
+    <Container className={gameStart ? "show top-container" : "hide"}>
       <div className="modal-dialog" role="document">
         <div className="modal-content modal-content-messages">
-          <div className="modal-header messages">
+          <div className="modal-header">
             <h5 className="modal-title">הודעות</h5>
-            <i className="fa fa-envelope fa-2x" aria-hidden="true"></i>
           </div>
           <div className="modal-body">
             <Scrollable>
@@ -29,7 +28,7 @@ const NotificationArea = ({
     </Container>
   );
 };
-export default NotificationArea;
+export default NotificationPanel;
 
 const Container = styled(Block)`
   margin-top: 1em;

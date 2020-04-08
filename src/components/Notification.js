@@ -13,19 +13,15 @@ const Notification = ({ notifications, setNotificationStatus }) => {
   return (
     <Container>
       {notifications
-        .map(notification => {
+        .map((notification) => {
           return (
-            <>
-              <Content className={notification.isNew ? "incoming" : "old"}>
-                <NotificationContent>
-                  {notification.content}
-                </NotificationContent>
-                <NotificationTime
-                  round={notification.day}
-                  hour={notification.hour}
-                ></NotificationTime>
-              </Content>
-            </>
+            <Content className={notification.isNew ? "incoming" : "old"}>
+              <NotificationTime
+                round={notification.day}
+                hour={notification.hour}
+              ></NotificationTime>
+              <NotificationContent>{notification.content}</NotificationContent>
+            </Content>
           );
         })
         .reverse()}
@@ -33,20 +29,23 @@ const Notification = ({ notifications, setNotificationStatus }) => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin: 0;
+`;
 const Content = styled.div`
   display: flex;
-  padding: 6px;
-  padding-top: 0;
-  margin: 2px 1px;
+  margin: 2px 0;
   box-shadow: 0 1px 1px 0 #888;
+  margin: 2px 6px;
 `;
 
-const NotificationTime = styled(Time)``;
+const NotificationTime = styled(Time)`
+  flex: 1;
+`;
 
 const NotificationContent = styled.div`
   flex: 1;
-  margin-top: 6px;
+  margin: 2px 6px;
 `;
 
 export default Notification;

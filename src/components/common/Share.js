@@ -3,50 +3,45 @@ import styled from "styled-components";
 import {
   FacebookShareCount,
   FacebookShareButton,
-  FacebookIcon,
-  TwitterIcon,
   TwitterShareButton
 } from "react-share";
 
-const SocialLinks = () => {
+const Share = () => {
   return (
     <Container>
-      <Facebook>
-        <p>
-          מספר השיתופים בפייסבוק:
-          <FacebookShareCount
-            className="meazben"
-            url={"https://corona.codepink.dev"}
-          ></FacebookShareCount>
-        </p>
-
+      <Facebook className="social-container facebook-container">
         <FacebookShareButton
-          className="fb-btn-share"
+          className="btn-share btn-facebook"
           url={"https://corona.codepink.dev"}
         >
-          שיתוף בפייסבוק
+          שתפו בפייסבוק
         </FacebookShareButton>
+        <FacebookShareCount
+          className="btn-count btn-facebook"
+          url={"https://corona.codepink.dev"}
+        ></FacebookShareCount>
       </Facebook>
-      <Twitter>
-        <TwitterIcon className="meazben" size={20} />
+      <Twitter className="social-container twitter-container">
         <TwitterShareButton
-          className="meazben"
+          className="btn-share btn-twitter"
           url={"https://corona.codepink.dev"}
         >
-          שיתוף בטוויטר
+          שתפו בטוויטר
         </TwitterShareButton>
       </Twitter>
     </Container>
   );
 };
 
-export default SocialLinks;
+export default Share;
 
 const Container = styled.div`
   width: 25%;
   margin: auto;
   display: flex;
-  flex-direction: column;
+
+  /* background: white; */
+  /* flex-direction: column; */
 `;
 const Facebook = styled.div``;
 const Twitter = styled.div``;

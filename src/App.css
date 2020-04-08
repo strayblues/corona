@@ -115,18 +115,20 @@ body {
   padding: 0;
 }
 
-.fa-envelope {
-  color: #666;
-}
-
 input[type="radio"],
 input[type="checkbox"] {
   display: none;
 }
 
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  padding: 8px !important;
+  background-color: white !important;
+}
+
 input[type="radio"]:checked + label,
 input[type="checkbox"]:checked + label {
-  background-color: #6db8f9;
+  background-color: #6db8f9 !important;
   color: white;
 }
 
@@ -148,42 +150,84 @@ input[type="checkbox"] + label {
   width: 90%;
   margin: 5%;
   box-shadow: 0 1px 1px 0 #bbb;
-  /* font-size: 110%; */
   font-family: "Alef", sans-serif;
+  background: white;
 }
 
-.modal-content-messages {
-  background: #ddd;
+.modal-body {
+  background-color: #ddd;
 }
 
-.modal-content.intro {
-  width: 40%;
-  margin: 1.5em 30%;
-}
-
-.modal-footer.choice {
+.modal-body.decision {
   padding-bottom: 0;
 }
 
-/* 
-i.fa-angle-down {
-  vertical-align: middle;
-}
-*/
-
-.meazben {
-  margin: 12px;
-  padding: 2px;
-  width: 100%;
+.modal-footer.choice,
+.modal-footer.decision {
+  background-color: #ddd;
 }
 
-.fb-btn-share {
-  background-color: #3b5998 !important;
-  color: white !important;
-  padding: 4px 8px !important;
-  border-radius: 4px !important;
+.modal-footer.choice {
+  padding: 8px 0 0 0;
+}
+
+/* .modal-footer.decision {
+  padding: 8px 0 0 0;
+} */
+
+.modal-header {
+  padding: 4px 20px;
 }
 
 .modal-header.messages {
   background-color: white;
+}
+
+.social-container {
+  border-radius: 4px;
+  margin: 0 4px;
+  box-shadow: 0 2px 2px 0 #888;
+  font-size: 80% !important;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.btn-share {
+  color: white !important;
+  margin: 6px 8px;
+}
+
+.facebook-container,
+.btn-facebook {
+  background-color: #3b5998 !important;
+  padding: 0 0 0 4px;
+}
+
+.twitter-container,
+.btn-twitter {
+  background-color: #00acee !important;
+}
+
+.btn-count {
+  background-color: white !important;
+  padding: 1px 2px;
+  border-radius: 2px;
+  color: #3b5998;
+}
+
+.decision {
+  background-color: #ddd !important;
+  font-family: "Alef", sans-serif;
+}
+
+.btn-purple.title {
+  width: 100%;
+}
+
+.content-like {
+  margin-top: -24px 0;
+}
+
+.top-container {
+  margin-bottom: -12px 0;
 }

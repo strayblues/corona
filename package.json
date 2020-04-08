@@ -8,9 +8,11 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-fb-like": "^0.5.1",
     "react-modal": "^3.11.2",
     "react-scripts": "3.4.0",
     "react-share": "^4.1.0",
+    "react-social-icons": "^4.1.0",
     "react-transition-group": "^1.2.1",
     "styled-components": "^5.0.1",
     "usestate": "^1.1.3"
