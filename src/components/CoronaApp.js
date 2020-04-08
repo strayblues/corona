@@ -19,7 +19,10 @@ import initialPatients from "../data/patients.json";
 function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
   const [round, setRound] = useState(1);
-  const [action, setAction] = useState("initial_action"); // "initial_action", "immediate_action" ("economy", "health_care", "Press_conf", "public_data"), "close", "isolate", "surveil", "skip"
+  // actions: "initial_action", "immediate_action" ("economy",
+  // "health_care", "Press_conf", "public_data"), "close", "isolate",
+  // "surveil", "skip"
+  const [action, setAction] = useState("initial_action");
   const [notifications, setNotifications] = useState([
     {
       isNew: true,
@@ -98,7 +101,7 @@ function CoronaApp() {
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: selectRandomText(economy), //healthcare
+        content: "מספר החולים הידועים: " + patients.length, // it's one step behind
       },
       {
         isNew: true,
