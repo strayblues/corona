@@ -1,21 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 const NewGame = ({ gameStart, setGameStart }) => {
-  const handleGameStart = e => {
+  const handleGameStart = (e) => {
     gameStart = setGameStart(true);
   };
   return (
     <Container className={gameStart ? "hide" : "show"}>
       <div className="modal-content intro">
-        <div className="modal-header">
+        <div className="modal-header new-game">
           <Intro>
             <p className="modal-title">בוקר טוב ראש הממשלה,</p>
             <p>
-              {" "}
               מבין 8.7 מיליון תושבים, ידועים לנו כרגע 7 חולי קורונה שחזרו מספינת
-              הדיאמונד פרינסס. אנחנו ממתינים להוראותיך כיצד להתקדם. בכל סיבוב
-              תוכל לבצע פעולה אחת, ותקבל הודעות מגורמים שונים במערכת הפוליטית
-              ומחוץ לה. האם תצליח לנצח את המגיפה בלי שהמדינה תקרוס?{" "}
+              הדיאמונד פרינסס. אנו ממתינים להוראותיך כיצד להתקדם. בכל סיבוב ניתן
+              יהיה לבצע פעולה אחת, ויתקבלו הודעות מגורמים שונים במערכת הפוליטית
+              ומחוץ לה. האם תצליח/י לנצח את המגיפה בלי שהמדינה תקרוס?
             </p>
           </Intro>
         </div>
@@ -26,7 +25,7 @@ const NewGame = ({ gameStart, setGameStart }) => {
               className="btn btn-purple"
               onClick={handleGameStart}
             >
-              בוא נגלה!
+              בוא/י נגלה!
             </button>
           </ActionType>
         </div>
