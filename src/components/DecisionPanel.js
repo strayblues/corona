@@ -125,7 +125,7 @@ const DecisionPanel = ({
         setNationalHappiness(nationalHappiness - 7);
         setInfectionRate(infectionRate * 0.8);
       } else if (document.getElementById("policy_close_8").checked) {
-        setNationalHappiness(nationalHappiness - 15);
+        setNationalHappiness(nationalHappiness - 12);
         setInfectionRate(infectionRate * 0.8);
       } else if (document.getElementById("policy_close_9").checked) {
         setNationalHappiness(nationalHappiness - 6);

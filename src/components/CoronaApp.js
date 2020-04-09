@@ -96,37 +96,87 @@ function CoronaApp() {
     const tomorrow = round + 1;
     const [morning, afternoon, evening] = getRandomTime();
 
+    const selectTextByState = (topic, value) => {
+      if (value > 89) {
+        return topic[0].content;
+      } else if (value > 79) {
+        return topic[1].content;
+      } else if (value > 69) {
+        return topic[2].content;
+      } else if (value > 59) {
+        return topic[3].content;
+      } else if (value > 49) {
+        return topic[4].content;
+      } else if (value > 39) {
+        return topic[5].content;
+      } else if (value > 29) {
+        return topic[6].content;
+      } else if (value > 19) {
+        return topic[7].content;
+      }
+    };
+
+    function selectMsg() {
+      let msg = "";
+      let count = round;
+      if (count % 4 === 0) {
+        msg = selectTextByState(economy, economicState);
+      } else if (count % 4 === 1) {
+        msg = selectTextByState(happiness, nationalHappiness);
+      } else {
+        msg = selectRandomText(random);
+      }
+
+      return msg;
+    }
+
     addNotification([
       {
         isNew: true,
         day: tomorrow,
         hour: morning,
         content: "מספר החולים הידועים: " + patients.length, // it's one step behind
+        // TODO: add num of dead, etc.
       },
       {
         isNew: true,
         day: tomorrow,
         hour: afternoon,
-        content: selectRandomText(random),
+        content: selectMsg(),
       },
-      {
-        isNew: true,
-        day: tomorrow,
-        hour: evening,
-        content: selectRandomText(happiness),
-      },
+      // {
+      //   isNew: true,
+      //   day: tomorrow,
+      //   hour: evening,
+      //   content: selectMsg(),
+      // },
     ]);
   };
 
   function updateState() {
+    // TODO: this happens instead of other effects instead of additionally
+    // let random_val_e = Math.random() < 0.3 ? 0 : Math.random() < 0.7 ? 1 : 2;
+    // let random_val_h = Math.random() < 0.3 ? -1 : Math.random() < 0.7 ? 1 : 2;
+    // setEconomicState(economicState + random_val_e);
+    // setNationalHappiness(nationalHappiness + random_val_h);
+    let minVal = 0;
+    let maxVal = 100;
+    let values = [nationalHappiness, economicState];
+    for (let i = 0; i < values.length; i++) {
+      if (values[i] > maxVal) {
+        values[i] = maxVal;
+        setNationalHappiness(values[0]);
+        setEconomicState(values[1]);
+      } else if (values[i] < minVal) {
+        values[i] = minVal;
+        setNationalHappiness(values[0]);
+        setEconomicState(values[1]);
+      }
+    }
     addUknownPatients();
-
     const tomorrow = round + 1;
     setRound(tomorrow);
-
     createNotifications();
-
-    // TODO: Revert to ChoicePanel
   }
 
   return (
