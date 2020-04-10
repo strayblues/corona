@@ -153,30 +153,37 @@ function CoronaApp() {
     ]);
   };
 
-  function updateState() {
+  function addRandom() {
     // TODO: this happens instead of other effects instead of additionally
-    // let random_val_e = Math.random() < 0.3 ? 0 : Math.random() < 0.7 ? 1 : 2;
-    // let random_val_h = Math.random() < 0.3 ? -1 : Math.random() < 0.7 ? 1 : 2;
-    // setEconomicState(economicState + random_val_e);
-    // setNationalHappiness(nationalHappiness + random_val_h);
-    let minVal = 0;
-    let maxVal = 100;
-    let values = [nationalHappiness, economicState];
-    for (let i = 0; i < values.length; i++) {
-      if (values[i] > maxVal) {
-        values[i] = maxVal;
-        setNationalHappiness(values[0]);
-        setEconomicState(values[1]);
-      } else if (values[i] < minVal) {
-        values[i] = minVal;
-        setNationalHappiness(values[0]);
-        setEconomicState(values[1]);
-      }
+    let add_to_e = Math.random() < 0.3 ? 0 : Math.random() < 0.7 ? 1 : 2;
+    let add_to_h = Math.random() < 0.3 ? -1 : Math.random() < 0.7 ? 1 : 2;
+    setEconomicState(economicState + add_to_e);
+    setNationalHappiness(nationalHappiness + add_to_h);
+  }
+
+  function updateState() {
+    setNationalHappiness(50);
+    if (nationalHappiness >= 100) {
+      setNationalHappiness(100);
+      alert("happiness: " + nationalHappiness);
+      console.log(nationalHappiness);
     }
+    if (economicState >= 100) {
+      setEconomicState(100);
+    }
+    if (nationalHappiness <= 0) {
+      setNationalHappiness(0);
+    }
+    if (setEconomicState <= 0) {
+      setEconomicState(0);
+    }
+
     addUknownPatients();
     const tomorrow = round + 1;
     setRound(tomorrow);
     createNotifications();
+
+    addRandom();
   }
 
   return (
