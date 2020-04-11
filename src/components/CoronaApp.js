@@ -153,12 +153,6 @@ function CoronaApp() {
         hour: afternoon,
         content: selectMsg(),
       },
-      // {
-      //   isNew: true,
-      //   day: tomorrow,
-      //   hour: evening,
-      //   content: selectMsg(),
-      // },
     ]);
   };
 
@@ -280,6 +274,7 @@ function CoronaApp() {
     </Container>
   );
 }
+
 export default CoronaApp;
 
 const Content = styled.div`
