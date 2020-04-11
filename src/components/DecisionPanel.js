@@ -197,6 +197,7 @@ export default DecisionPanel;
 
 const Container = styled.div`
   margin-top: 10px;
+  margin-bottom: -2.25em;
 `;
 const Decision = styled.div`
   display: flex;
