@@ -5,7 +5,7 @@ const Debug = ({
   infectionRate,
   economicState,
   nationalHappiness,
-  patients
+  patients,
 }) => {
   // const showPatientsData(patients){
   //   for (let i = 0; i < patients.length; i++) {
@@ -25,7 +25,7 @@ const Debug = ({
             <Pdebug>{patients.length}</Pdebug>
             <Pdebug>{patients[0].infectionDay}</Pdebug>
             <Pdebug>{patients[0].healthCond}</Pdebug>
-            <Pdebug>{patients[0].known ? "known" : "uknown"}</Pdebug>
+            <Pdebug>{patients[0].known ? "known" : "unknown"}</Pdebug>
             <Pdebug>
               {patients[0].isolated ? "isolated" : "not isolated"}
             </Pdebug>
