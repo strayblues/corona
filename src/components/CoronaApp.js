@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import banner from "../images/benner08-sm.png";
+import banner from "../images/banner11-sm.png";
 import styled from "styled-components";
 import Like from "./common/Like";
 import Share from "./common/Share";
@@ -7,7 +7,6 @@ import NewGame from "./NewGame";
 import GameOver from "./GameOver";
 import Details from "./Details";
 import NotificationPanel from "./NotificationPanel";
-// import ConfirmButton from "../common/ConfirmButton";
 import ChoicePanel from "./ChoicePanel";
 import DecisionPanel from "./DecisionPanel";
 import Debug from "./Debug";

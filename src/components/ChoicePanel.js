@@ -122,7 +122,9 @@ const ChoicePanel = ({
 
 export default ChoicePanel;
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-bottom: -2.25em;
+`;
 const ActionType = styled.div`
   display: flex;
   flex-direction: column;
