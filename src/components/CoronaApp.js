@@ -94,7 +94,7 @@ function CoronaApp() {
 
   const createNotifications = () => {
     const tomorrow = round + 1;
-    const [morning, afternoon, evening] = getRandomTime();
+    const [morning, afternoon] = getRandomTime();
 
     const selectTextByState = (topic, value) => {
       if (value > 89) {
@@ -178,7 +178,19 @@ function CoronaApp() {
     }
   }
 
+  function isGameOver(state) {
+    if (
+      patients.length < 1 ||
+      state.economicState < 1 ||
+      state.nationalHappiness < 1
+    ) {
+      setGameStart(false);
+      setGameOver(true);
+    }
+  }
+
   function updateState(state) {
+    isGameOver(state);
     addUknownPatients(); // actually known Ps
     addRandom(state);
     const tomorrow = round + 1;
@@ -190,24 +202,33 @@ function CoronaApp() {
   return (
     <Container>
       <Banner src={banner} alt="Corona virus" />
-      <NewGame gameStart={gameStart} setGameStart={setGameStart} />
-      <GameOver
+      <NewGame
         gameStart={gameStart}
         setGameStart={setGameStart}
         gameOver={gameOver}
         setGameOver={setGameOver}
+      />
+      <GameOver
+        // className={gameOver ? "show" : "hide"}
+        gameStart={gameStart}
+        setGameStart={setGameStart}
+        gameOver={gameOver}
+        setGameOver={setGameOver}
+        patients={patients}
+        economicState={economicState}
+        nationalHappiness={nationalHappiness}
       />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
           {/* <Content>
             <Like />
           </Content> */}
-          <Debug
+          {/* <Debug
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
-          />
+          /> */}
           <Details round={round} />
           <ChoicePanel
             gameStart={gameStart}

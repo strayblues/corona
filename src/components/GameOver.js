@@ -1,38 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 
-const GameOver = ({ gameStart, setGameStart, gameOver, setGameOver }) => {
+const GameOver = ({
+  gameOver,
+  setGameOver,
+  patients,
+  economicState,
+  nationalHappiness,
+}) => {
   const handleGameStart = (e) => {
     gameOver = setGameOver(false);
-    gameStart = setGameStart(true);
   };
 
   let reason = {
     victory: false,
-    topic: "economy",
     msg: "",
   };
 
-  if (reason.victory) {
-    // reasons you win
-    if (reason.topic === "economy") {
-      reason.msg = "ניצחת! הצלת את הכלכלה!";
-    } else if (reason.topic === "healthcare") {
-      reason.msg = "ניצחת! הצלחת את מערכת הבריאות!";
-    }
-  } else {
-    // reasons you lose
-    if (reason.topic === "economy") {
-      reason.msg = "הפסדת! הכלכלה מתה!";
-    } else if (reason.topic === "healthcare") {
-      reason.msg = "הפסדת! מערכת הבריאות קרסה!";
-    } else if (reason.topic === "national_happiness") {
-      reason.msg = "הפסדת! העם התאכזב מטיפולך במצב והדיח אותך!";
-    }
+  if (patients === null) {
+    reason.victory = true;
+    reason.msg = "ניצחת: הצלת את מערכת הבריאות!!!";
+  } else if (economicState < 1) {
+    reason.msg = "הפסדת: המדינה הגיעה לקריסה כלכלית.";
+  } else if (nationalHappiness < 1) {
+    reason.msg = "הפסדת: העם התאכזב מטיפולך במצב והדיח אותך.";
   }
 
   return (
-    <Container className={gameStart ? "hide" : "show"}>
+    <Container className={gameOver ? "show" : "hide"}>
       <div className="modal-content intro">
         <div className="modal-header new-game">
           <Score className={reason.victory ? "win" : "lose"}>

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-const NewGame = ({ gameStart, setGameStart }) => {
+const NewGame = ({ gameStart, setGameStart, gameOver, setGameOver }) => {
   const handleGameStart = (e) => {
     gameStart = setGameStart(true);
   };
   return (
-    <Container className={gameStart ? "hide" : "show"}>
+    <Container className={gameStart || gameOver ? "hide" : "show"}>
       <div className="modal-content intro">
         <div className="modal-header new-game">
           <Intro>

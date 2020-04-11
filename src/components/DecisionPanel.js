@@ -11,7 +11,6 @@ import PolicySurveil from "./decisions/PolicySurveil";
 
 const DecisionPanel = ({
   gameStart,
-  setGameStart,
   updateState,
   action,
   setAction,
