@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Like from "./common/Like";
 import Share from "./common/Share";
 import NewGame from "./NewGame";
+import GameOver from "./GameOver";
 import Details from "./Details";
 import NotificationPanel from "./NotificationPanel";
 // import ConfirmButton from "../common/ConfirmButton";
@@ -18,6 +19,7 @@ import initialPatients from "../data/patients.json";
 
 function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [round, setRound] = useState(1);
   // actions: "initial_action", "immediate_action" ("economy",
   // "health_care", "Press_conf", "public_data"), "close", "isolate",
@@ -49,8 +51,6 @@ function CoronaApp() {
   };
 
   // const [healthcareSystem, setHealthcareSystem] = useState(10);
-  // const [gameOver, setGameOver] = useState(false);
-
   // const setNumPatients = function() {
   //   for (let i = 0; i < patients.length; i++) {
   //     patients[i].isNew = false;
@@ -94,7 +94,41 @@ function CoronaApp() {
 
   const createNotifications = () => {
     const tomorrow = round + 1;
-    const [morning, afternoon, evening] = getRandomTime();
+    const [morning, afternoon] = getRandomTime();
+
+    const selectTextByState = (topic, value) => {
+      if (value > 89) {
+        return topic[0].content;
+      } else if (value > 79) {
+        return topic[1].content;
+      } else if (value > 69) {
+        return topic[2].content;
+      } else if (value > 59) {
+        return topic[3].content;
+      } else if (value > 49) {
+        return topic[4].content;
+      } else if (value > 39) {
+        return topic[5].content;
+      } else if (value > 29) {
+        return topic[6].content;
+      } else if (value > 19) {
+        return topic[7].content;
+      }
+    };
+
+    function selectMsg() {
+      let msg = "";
+      let count = round;
+      if (count % 4 === 0) {
+        msg = selectTextByState(economy, economicState);
+      } else if (count % 4 === 1) {
+        msg = selectTextByState(happiness, nationalHappiness);
+      } else {
+        msg = selectRandomText(random);
+      }
+
+      return msg;
+    }
 
     addNotification([
       {
@@ -102,37 +136,88 @@ function CoronaApp() {
         day: tomorrow,
         hour: morning,
         content: "מספר החולים הידועים: " + patients.length, // it's one step behind
+        // TODO: add num of dead, etc.
       },
       {
         isNew: true,
         day: tomorrow,
         hour: afternoon,
-        content: selectRandomText(random),
+        content: selectMsg(),
       },
-      {
-        isNew: true,
-        day: tomorrow,
-        hour: evening,
-        content: selectRandomText(happiness),
-      },
+      // {
+      //   isNew: true,
+      //   day: tomorrow,
+      //   hour: evening,
+      //   content: selectMsg(),
+      // },
     ]);
   };
 
-  function updateState() {
-    addUknownPatients();
+  function addRandom(state) {
+    // TODO: this happens instead of other effects instead of additionally
+    let add_to_e = Math.random() < 0.3 ? 0 : Math.random() < 0.7 ? 1 : 2;
+    let add_to_h = Math.random() < 0.3 ? -1 : Math.random() < 0.7 ? 1 : 2;
+    state.economicState = state.economicState + add_to_e;
+    state.nationalHappiness = state.nationalHappiness + add_to_h;
+  }
 
+  function keepInRange(state) {
+    if (state.nationalHappiness >= 100) {
+      state.nationalHappiness = 100;
+      alert("happiness: " + nationalHappiness);
+      console.log(nationalHappiness);
+    }
+    if (state.economicState >= 100) {
+      state.conomicState = 100;
+    }
+    if (nationalHappiness <= 0) {
+      state.nationalHappiness = 0;
+    }
+    if (setEconomicState <= 0) {
+      state.conomicState = 0;
+    }
+  }
+
+  function isGameOver(state) {
+    if (
+      patients.length < 1 ||
+      state.economicState < 1 ||
+      state.nationalHappiness < 1
+    ) {
+      setGameStart(false);
+      setGameOver(true);
+    }
+  }
+
+  function updateState(state) {
+    isGameOver(state);
+    addUknownPatients(); // actually known Ps
+    addRandom(state);
     const tomorrow = round + 1;
+    keepInRange(state);
     setRound(tomorrow);
-
     createNotifications();
-
-    // TODO: Revert to ChoicePanel
   }
 
   return (
     <Container>
       <Banner src={banner} alt="Corona virus" />
-      <NewGame gameStart={gameStart} setGameStart={setGameStart} />
+      <NewGame
+        gameStart={gameStart}
+        setGameStart={setGameStart}
+        gameOver={gameOver}
+        setGameOver={setGameOver}
+      />
+      <GameOver
+        // className={gameOver ? "show" : "hide"}
+        gameStart={gameStart}
+        setGameStart={setGameStart}
+        gameOver={gameOver}
+        setGameOver={setGameOver}
+        patients={patients}
+        economicState={economicState}
+        nationalHappiness={nationalHappiness}
+      />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
           {/* <Content>

@@ -4,13 +4,21 @@ import ConfirmButton from "./common/ConfirmButton";
 
 const ChoicePanel = ({
   gameStart,
-  setGameStart,
-  handleGameStart,
   updateState,
   action,
   setAction,
+  nationalHappiness,
+  economicState,
+  infectionRate,
+  patients,
 }) => {
   const readChoice = () => {
+    const state = {
+      nationalHappiness: nationalHappiness,
+      economicState: economicState,
+      infectionRate: infectionRate,
+      patients: patients,
+    };
     if (document.getElementById("immediate_action").checked) {
       const decisions = ["economy", "healthcare", "press_conf", "public_data"];
       let random_decision =
@@ -23,7 +31,7 @@ const ChoicePanel = ({
     } else if (document.getElementById("close").checked) {
       setAction("close");
     } else if (document.getElementById("skip").checked) {
-      updateState();
+      updateState(state);
     }
   };
 
