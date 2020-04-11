@@ -234,6 +234,12 @@ function CoronaApp() {
             updateState={updateState}
             action={action}
             setAction={setAction}
+            nationalHappiness={nationalHappiness}
+            setNationalHappiness={setNationalHappiness}
+            economicState={economicState}
+            setEconomicState={setEconomicState}
+            infectionRate={setInfectionRate}
+            setInfectionRate={setInfectionRate}
           />
         </Content>
         <Content>

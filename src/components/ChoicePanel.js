@@ -7,8 +7,11 @@ const ChoicePanel = ({
   updateState,
   action,
   setAction,
+  setNationalHappiness,
   nationalHappiness,
+  setEconomicState,
   economicState,
+  setInfectionRate,
   infectionRate,
   patients,
 }) => {
@@ -33,6 +36,9 @@ const ChoicePanel = ({
     } else if (document.getElementById("skip").checked) {
       updateState(state);
     }
+    setNationalHappiness(state.nationalHappiness);
+    setEconomicState(state.economicState);
+    setInfectionRate(state.infectionRate);
   };
 
   if (action === "initial_action") {
