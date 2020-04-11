@@ -63,7 +63,7 @@ function CoronaApp() {
     return topic[Math.floor(Math.random() * topic.length)].content;
   };
 
-  const addUknownPatients = () => {
+  const addUnknownPatients = () => {
     let isolatedPatients = 0;
     let unIsolatedPatients = 0;
     let unknownWithNoSymptoms = 0;
@@ -96,22 +96,10 @@ function CoronaApp() {
     const [morning, afternoon] = getRandomTime();
 
     const selectTextByState = (topic, value) => {
-      if (value > 89) {
-        return topic[0].content;
-      } else if (value > 79) {
-        return topic[1].content;
-      } else if (value > 69) {
-        return topic[2].content;
-      } else if (value > 59) {
-        return topic[3].content;
-      } else if (value > 49) {
-        return topic[4].content;
-      } else if (value > 39) {
-        return topic[5].content;
-      } else if (value > 29) {
-        return topic[6].content;
-      } else if (value > 19) {
-        return topic[7].content;
+      for (let i = 0; i < topic.length; i++) {
+        if (value > topic[i].level) {
+          return topic[i].content;
+        }
       }
     };
 
@@ -129,12 +117,22 @@ function CoronaApp() {
       return msg;
     }
 
+    function getKnownPatients() {
+      let knownPatients = 0;
+      for (let i = 0; i < patients.length; i++) {
+        if (patients[i].known) {
+          knownPatients++;
+        }
+      }
+      return knownPatients;
+    }
+
     addNotification([
       {
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: "מספר החולים הידועים: " + patients.length, // it's one step behind
+        content: "מספר החולים הידועים: " + getKnownPatients(),
         // TODO: add num of dead, etc.
       },
       {
@@ -143,12 +141,6 @@ function CoronaApp() {
         hour: afternoon,
         content: selectMsg(),
       },
-      // {
-      //   isNew: true,
-      //   day: tomorrow,
-      //   hour: evening,
-      //   content: selectMsg(),
-      // },
     ]);
   };
 
@@ -190,7 +182,7 @@ function CoronaApp() {
 
   function updateState(state) {
     isGameOver(state);
-    addUknownPatients(); // actually known Ps
+    addUnknownPatients(); // actually known Ps
     addRandom(state);
     const tomorrow = round + 1;
     keepInRange(state);
@@ -270,6 +262,7 @@ function CoronaApp() {
     </Container>
   );
 }
+
 export default CoronaApp;
 
 const Content = styled.div`
