@@ -63,6 +63,36 @@ function CoronaApp() {
     return topic[Math.floor(Math.random() * topic.length)].content;
   };
 
+  function updatePatients() {
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].healthCond !== "dead") {
+        if (round - patients[i].infectionDay > 29) {
+          patients[i].healthCond = "healed";
+        }
+        if (patients[i].healthCond === "no symptoms") {
+          if (Math.random() <= 0.1) {
+            patients[i].healthCond = "has symptoms";
+            patients[i].known = true;
+          }
+        }
+        if (patients[i].healthCond === "has symptoms") {
+          if (Math.random() <= 0.05) {
+            patients[i].healthCond = "hospitalized";
+            patients[i].isolated = true;
+          }
+        }
+        if (patients[i].healthCond === "hospitalized") {
+          if (Math.random() <= 0.05) {
+            patients[i].healthCond = "dead";
+          }
+          if (Math.random() <= 0.1) {
+            patients[i].healthCond = "in recovery";
+          }
+        }
+      }
+    }
+  }
+
   const addUnknownPatients = () => {
     let isolatedPatients = 0;
     let unIsolatedPatients = 0;
@@ -183,6 +213,7 @@ function CoronaApp() {
   function updateState(state) {
     isGameOver(state);
     addUnknownPatients(); // actually known Ps
+    updatePatients();
     addRandom(state);
     const tomorrow = round + 1;
     keepInRange(state);
@@ -214,12 +245,12 @@ function CoronaApp() {
           {/* <Content>
             <Like />
           </Content> */}
-          {/* <Debug
+          <Debug
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
-          /> */}
+          />
           <Details round={round} />
           <ChoicePanel
             gameStart={gameStart}
