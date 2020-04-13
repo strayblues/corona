@@ -185,11 +185,11 @@ function CoronaApp() {
   function keepInRange(state) {
     if (state.nationalHappiness >= 100) {
       state.nationalHappiness = 100;
-      alert("happiness: " + nationalHappiness);
-      console.log(nationalHappiness);
+      console.log("happiness: " + state.nationalHappiness);
     }
     if (state.economicState >= 100) {
       state.conomicState = 100;
+      console.log("economic state: " + state.economicState);
     }
     if (nationalHappiness <= 0) {
       state.nationalHappiness = 0;
