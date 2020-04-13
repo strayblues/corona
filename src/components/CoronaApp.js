@@ -286,7 +286,7 @@ function CoronaApp() {
             nationalHappiness={nationalHappiness}
             setNationalHappiness={setNationalHappiness}
             beds={beds}
-            setBed={setBeds}
+            setBeds={setBeds}
             patientns={patients}
             setPatients={setPatients}
           />
