@@ -20,9 +20,15 @@ const DecisionPanel = ({
   setEconomicState,
   nationalHappiness,
   setNationalHappiness,
+  beds,
+  setBeds,
+  patients,
+  setPatients,
 }) => {
   const implementPolicyEffect = () => {
     const state = {
+      beds: beds,
+      patients: patients,
       nationalHappiness: nationalHappiness,
       economicState: economicState,
       infectionRate: infectionRate,
@@ -41,14 +47,17 @@ const DecisionPanel = ({
     } else if (action === "healthcare") {
       if (document.getElementById("healthcare_0").checked) {
         state.economicState = state.economicState - 2;
+        if (Math.random() < 0.1) {
+          state.patients = null; // vaccine developed, everyone cured.
+        }
       }
       if (document.getElementById("healthcare_1").checked) {
-        // state.bedsState = state.bedsState + 10;
+        state.beds = state.beds + 10;
         state.economicState = state.economicState - 1;
       }
       if (document.getElementById("healthcare_2").checked) {
         state.economicState = state.economicState - 1;
-        state.nationalHappiness = state.nationalHappiness + 2;
+        state.nationalHappiness = state.nationalHappiness + 3;
       }
       if (document.getElementById("healthcare_3").checked) {
         state.economicState = state.economicState - 2;
@@ -151,6 +160,8 @@ const DecisionPanel = ({
       }
     }
     updateState(state);
+    setBeds(state.beds);
+    setPatients(state.patients);
     setNationalHappiness(state.nationalHappiness);
     setEconomicState(state.economicState);
     setInfectionRate(state.infectionRate);
