@@ -40,6 +40,7 @@ function CoronaApp() {
     }
     setNotifications(notifications.slice());
   };
+  const [beds, setBeds] = useState(200);
   const [infectionRate, setInfectionRate] = useState(0.3);
   const [economicState, setEconomicState] = useState(80);
   const [nationalHappiness, setNationalHappiness] = useState(80);
@@ -65,6 +66,13 @@ function CoronaApp() {
 
   function updatePatients() {
     for (let i = 0; i < patients.length; i++) {
+      // let hospitalized = 0;
+      // if (patients[i].healthCond === "hospitalized") {
+      //   hospitalized = hospitalized + 1;
+      //   if (hospitalized > beds) {
+      //     patients[i].healthCond = "dead";
+      //   }
+      // }
       if (patients[i].healthCond !== "dead") {
         if (round - patients[i].infectionDay > 29) {
           patients[i].healthCond = "healed";

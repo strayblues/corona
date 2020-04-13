@@ -7,29 +7,70 @@ const Debug = ({
   nationalHappiness,
   patients,
 }) => {
-  // const showPatientsData(patients){
-  //   for (let i = 0; i < patients.length; i++) {
-  //     patients[i].isNew = false;
-  // };
+  function getKnownPatients() {
+    let count = 0;
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].known) {
+        count = count + 1;
+      }
+    }
+    return count;
+  }
+
+  function getHospitalized() {
+    let count = 0;
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].healthCond === "hospitalized") {
+        count = count + 1;
+      }
+    }
+    return count;
+  }
+
+  function getDead() {
+    let count = 0;
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].healthCond === "dead") {
+        count = count + 1;
+      }
+    }
+    return count;
+  }
+
+  function getRecovering() {
+    let count = 0;
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].healthCond === "in recovery") {
+        count = count + 1;
+      }
+    }
+    return count;
+  }
+
+  function getHealed() {
+    let count = 0;
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].healthCond === "healed") {
+        count = count + 1;
+      }
+    }
+    return count;
+  }
+
   return (
     <>
       <Container>
-        <Header>Testing...</Header>
-        <div>r = {infectionRate.toFixed(3)}</div>
-        <div>e = {economicState.toFixed(3)}</div>
-        <div>h = {nationalHappiness.toFixed(3)}</div>
-
+        <Header>Test</Header>
+        <div>infection rate = {infectionRate.toFixed(3)}</div>
+        <div>economy = {economicState.toFixed(3)}</div>
+        <div>happiness = {nationalHappiness.toFixed(3)}</div>
         <div>
-          first patient and patient number =
-          <div>
-            <Pdebug>{patients.length}</Pdebug>
-            <Pdebug>{patients[0].infectionDay}</Pdebug>
-            <Pdebug>{patients[0].healthCond}</Pdebug>
-            <Pdebug>{patients[0].known ? "known" : "unknown"}</Pdebug>
-            <Pdebug>
-              {patients[0].isolated ? "isolated" : "not isolated"}
-            </Pdebug>
-          </div>
+          <Pdebug>unknown patients: {patients.length}</Pdebug>
+          <Pdebug>known patients: {getKnownPatients()}</Pdebug>
+          <Pdebug>hospitalized patients: {getHospitalized()}</Pdebug>
+          <Pdebug>recovering patients: {getRecovering()}</Pdebug>
+          <Pdebug>healed patients: {getHealed()}</Pdebug>
+          <Pdebug>dead patients: {getDead()}</Pdebug>
         </div>
       </Container>
       ;
