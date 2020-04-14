@@ -46,8 +46,8 @@ function CoronaApp() {
   const [nationalHappiness, setNationalHappiness] = useState(80);
   const [patients, setPatients] = useState(initialPatients);
 
-  const addPatients = (newPatients) => {
-    setPatients(patients.concat(newPatients));
+  const addPatients = (state, newPatients) => {
+    state.patients = state.patients.concat(newPatients);
   };
 
   // const [healthcareSystem, setHealthcareSystem] = useState(10);
@@ -64,49 +64,49 @@ function CoronaApp() {
     return topic[Math.floor(Math.random() * topic.length)].content;
   };
 
-  function updatePatients() {
-    for (let i = 0; i < patients.length; i++) {
+  function updatePatients(state) {
+    for (let i = 0; i < state.patients.length; i++) {
       // let hospitalized = 0;
-      // if (patients[i].healthCond === "hospitalized") {
+      // if (state.patients[i].healthCond === "hospitalized") {
       //   hospitalized = hospitalized + 1;
       //   if (hospitalized > beds) {
-      //     patients[i].healthCond = "dead";
+      //     state.patients[i].healthCond = "dead";
       //   }
       // }
-      if (patients[i].healthCond !== "dead") {
-        if (round - patients[i].infectionDay > 29) {
-          patients[i].healthCond = "healed";
+      if (state.patients[i].healthCond !== "dead") {
+        if (round - state.patients[i].infectionDay > 29) {
+          state.patients[i].healthCond = "healed";
         }
-        if (patients[i].healthCond === "no symptoms") {
+        if (state.patients[i].healthCond === "no symptoms") {
           if (Math.random() <= 0.1) {
-            patients[i].healthCond = "has symptoms";
-            patients[i].known = true;
+            state.patients[i].healthCond = "has symptoms";
+            state.patients[i].known = true;
           }
         }
-        if (patients[i].healthCond === "has symptoms") {
+        if (state.patients[i].healthCond === "has symptoms") {
           if (Math.random() <= 0.05) {
-            patients[i].healthCond = "hospitalized";
-            patients[i].isolated = true;
+            state.patients[i].healthCond = "hospitalized";
+            state.patients[i].isolated = true;
           }
         }
-        if (patients[i].healthCond === "hospitalized") {
+        if (state.patients[i].healthCond === "hospitalized") {
           if (Math.random() <= 0.05) {
-            patients[i].healthCond = "dead";
+            state.patients[i].healthCond = "dead";
           }
           if (Math.random() <= 0.1) {
-            patients[i].healthCond = "in recovery";
+            state.patients[i].healthCond = "in recovery";
           }
         }
       }
     }
   }
 
-  const addUnknownPatients = () => {
+  const addUnknownPatients = (state) => {
     let isolatedPatients = 0;
     let unIsolatedPatients = 0;
     let unknownWithNoSymptoms = 0;
-    for (let i = 0; i < patients.length; i++) {
-      if (patients[i].isolated) {
+    for (let i = 0; i < state.patients.length; i++) {
+      if (state.patients[i].isolated) {
         isolatedPatients++;
       } else {
         unIsolatedPatients++;
@@ -125,7 +125,7 @@ function CoronaApp() {
           isolated: false,
         });
       }
-      addPatients(newPatients);
+      addPatients(state, newPatients);
     }
   };
 
@@ -220,8 +220,8 @@ function CoronaApp() {
 
   function updateState(state) {
     isGameOver(state);
-    addUnknownPatients(); // actually known Ps
-    updatePatients();
+    addUnknownPatients(state);
+    updatePatients(state);
     addRandom(state);
     const tomorrow = round + 1;
     keepInRange(state);
@@ -268,6 +268,7 @@ function CoronaApp() {
             setEconomicState={setEconomicState}
             infectionRate={setInfectionRate}
             setInfectionRate={setInfectionRate}
+            patients={patients}
           />
         </Content>
         <Content>
@@ -284,7 +285,7 @@ function CoronaApp() {
             setNationalHappiness={setNationalHappiness}
             beds={beds}
             setBeds={setBeds}
-            patientns={patients}
+            patients={patients}
             setPatients={setPatients}
           />
         </Content>
