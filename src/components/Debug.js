@@ -6,6 +6,7 @@ const Debug = ({
   economicState,
   nationalHappiness,
   patients,
+  beds,
 }) => {
   function getKnownPatients() {
     let count = 0;
@@ -57,6 +58,10 @@ const Debug = ({
     return count;
   }
 
+  function getBeds() {
+    return beds;
+  }
+
   return (
     <>
       <Container>
@@ -71,6 +76,7 @@ const Debug = ({
           <Pdebug>recovering patients: {getRecovering()}</Pdebug>
           <Pdebug>healed patients: {getHealed()}</Pdebug>
           <Pdebug>dead patients: {getDead()}</Pdebug>
+          <Pdebug>beds: {getBeds()}</Pdebug>
         </div>
       </Container>
       ;

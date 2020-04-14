@@ -255,6 +255,7 @@ function CoronaApp() {
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
+            beds={beds}
           />
           <Details round={round} />
           <ChoicePanel
