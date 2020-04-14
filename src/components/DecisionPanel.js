@@ -152,7 +152,9 @@ const DecisionPanel = ({
       }
       if (document.getElementById("policy_close_8").checked) {
         state.nationalHappiness = state.nationalHappiness - 8;
-        state.infectionRate = state.infectionRate * 0.8;
+        state.infectionRate = state.infectionRate * 0.95;
+        state.beds = 0;
+        state.economicState = state.economicState - 5;
       }
       if (document.getElementById("policy_close_9").checked) {
         state.nationalHappiness = state.nationalHappiness - 4;
