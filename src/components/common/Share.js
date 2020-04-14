@@ -2,14 +2,37 @@ import React from "react";
 import styled from "styled-components";
 import {
   FacebookShareCount,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
   FacebookShareButton,
-  TwitterShareButton
+  TwitterShareButton,
+  WhatsappShareButton,
 } from "react-share";
 
 const Share = () => {
   return (
     <Container>
-      <Facebook className="social-container facebook-container">
+      <FacebookShareButton
+        className="social-btn"
+        url={"https://corona.codepink.dev"}
+      >
+        <FacebookIcon round size="30" />
+      </FacebookShareButton>
+      <TwitterShareButton
+        className="social-btn"
+        url={"https://corona.codepink.dev"}
+      >
+        <TwitterIcon round size="30" />
+      </TwitterShareButton>
+      <WhatsappShareButton
+        className="social-btn"
+        url={"https://corona.codepink.dev"}
+      >
+        <WhatsappIcon round size="30" />
+      </WhatsappShareButton>
+      <p>לשתף זה כיף - Sharing is caring</p>
+      {/* <Facebook className="social-container facebook-container">
         <FacebookShareButton
           className="btn-share btn-facebook"
           url={"https://corona.codepink.dev"}
@@ -21,6 +44,7 @@ const Share = () => {
           url={"https://corona.codepink.dev"}
         ></FacebookShareCount>
       </Facebook>
+      <br />
       <Twitter className="social-container twitter-container">
         <TwitterShareButton
           className="btn-share btn-twitter"
@@ -28,7 +52,7 @@ const Share = () => {
         >
           שתפו בטוויטר
         </TwitterShareButton>
-      </Twitter>
+      </Twitter> */}
     </Container>
   );
 };
@@ -36,12 +60,7 @@ const Share = () => {
 export default Share;
 
 const Container = styled.div`
-  width: 25%;
-  margin: auto;
-  display: flex;
-
-  /* background: white; */
-  /* flex-direction: column; */
+  margin-top: 10px;
+  @media (max-width: 468px) {
+  }
 `;
-const Facebook = styled.div``;
-const Twitter = styled.div``;

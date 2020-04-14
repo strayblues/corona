@@ -250,9 +250,6 @@ function CoronaApp() {
       />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
-          {/* <Content>
-            <Like />
-          </Content> */}
           <Debug
             infectionRate={infectionRate}
             economicState={economicState}
@@ -298,9 +295,12 @@ function CoronaApp() {
             setNotificationStatus={setNotificationStatus}
           />
         </Content>
-        {/* <Content className={gameStart ? "show" : "hide"}>
-          <Share />
-        </Content> */}
+        <Footer>
+          <Social>
+            <Share />
+            <Like />
+          </Social>
+        </Footer>
       </Game>
     </Container>
   );
@@ -312,6 +312,16 @@ const Content = styled.div`
   min-height: 100%;
   font-size: 90%;
   line-height: 1.3;
+`;
+const Footer = styled.footer`
+  text-align: center;
+  padding: 1.25em 0;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+`;
+const Social = styled(Content)`
+  /* align-content: center; */
 `;
 const Game = styled.div`
   display: flex;

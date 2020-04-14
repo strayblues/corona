@@ -26,8 +26,6 @@ const Content = styled.span`
   font-size: 130%;
   color: black;
   text-align: center;
-  @media (max-width: 768px) {
-  }
 `;
 const Pretty = styled.div`
   display: flex;
