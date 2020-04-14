@@ -48,7 +48,12 @@ const DecisionPanel = ({
       if (document.getElementById("healthcare_0").checked) {
         state.economicState = state.economicState - 2;
         if (Math.random() < 0.1) {
-          state.patients = null; // vaccine developed, everyone cured.
+          // vaccine developed, all patients cured
+          for (let i = 0; i < state.patients.length; i++) {
+            if (state.patients[i].healthCond !== "healed") {
+              state.patients[i].healthCond = "healed";
+            }
+          }
         }
       }
       if (document.getElementById("healthcare_1").checked) {
@@ -62,6 +67,12 @@ const DecisionPanel = ({
       if (document.getElementById("healthcare_3").checked) {
         state.economicState = state.economicState - 2;
         // increase known patients by 10%
+        for (let i = 0; i < state.patients.length; i++) {
+          if (!state.patients[i].known && Math.random() < 0.1) {
+            state.patients[i].known = true;
+          }
+        }
+        // return state.patients;
       }
     } else if (action === "press_conf") {
       if (document.getElementById("press_conf_0").checked) {
