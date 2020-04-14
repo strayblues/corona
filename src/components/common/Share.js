@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  FacebookShareCount,
+  // FacebookShareCount,
   FacebookIcon,
   TwitterIcon,
   WhatsappIcon,
@@ -31,7 +31,7 @@ const Share = () => {
       >
         <WhatsappIcon round size="30" />
       </WhatsappShareButton>
-      <p>לשתף זה כיף - Sharing is caring</p>
+      <p>לשתף זה כיף</p>
       {/* <Facebook className="social-container facebook-container">
         <FacebookShareButton
           className="btn-share btn-facebook"
