@@ -20,9 +20,15 @@ const DecisionPanel = ({
   setEconomicState,
   nationalHappiness,
   setNationalHappiness,
+  beds,
+  setBeds,
+  patients,
+  setPatients,
 }) => {
   const implementPolicyEffect = () => {
     const state = {
+      beds: beds,
+      patients: patients,
       nationalHappiness: nationalHappiness,
       economicState: economicState,
       infectionRate: infectionRate,
@@ -41,18 +47,32 @@ const DecisionPanel = ({
     } else if (action === "healthcare") {
       if (document.getElementById("healthcare_0").checked) {
         state.economicState = state.economicState - 2;
+        if (Math.random() < 0.1) {
+          // vaccine developed, all patients cured
+          for (let i = 0; i < state.patients.length; i++) {
+            if (state.patients[i].healthCond !== "healed") {
+              state.patients[i].healthCond = "healed";
+            }
+          }
+        }
       }
       if (document.getElementById("healthcare_1").checked) {
-        // state.bedsState = state.bedsState + 10;
+        state.beds = state.beds + 10;
         state.economicState = state.economicState - 1;
       }
       if (document.getElementById("healthcare_2").checked) {
         state.economicState = state.economicState - 1;
-        state.nationalHappiness = state.nationalHappiness + 2;
+        state.nationalHappiness = state.nationalHappiness + 3;
       }
       if (document.getElementById("healthcare_3").checked) {
         state.economicState = state.economicState - 2;
         // increase known patients by 10%
+        for (let i = 0; i < state.patients.length; i++) {
+          if (!state.patients[i].known && Math.random() < 0.1) {
+            state.patients[i].known = true;
+          }
+        }
+        // return state.patients;
       }
     } else if (action === "press_conf") {
       if (document.getElementById("press_conf_0").checked) {
@@ -108,49 +128,47 @@ const DecisionPanel = ({
         state.nationalHappiness = state.nationalHappiness - 2;
         state.infectionRate = state.infectionRate * 0.9;
       }
+      // if (document.getElementById("policy_close_1").checked) {
+      //   state.economicState = state.economicState - 2;
+      //   state.nationalHappiness = state.nationalHappiness - 2;
+      //   state.infectionRate = state.infectionRate * 0.9;
+      // }
       if (document.getElementById("policy_close_1").checked) {
-        state.economicState = state.economicState - 2;
-        state.nationalHappiness = state.nationalHappiness - 2;
-        state.infectionRate = state.infectionRate * 0.9;
-      }
-      if (document.getElementById("policy_close_2").checked) {
         state.economicState = state.economicState - 2;
         state.nationalHappiness = state.nationalHappiness - 1;
         state.infectionRate = state.infectionRate * 0.85;
       }
-      if (document.getElementById("policy_close_3").checked) {
+      if (document.getElementById("policy_close_2").checked) {
         state.economicState = state.economicState - 5;
         state.infectionRate = state.infectionRate * 0.8;
       }
-      if (document.getElementById("policy_close_4").checked) {
+      if (document.getElementById("policy_close_3").checked) {
         state.economicState = state.economicState - 1;
         state.nationalHappiness = state.nationalHappiness - 2;
         state.infectionRate = state.infectionRate * 0.9;
       }
-      if (document.getElementById("policy_close_5").checked) {
+      if (document.getElementById("policy_close_4").checked) {
         state.economicState = state.economicState - 7;
         state.nationalHappiness = state.nationalHappiness - 5;
         state.infectionRate = state.infectionRate * 0.99;
       }
-      if (document.getElementById("policy_close_6").checked) {
+      if (document.getElementById("policy_close_5").checked) {
         state.economicState = state.economicState - 6;
         state.nationalHappiness = state.nationalHappiness - 2;
         state.infectionRate = state.infectionRate * 0.99;
       }
-      if (document.getElementById("policy_close_7").checked) {
+      if (document.getElementById("policy_close_6").checked) {
         state.nationalHappiness = state.nationalHappiness - 4;
         state.infectionRate = state.infectionRate * 0.8;
       }
-      if (document.getElementById("policy_close_8").checked) {
-        state.nationalHappiness = state.nationalHappiness - 8;
-        state.infectionRate = state.infectionRate * 0.8;
-      }
-      if (document.getElementById("policy_close_9").checked) {
+      if (document.getElementById("policy_close_7").checked) {
         state.nationalHappiness = state.nationalHappiness - 4;
         state.infectionRate = state.infectionRate * 0.87;
       }
     }
     updateState(state);
+    setBeds(state.beds);
+    setPatients(state.patients);
     setNationalHappiness(state.nationalHappiness);
     setEconomicState(state.economicState);
     setInfectionRate(state.infectionRate);

@@ -15,14 +15,12 @@ import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
 import initialPatients from "../data/patients.json";
+import DailyReport from "./DailyReport";
 
 function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [round, setRound] = useState(1);
-  // actions: "initial_action", "immediate_action" ("economy",
-  // "health_care", "Press_conf", "public_data"), "close", "isolate",
-  // "surveil", "skip"
   const [action, setAction] = useState("initial_action");
   const [notifications, setNotifications] = useState([
     {
@@ -40,20 +38,15 @@ function CoronaApp() {
     }
     setNotifications(notifications.slice());
   };
+  const [beds, setBeds] = useState(200);
   const [infectionRate, setInfectionRate] = useState(0.3);
   const [economicState, setEconomicState] = useState(80);
   const [nationalHappiness, setNationalHappiness] = useState(80);
   const [patients, setPatients] = useState(initialPatients);
 
-  const addPatients = (newPatients) => {
-    setPatients(patients.concat(newPatients));
+  const addPatients = (state, newPatients) => {
+    state.patients = state.patients.concat(newPatients);
   };
-
-  // const [healthcareSystem, setHealthcareSystem] = useState(10);
-  // const setNumPatients = function() {
-  //   for (let i = 0; i < patients.length; i++) {
-  //     patients[i].isNew = false;
-  // }
 
   const addNotification = (notification) => {
     setNotifications(notifications.concat(notification));
@@ -63,12 +56,49 @@ function CoronaApp() {
     return topic[Math.floor(Math.random() * topic.length)].content;
   };
 
-  const addUnknownPatients = () => {
+  function updatePatients(state) {
+    for (let i = 0; i < state.patients.length; i++) {
+      // let hospitalized = 0;
+      // if (state.patients[i].healthCond === "hospitalized") {
+      //   hospitalized = hospitalized + 1;
+      //   if (hospitalized > beds) {
+      //     state.patients[i].healthCond = "dead";
+      //   }
+      // }
+      if (state.patients[i].healthCond !== "dead") {
+        if (round - state.patients[i].infectionDay > 29) {
+          state.patients[i].healthCond = "healed";
+        }
+        if (state.patients[i].healthCond === "no symptoms") {
+          if (Math.random() <= 0.1) {
+            state.patients[i].healthCond = "has symptoms";
+            state.patients[i].known = true;
+          }
+        }
+        if (state.patients[i].healthCond === "has symptoms") {
+          if (Math.random() <= 0.05) {
+            state.patients[i].healthCond = "hospitalized";
+            state.patients[i].isolated = true;
+          }
+        }
+        if (state.patients[i].healthCond === "hospitalized") {
+          if (Math.random() <= 0.05) {
+            state.patients[i].healthCond = "dead";
+          }
+          if (Math.random() <= 0.1) {
+            state.patients[i].healthCond = "in recovery";
+          }
+        }
+      }
+    }
+  }
+
+  const addUnknownPatients = (state) => {
     let isolatedPatients = 0;
     let unIsolatedPatients = 0;
     let unknownWithNoSymptoms = 0;
-    for (let i = 0; i < patients.length; i++) {
-      if (patients[i].isolated) {
+    for (let i = 0; i < state.patients.length; i++) {
+      if (state.patients[i].isolated) {
         isolatedPatients++;
       } else {
         unIsolatedPatients++;
@@ -87,7 +117,7 @@ function CoronaApp() {
           isolated: false,
         });
       }
-      addPatients(newPatients);
+      addPatients(state, newPatients);
     }
   };
 
@@ -117,14 +147,9 @@ function CoronaApp() {
       return msg;
     }
 
-    function getKnownPatients() {
-      let knownPatients = 0;
-      for (let i = 0; i < patients.length; i++) {
-        if (patients[i].known) {
-          knownPatients++;
-        }
-      }
-      return knownPatients;
+    function getDailyReport() {
+      let report = <DailyReport patients={patients} beds={beds} />;
+      return report;
     }
 
     addNotification([
@@ -132,8 +157,7 @@ function CoronaApp() {
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: "מספר החולים הידועים: " + getKnownPatients(),
-        // TODO: add num of dead, etc.
+        content: getDailyReport(),
       },
       {
         isNew: true,
@@ -155,11 +179,11 @@ function CoronaApp() {
   function keepInRange(state) {
     if (state.nationalHappiness >= 100) {
       state.nationalHappiness = 100;
-      alert("happiness: " + nationalHappiness);
-      console.log(nationalHappiness);
+      console.log("happiness: " + state.nationalHappiness);
     }
     if (state.economicState >= 100) {
       state.conomicState = 100;
+      console.log("economic state: " + state.economicState);
     }
     if (nationalHappiness <= 0) {
       state.nationalHappiness = 0;
@@ -182,7 +206,8 @@ function CoronaApp() {
 
   function updateState(state) {
     isGameOver(state);
-    addUnknownPatients(); // actually known Ps
+    addUnknownPatients(state);
+    updatePatients(state);
     addRandom(state);
     const tomorrow = round + 1;
     keepInRange(state);
@@ -211,14 +236,12 @@ function CoronaApp() {
       />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
-          {/* <Content>
-            <Like />
-          </Content> */}
           {/* <Debug
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
+            beds={beds}
           /> */}
           <Details round={round} />
           <ChoicePanel
@@ -232,6 +255,10 @@ function CoronaApp() {
             setEconomicState={setEconomicState}
             infectionRate={setInfectionRate}
             setInfectionRate={setInfectionRate}
+            beds={beds}
+            setBeds={setBeds}
+            patients={patients}
+            setPatients={setPatients}
           />
         </Content>
         <Content>
@@ -246,6 +273,10 @@ function CoronaApp() {
             setEconomicState={setEconomicState}
             nationalHappiness={nationalHappiness}
             setNationalHappiness={setNationalHappiness}
+            beds={beds}
+            setBeds={setBeds}
+            patients={patients}
+            setPatients={setPatients}
           />
         </Content>
         <Content>
@@ -255,9 +286,12 @@ function CoronaApp() {
             setNotificationStatus={setNotificationStatus}
           />
         </Content>
-        {/* <Content className={gameStart ? "show" : "hide"}>
-          <Share />
-        </Content> */}
+        <Footer>
+          <Social>
+            <Share />
+            <Like />
+          </Social>
+        </Footer>
       </Game>
     </Container>
   );
@@ -269,6 +303,16 @@ const Content = styled.div`
   min-height: 100%;
   font-size: 90%;
   line-height: 1.3;
+`;
+const Footer = styled.footer`
+  text-align: center;
+  padding: 1.25em 0;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+`;
+const Social = styled(Content)`
+  /* align-content: center; */
 `;
 const Game = styled.div`
   display: flex;

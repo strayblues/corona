@@ -1,5 +1,7 @@
 body {
   background: #eee;
+  position: relative;
+  padding-bottom: 100px;
 }
 
 .App {
@@ -220,21 +222,21 @@ input[type="checkbox"] + label {
   padding: 8px;
 }
 
-.social-container {
+/* .social-container {
   border-radius: 4px;
   margin: 0 4px;
-  box-shadow: 0 2px 2px 0 #888;
+  box-shadow: 0 1px 1px 0 #888;
   font-size: 80% !important;
   margin-top: 12px;
   text-align: center;
-}
+} */
 
-.btn-share {
+/* .btn-share {
   color: white !important;
-  margin: 6px 8px;
-}
+  margin: 3px 6px;
+} */
 
-.facebook-container,
+/* .facebook-container,
 .btn-facebook {
   background-color: #3b5998 !important;
   padding: 0 0 0 4px;
@@ -250,7 +252,7 @@ input[type="checkbox"] + label {
   padding: 1px 2px;
   border-radius: 2px;
   color: #3b5998;
-}
+} */
 
 .decision {
   background-color: #ddd !important;
@@ -263,6 +265,10 @@ input[type="checkbox"] + label {
 
 .content-like {
   margin-top: -24px 0;
+}
+
+.social-btn {
+  margin: 0 5px;
 }
 
 .top-container {

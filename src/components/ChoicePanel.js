@@ -13,14 +13,18 @@ const ChoicePanel = ({
   economicState,
   setInfectionRate,
   infectionRate,
+  setPatients,
   patients,
+  setBeds,
+  beds,
 }) => {
   const readChoice = () => {
     const state = {
+      beds: beds,
+      patients: patients,
       nationalHappiness: nationalHappiness,
       economicState: economicState,
       infectionRate: infectionRate,
-      patients: patients,
     };
     if (document.getElementById("immediate_action").checked) {
       const decisions = ["economy", "healthcare", "press_conf", "public_data"];
@@ -36,6 +40,8 @@ const ChoicePanel = ({
     } else if (document.getElementById("skip").checked) {
       updateState(state);
     }
+    setBeds(state.beds);
+    setPatients(state.patients);
     setNationalHappiness(state.nationalHappiness);
     setEconomicState(state.economicState);
     setInfectionRate(state.infectionRate);

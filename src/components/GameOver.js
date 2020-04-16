@@ -17,7 +17,24 @@ const GameOver = ({
     msg: "",
   };
 
-  if (patients === null) {
+  const isSick = function (patient) {
+    if (patient.healthCond !== "healed" && patient.healthCond !== "dead") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const allCured = function () {
+    for (let i = 0; i < patients.length; i++) {
+      if (isSick(patients[i])) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+  if (allCured()) {
     reason.victory = true;
     reason.msg = "ניצחת: הצלת את מערכת הבריאות!!!";
   } else if (economicState < 1) {
