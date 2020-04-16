@@ -193,12 +193,25 @@ function CoronaApp() {
     }
   }
 
+  const isSick = function (patient) {
+    if (patient.healthCond !== "healed" && patient.healthCond !== "dead") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const allCured = function () {
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].known === true && isSick(patients[i])) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   function isGameOver(state) {
-    if (
-      patients.length < 1 ||
-      state.economicState < 1 ||
-      state.nationalHappiness < 1
-    ) {
+    if (allCured() || state.economicState < 1 || state.nationalHappiness < 1) {
       setGameStart(false);
       setGameOver(true);
     }
@@ -226,6 +239,7 @@ function CoronaApp() {
       />
       <GameOver
         // className={gameOver ? "show" : "hide"}
+        allCured={allCured}
         gameStart={gameStart}
         setGameStart={setGameStart}
         gameOver={gameOver}

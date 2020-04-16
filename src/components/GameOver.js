@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const GameOver = ({
+  allCured,
   gameOver,
   setGameOver,
   patients,
@@ -17,22 +18,22 @@ const GameOver = ({
     msg: "",
   };
 
-  const isSick = function (patient) {
-    if (patient.healthCond !== "healed" && patient.healthCond !== "dead") {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  // const isSick = function (patient) {
+  //   if (patient.healthCond !== "healed" && patient.healthCond !== "dead") {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // };
 
-  const allCured = function () {
-    for (let i = 0; i < patients.length; i++) {
-      if (isSick(patients[i])) {
-        return false;
-      }
-    }
-    return true;
-  };
+  // const allCured = function () {
+  //   for (let i = 0; i < patients.length; i++) {
+  //     if (isSick(patients[i])) {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // };
 
   if (allCured()) {
     reason.victory = true;

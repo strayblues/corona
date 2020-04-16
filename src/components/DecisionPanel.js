@@ -47,10 +47,13 @@ const DecisionPanel = ({
     } else if (action === "healthcare") {
       if (document.getElementById("healthcare_0").checked) {
         state.economicState = state.economicState - 2;
-        if (Math.random() < 0.1) {
-          // vaccine developed, all patients cured
+        if (Math.random() < 0.3) {
+          // vaccine developed, all known patients cured. win.
           for (let i = 0; i < state.patients.length; i++) {
-            if (state.patients[i].healthCond !== "healed") {
+            if (
+              state.patients[i].known === true &&
+              state.patients[i].healthCond !== "healed"
+            ) {
               state.patients[i].healthCond = "healed";
             }
           }
@@ -72,7 +75,6 @@ const DecisionPanel = ({
             state.patients[i].known = true;
           }
         }
-        // return state.patients;
       }
     } else if (action === "press_conf") {
       if (document.getElementById("press_conf_0").checked) {
@@ -128,11 +130,6 @@ const DecisionPanel = ({
         state.nationalHappiness = state.nationalHappiness - 2;
         state.infectionRate = state.infectionRate * 0.9;
       }
-      // if (document.getElementById("policy_close_1").checked) {
-      //   state.economicState = state.economicState - 2;
-      //   state.nationalHappiness = state.nationalHappiness - 2;
-      //   state.infectionRate = state.infectionRate * 0.9;
-      // }
       if (document.getElementById("policy_close_1").checked) {
         state.economicState = state.economicState - 2;
         state.nationalHappiness = state.nationalHappiness - 1;
