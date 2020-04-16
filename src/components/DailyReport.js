@@ -26,7 +26,7 @@ const DailyReport = ({ patients, beds }) => {
 
   const report = [
     {
-      text: "חולים ידועים: ",
+      text: "מקרי הדבקה מאומתים: ",
       number: getKnownPatients(),
     },
     {

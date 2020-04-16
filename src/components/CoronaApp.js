@@ -21,9 +21,6 @@ function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [round, setRound] = useState(1);
-  // actions: "initial_action", "immediate_action" ("economy",
-  // "health_care", "Press_conf", "public_data"), "close", "isolate",
-  // "surveil", "skip"
   const [action, setAction] = useState("initial_action");
   const [notifications, setNotifications] = useState([
     {
@@ -50,12 +47,6 @@ function CoronaApp() {
   const addPatients = (state, newPatients) => {
     state.patients = state.patients.concat(newPatients);
   };
-
-  // const [healthcareSystem, setHealthcareSystem] = useState(10);
-  // const setNumPatients = function() {
-  //   for (let i = 0; i < patients.length; i++) {
-  //     patients[i].isNew = false;
-  // }
 
   const addNotification = (notification) => {
     setNotifications(notifications.concat(notification));
@@ -264,7 +255,10 @@ function CoronaApp() {
             setEconomicState={setEconomicState}
             infectionRate={setInfectionRate}
             setInfectionRate={setInfectionRate}
+            beds={beds}
+            setBeds={setBeds}
             patients={patients}
+            setPatients={setPatients}
           />
         </Content>
         <Content>
