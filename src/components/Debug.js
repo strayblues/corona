@@ -8,6 +8,15 @@ const Debug = ({
   patients,
   beds,
 }) => {
+  function getPatientsBy(condition) {
+    let count = 0;
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].healthCond === condition) {
+        count = count + 1;
+      }
+    }
+    return count;
+  }
   function getKnownPatients() {
     let count = 0;
     for (let i = 0; i < patients.length; i++) {
@@ -17,50 +26,41 @@ const Debug = ({
     }
     return count;
   }
-
-  function getHospitalized() {
-    let count = 0;
-    for (let i = 0; i < patients.length; i++) {
-      if (patients[i].healthCond === "hospitalized") {
-        count = count + 1;
-      }
-    }
-    return count;
-  }
-
-  function getDead() {
-    let count = 0;
-    for (let i = 0; i < patients.length; i++) {
-      if (patients[i].healthCond === "dead") {
-        count = count + 1;
-      }
-    }
-    return count;
-  }
-
-  function getRecovering() {
-    let count = 0;
-    for (let i = 0; i < patients.length; i++) {
-      if (patients[i].healthCond === "in recovery") {
-        count = count + 1;
-      }
-    }
-    return count;
-  }
-
-  function getHealed() {
-    let count = 0;
-    for (let i = 0; i < patients.length; i++) {
-      if (patients[i].healthCond === "healed") {
-        count = count + 1;
-      }
-    }
-    return count;
-  }
-
   function getBeds() {
     return beds;
   }
+
+  const report = [
+    {
+      status: "חולים ידועים: ",
+      number: getKnownPatients(),
+    },
+    {
+      status: "חולים מאושפזים: ",
+      number: getPatientsBy("healed"),
+    },
+    {
+      status: "חולים בהתאוששות: ",
+      number: getPatientsBy("healed"),
+    },
+    {
+      status: "חולים שהחלימו: ",
+      number: getPatientsBy("healed"),
+    },
+    {
+      status: "חולים שמתו: ",
+      number: getPatientsBy("healed"),
+    },
+  ];
+
+  // Report component
+  // for (let i = 0; i < report.length; i++) {
+  //   if (report[i].data) {
+  //     <ReportItem>
+  //       {report[i].status} {report[i].number} + ", "
+  //     </ReportItem>;
+  //   }
+  // }
 
   return (
     <>
@@ -72,11 +72,16 @@ const Debug = ({
         <div>
           <Pdebug>unknown patients: {patients.length}</Pdebug>
           <Pdebug>known patients: {getKnownPatients()}</Pdebug>
-          <Pdebug>hospitalized patients: {getHospitalized()}</Pdebug>
-          <Pdebug>recovering patients: {getRecovering()}</Pdebug>
-          <Pdebug>healed patients: {getHealed()}</Pdebug>
-          <Pdebug>dead patients: {getDead()}</Pdebug>
+          <Pdebug>
+            hospitalized patients: {getPatientsBy("hospitalized")}
+          </Pdebug>
+          <Pdebug>recovering patients: {getPatientsBy("recovering")}</Pdebug>
+          <Pdebug>healed patients: {getPatientsBy("healed")}</Pdebug>
+          <Pdebug>dead patients: {getPatientsBy("dead")}</Pdebug>
           <Pdebug>beds: {getBeds()}</Pdebug>
+          <Pdebug>
+            {report[4].status} {report[4].number}
+          </Pdebug>
         </div>
       </Container>
       ;
@@ -104,3 +109,4 @@ const Pdebug = styled.p`
   margin: 0;
   padding: 0;
 `;
+// const ReportItem = styled.span``;

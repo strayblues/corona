@@ -15,6 +15,7 @@ import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
 import initialPatients from "../data/patients.json";
+import DailyReport from "./DailyReport";
 
 function CoronaApp() {
   const [gameStart, setGameStart] = useState(false);
@@ -155,14 +156,9 @@ function CoronaApp() {
       return msg;
     }
 
-    function getKnownPatients() {
-      let knownPatients = 0;
-      for (let i = 0; i < patients.length; i++) {
-        if (patients[i].known) {
-          knownPatients++;
-        }
-      }
-      return knownPatients;
+    function getDailyReport() {
+      let report = <DailyReport patients={patients} beds={beds} />;
+      return report;
     }
 
     addNotification([
@@ -170,8 +166,7 @@ function CoronaApp() {
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: "מספר החולים הידועים: " + getKnownPatients(),
-        // TODO: add num of dead, etc.
+        content: getDailyReport(),
       },
       {
         isNew: true,
@@ -250,13 +245,13 @@ function CoronaApp() {
       />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
-          <Debug
+          {/* <Debug
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
             beds={beds}
-          />
+          /> */}
           <Details round={round} />
           <ChoicePanel
             gameStart={gameStart}
