@@ -44,6 +44,27 @@ function CoronaApp() {
   const [nationalHappiness, setNationalHappiness] = useState(80);
   const [patients, setPatients] = useState(initialPatients);
 
+  function resetGame() {
+    setGameStart(false);
+    setGameOver(false);
+    setRound(1);
+    setAction("initial_action");
+    setBeds(200);
+    setInfectionRate(0.3);
+    setEconomicState(80);
+    setNationalHappiness(80);
+    setPatients(initialPatients);
+    setNotifications([
+      {
+        isNew: true,
+        day: 1,
+        hour: "7:00",
+        content:
+          "בוקר טוב ראש הממשלה, מבין 8.7 מיליון תושבים, ידועים לנו כרגע 7 חולי קורונה שחזרו מספינת הדיאמונד פרינסס. אנו ממתינים להוראותיך כיצד להתקדם. בכל סיבוב ניתן יהיה לבצע פעולה אחת, ויתקבלו הודעות מגורמים שונים במערכת הפוליטית ומחוץ לה. האם תצליח/י לנצח את המגיפה בלי שהמדינה תקרוס?",
+      },
+    ]);
+  }
+
   const addPatients = (state, newPatients) => {
     state.patients = state.patients.concat(newPatients);
   };
@@ -239,6 +260,7 @@ function CoronaApp() {
       />
       <GameOver
         // className={gameOver ? "show" : "hide"}
+        resetGame={resetGame}
         allCured={allCured}
         gameStart={gameStart}
         setGameStart={setGameStart}

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const GameOver = ({
+  resetGame,
   allCured,
   gameOver,
   setGameOver,
@@ -10,7 +11,7 @@ const GameOver = ({
   nationalHappiness,
 }) => {
   const handleGameStart = (e) => {
-    gameOver = setGameOver(false);
+    resetGame();
   };
 
   let reason = {
