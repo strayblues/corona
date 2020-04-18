@@ -179,13 +179,13 @@ const DecisionPanel = ({
   };
 
   const selectionMadeFrom = (array) => {
+    let isSelection = false;
     for (let i = 0; i < array.length; i++) {
       if (array[i].checked) {
-        return true;
-      } else {
-        return false;
+        isSelection = true;
       }
     }
+    return isSelection;
   };
 
   let component;
