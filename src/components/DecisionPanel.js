@@ -33,6 +33,7 @@ const DecisionPanel = ({
       economicState: economicState,
       infectionRate: infectionRate,
     };
+
     if (action === "economy") {
       if (document.getElementById("economy_0").checked) {
         state.nationalHappiness = state.nationalHappiness + 3;
@@ -163,13 +164,28 @@ const DecisionPanel = ({
         state.infectionRate = state.infectionRate * 0.87;
       }
     }
-    updateState(state);
-    setBeds(state.beds);
-    setPatients(state.patients);
-    setNationalHappiness(state.nationalHappiness);
-    setEconomicState(state.economicState);
-    setInfectionRate(state.infectionRate);
-    setAction("initial_action");
+
+    if (
+      selectionMadeFrom(document.getElementsByClassName("form-check-input"))
+    ) {
+      updateState(state);
+      setBeds(state.beds);
+      setPatients(state.patients);
+      setNationalHappiness(state.nationalHappiness);
+      setEconomicState(state.economicState);
+      setInfectionRate(state.infectionRate);
+      setAction("initial_action");
+    }
+  };
+
+  const selectionMadeFrom = (array) => {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].checked) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   };
 
   let component;
