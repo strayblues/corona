@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Debug = ({
+  resetGame,
   infectionRate,
   economicState,
   nationalHappiness,
@@ -82,6 +83,7 @@ const Debug = ({
           <Pdebug>
             {report[4].status} {report[4].number}
           </Pdebug>
+          <Reset onClick={resetGame}>איפוס</Reset>
         </div>
       </Container>
       ;
@@ -91,6 +93,7 @@ const Debug = ({
 
 export default Debug;
 
+const Reset = styled.button``;
 const Container = styled.div`
   direction: ltr;
   text-align: left;

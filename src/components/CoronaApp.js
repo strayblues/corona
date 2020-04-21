@@ -14,7 +14,6 @@ import { getRandomTime } from "./Time";
 import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
-import initialPatients from "../data/patients.json";
 import DailyReport from "./DailyReport";
 
 function CoronaApp() {
@@ -42,9 +41,75 @@ function CoronaApp() {
   const [infectionRate, setInfectionRate] = useState(0.3);
   const [economicState, setEconomicState] = useState(80);
   const [nationalHappiness, setNationalHappiness] = useState(80);
-  const [patients, setPatients] = useState(initialPatients);
+  const [patients, setPatients] = useState(createPatients());
+
+  function createPatients() {
+    return [
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: false,
+        isolated: false,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: false,
+        isolated: false,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: false,
+        isolated: false,
+      },
+    ];
+  }
 
   function resetGame() {
+    alert("Reset");
     setGameStart(false);
     setGameOver(false);
     setRound(1);
@@ -53,7 +118,7 @@ function CoronaApp() {
     setInfectionRate(0.3);
     setEconomicState(80);
     setNationalHappiness(80);
-    setPatients(initialPatients);
+    setPatients(createPatients());
     setNotifications([
       {
         isNew: true,
@@ -272,13 +337,14 @@ function CoronaApp() {
       />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
-          {/* <Debug
+          <Debug
+            resetGame={resetGame}
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
             beds={beds}
-          /> */}
+          />
           <Details round={round} />
           <ChoicePanel
             gameStart={gameStart}
