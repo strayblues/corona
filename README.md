@@ -1,3 +1,6 @@
+![](http://corona.codepink.dev/static/media/banner11-sm.69b19e46.png)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
