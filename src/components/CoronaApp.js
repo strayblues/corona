@@ -17,6 +17,7 @@ import random from "../data/random.json";
 import DailyReport from "./DailyReport";
 
 function CoronaApp() {
+  const POPULATION = 8700000;
   const [gameStart, setGameStart] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [round, setRound] = useState(1);
@@ -144,15 +145,24 @@ function CoronaApp() {
 
   function updatePatients(state) {
     for (let i = 0; i < state.patients.length; i++) {
-      // let hospitalized = 0;
-      // if (state.patients[i].healthCond === "hospitalized") {
-      //   hospitalized = hospitalized + 1;
-      //   if (hospitalized > beds) {
-      //     state.patients[i].healthCond = "dead";
-      //   }
-      // }
+      function getPatientsBy(condition) {
+        let count = 0;
+        for (let i = 0; i < patients.length; i++) {
+          if (patients[i].healthCond === condition) {
+            count = count + 1;
+          }
+        }
+        return count;
+      }
+      if (getPatientsBy("hospitalized") >= state.beds) {
+        for (let i = 0; i < patients.length; i++) {
+          if (state.patients[i].healthCond === "hospitalized") {
+            state.patients[i].healthCond = "dead";
+          }
+        }
+      }
       if (state.patients[i].healthCond !== "dead") {
-        if (round - state.patients[i].infectionDay > 29) {
+        if (round - state.patients[i].infectionDay > 13) {
           state.patients[i].healthCond = "healed";
         }
         if (state.patients[i].healthCond === "no symptoms") {
@@ -183,27 +193,29 @@ function CoronaApp() {
     let isolatedPatients = 0;
     let unIsolatedPatients = 0;
     let unknownWithNoSymptoms = 0;
-    for (let i = 0; i < state.patients.length; i++) {
-      if (state.patients[i].isolated) {
-        isolatedPatients++;
-      } else {
-        unIsolatedPatients++;
+    if (state.patients.length <= POPULATION / 4) {
+      for (let i = 0; i < state.patients.length; i++) {
+        if (state.patients[i].isolated) {
+          isolatedPatients++;
+        } else {
+          unIsolatedPatients++;
+        }
       }
-    }
-    isolatedPatients = isolatedPatients * (infectionRate / 10);
-    unIsolatedPatients = unIsolatedPatients * infectionRate;
-    unknownWithNoSymptoms = Math.floor(isolatedPatients + unIsolatedPatients);
-    if (unknownWithNoSymptoms >= 1) {
-      let newPatients = [];
-      for (let i = 0; i < unknownWithNoSymptoms; i++) {
-        newPatients.push({
-          infectionDay: round,
-          healthCond: "no symptoms",
-          known: false,
-          isolated: false,
-        });
+      isolatedPatients = isolatedPatients * (infectionRate / 10);
+      unIsolatedPatients = unIsolatedPatients * infectionRate;
+      unknownWithNoSymptoms = Math.floor(isolatedPatients + unIsolatedPatients);
+      if (unknownWithNoSymptoms >= 1) {
+        let newPatients = [];
+        for (let i = 0; i < unknownWithNoSymptoms; i++) {
+          newPatients.push({
+            infectionDay: round,
+            healthCond: "no symptoms",
+            known: false,
+            isolated: false,
+          });
+        }
+        addPatients(state, newPatients);
       }
-      addPatients(state, newPatients);
     }
   };
 
@@ -265,17 +277,15 @@ function CoronaApp() {
   function keepInRange(state) {
     if (state.nationalHappiness >= 100) {
       state.nationalHappiness = 100;
-      console.log("happiness: " + state.nationalHappiness);
     }
     if (state.economicState >= 100) {
-      state.conomicState = 100;
-      console.log("economic state: " + state.economicState);
+      state.economicState = 100;
     }
-    if (nationalHappiness <= 0) {
+    if (state.nationalHappiness <= 0) {
       state.nationalHappiness = 0;
     }
-    if (setEconomicState <= 0) {
-      state.conomicState = 0;
+    if (state.economicState <= 0) {
+      state.economicState = 0;
     }
   }
 
