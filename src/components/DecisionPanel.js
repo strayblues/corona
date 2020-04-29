@@ -48,7 +48,7 @@ const DecisionPanel = ({
     } else if (action === "healthcare") {
       if (document.getElementById("healthcare_0").checked) {
         state.economicState = state.economicState - 2;
-        if (Math.random() < 0.3) {
+        if (Math.random() < 0.2) {
           // vaccine developed, all known patients cured. win.
           for (let i = 0; i < state.patients.length; i++) {
             if (
