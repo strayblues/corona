@@ -53,19 +53,21 @@ const DailyReport = ({ patients, beds }) => {
 
   return (
     <>
-      <Container className="modal-content">
-        {report
-          .filter((items) => items.number > 0)
-          .map((items) => {
-            return (
-              <>
-                <ReportItem>
-                  <Text>{items.text}</Text>
-                  <Number>{items.number} </Number>
-                </ReportItem>
-              </>
-            );
-          })}
+      <Container>
+        <Marquee>
+          {report
+            .filter((items) => items.number > 0)
+            .map((items) => {
+              return (
+                <>
+                  <ReportItem className="marquee">
+                    <Text>{items.text}</Text>
+                    <Number>{items.number} </Number>
+                  </ReportItem>
+                </>
+              );
+            })}
+        </Marquee>
       </Container>
     </>
   );
@@ -74,29 +76,36 @@ const DailyReport = ({ patients, beds }) => {
 export default DailyReport;
 
 const Text = styled.span`
-  color: #bc261f;
+  /* color: #bc261f; */
   color: white;
   display: inline-block;
   margin-left: 2px;
 `;
 const Number = styled.span`
-  color: #bc261f;
+  /* color: #bc261f; */
   color: white;
   display: inline-block;
 `;
 const Container = styled.div`
-  padding: 6px 0;
-  width: 37%;
-  margin: 0 31.5%;
-  background: white;
+  /* padding: 6px 0; */
+  width: 100%;
+  margin: 0;
+  background: #f09046;
   flex-direction: row;
+  overflow: hidden;
+  border-radius: 0;
+`;
+
+const Marquee = styled.div`
+  white-space: nowrap;
+  animation: marquee 18s linear infinite;
 `;
 
 const ReportItem = styled.div`
-  background: #eee;
-  background: #c90000;
   margin: 3px;
   border-radius: 10px;
   padding: 0 7px 2px;
   display: inline-flex;
+  font-size: 120%;
+  font-weight: 700;
 `;

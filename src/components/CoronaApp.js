@@ -336,14 +336,14 @@ function CoronaApp() {
       />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
-          <Debug
+          {/* <Debug
             resetGame={resetGame}
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
             patients={patients}
             beds={beds}
-          />
+          /> */}
           <Details round={round} />
           <DailyReport patients={patients} beds={beds} />
           <ChoicePanel
@@ -403,7 +403,7 @@ export default CoronaApp;
 
 const Content = styled.div`
   min-height: 100%;
-  font-size: 90%;
+  font-size: 92%;
   line-height: 1.3;
 `;
 const Footer = styled.footer`
