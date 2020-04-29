@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Debug = ({
+  resetGame,
   infectionRate,
   economicState,
   nationalHappiness,
@@ -37,11 +38,11 @@ const Debug = ({
     },
     {
       status: "חולים מאושפזים: ",
-      number: getPatientsBy("healed"),
+      number: getPatientsBy("hospitalized"),
     },
     {
       status: "חולים בהתאוששות: ",
-      number: getPatientsBy("healed"),
+      number: getPatientsBy("in recovery"),
     },
     {
       status: "חולים שהחלימו: ",
@@ -49,7 +50,7 @@ const Debug = ({
     },
     {
       status: "חולים שמתו: ",
-      number: getPatientsBy("healed"),
+      number: getPatientsBy("dead"),
     },
   ];
 
@@ -75,13 +76,11 @@ const Debug = ({
           <Pdebug>
             hospitalized patients: {getPatientsBy("hospitalized")}
           </Pdebug>
-          <Pdebug>recovering patients: {getPatientsBy("recovering")}</Pdebug>
+          <Pdebug>recovering patients: {getPatientsBy("in recovery")}</Pdebug>
           <Pdebug>healed patients: {getPatientsBy("healed")}</Pdebug>
           <Pdebug>dead patients: {getPatientsBy("dead")}</Pdebug>
           <Pdebug>beds: {getBeds()}</Pdebug>
-          <Pdebug>
-            {report[4].status} {report[4].number}
-          </Pdebug>
+          <Reset onClick={resetGame}>איפוס</Reset>
         </div>
       </Container>
       ;
@@ -91,6 +90,7 @@ const Debug = ({
 
 export default Debug;
 
+const Reset = styled.button``;
 const Container = styled.div`
   direction: ltr;
   text-align: left;

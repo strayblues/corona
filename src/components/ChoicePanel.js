@@ -68,7 +68,7 @@ const ChoicePanel = ({
                     className="form-check-label"
                     htmlFor="immediate_action"
                   >
-                    פעולה מיידית
+                    פעולה מיידית >>>
                   </label>
                 </div>
                 <div className="form-check">

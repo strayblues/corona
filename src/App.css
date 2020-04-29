@@ -274,3 +274,12 @@ input[type="checkbox"] + label {
 .top-container {
   margin-bottom: -12px 0;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translate(-100%, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}

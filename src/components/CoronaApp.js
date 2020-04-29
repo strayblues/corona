@@ -14,10 +14,10 @@ import { getRandomTime } from "./Time";
 import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
-import initialPatients from "../data/patients.json";
 import DailyReport from "./DailyReport";
 
 function CoronaApp() {
+  const POPULATION = 8700000;
   const [gameStart, setGameStart] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [round, setRound] = useState(1);
@@ -42,7 +42,94 @@ function CoronaApp() {
   const [infectionRate, setInfectionRate] = useState(0.3);
   const [economicState, setEconomicState] = useState(80);
   const [nationalHappiness, setNationalHappiness] = useState(80);
-  const [patients, setPatients] = useState(initialPatients);
+  const [patients, setPatients] = useState(createPatients());
+
+  function createPatients() {
+    return [
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: true,
+        isolated: true,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: false,
+        isolated: false,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: false,
+        isolated: false,
+      },
+      {
+        infectionDay: 0,
+        healthCond: "no symptoms",
+        known: false,
+        isolated: false,
+      },
+    ];
+  }
+
+  function resetGame() {
+    alert("Reset");
+    setGameStart(false);
+    setGameOver(false);
+    setRound(1);
+    setAction("initial_action");
+    setBeds(200);
+    setInfectionRate(0.3);
+    setEconomicState(80);
+    setNationalHappiness(80);
+    setPatients(createPatients());
+    setNotifications([
+      {
+        isNew: true,
+        day: 1,
+        hour: "7:00",
+        content:
+          "בוקר טוב ראש הממשלה, מבין 8.7 מיליון תושבים, ידועים לנו כרגע 7 חולי קורונה שחזרו מספינת הדיאמונד פרינסס. אנו ממתינים להוראותיך כיצד להתקדם. בכל סיבוב ניתן יהיה לבצע פעולה אחת, ויתקבלו הודעות מגורמים שונים במערכת הפוליטית ומחוץ לה. האם תצליח/י לנצח את המגיפה בלי שהמדינה תקרוס?",
+      },
+    ]);
+  }
 
   const addPatients = (state, newPatients) => {
     state.patients = state.patients.concat(newPatients);
@@ -58,15 +145,24 @@ function CoronaApp() {
 
   function updatePatients(state) {
     for (let i = 0; i < state.patients.length; i++) {
-      // let hospitalized = 0;
-      // if (state.patients[i].healthCond === "hospitalized") {
-      //   hospitalized = hospitalized + 1;
-      //   if (hospitalized > beds) {
-      //     state.patients[i].healthCond = "dead";
-      //   }
-      // }
+      function getPatientsBy(condition) {
+        let count = 0;
+        for (let i = 0; i < patients.length; i++) {
+          if (patients[i].healthCond === condition) {
+            count = count + 1;
+          }
+        }
+        return count;
+      }
+      if (getPatientsBy("hospitalized") >= state.beds) {
+        for (let i = 0; i < patients.length; i++) {
+          if (state.patients[i].healthCond === "hospitalized") {
+            state.patients[i].healthCond = "dead";
+          }
+        }
+      }
       if (state.patients[i].healthCond !== "dead") {
-        if (round - state.patients[i].infectionDay > 29) {
+        if (round - state.patients[i].infectionDay > 13) {
           state.patients[i].healthCond = "healed";
         }
         if (state.patients[i].healthCond === "no symptoms") {
@@ -97,33 +193,35 @@ function CoronaApp() {
     let isolatedPatients = 0;
     let unIsolatedPatients = 0;
     let unknownWithNoSymptoms = 0;
-    for (let i = 0; i < state.patients.length; i++) {
-      if (state.patients[i].isolated) {
-        isolatedPatients++;
-      } else {
-        unIsolatedPatients++;
+    if (state.patients.length <= POPULATION / 4) {
+      for (let i = 0; i < state.patients.length; i++) {
+        if (state.patients[i].isolated) {
+          isolatedPatients++;
+        } else {
+          unIsolatedPatients++;
+        }
       }
-    }
-    isolatedPatients = isolatedPatients * (infectionRate / 10);
-    unIsolatedPatients = unIsolatedPatients * infectionRate;
-    unknownWithNoSymptoms = Math.floor(isolatedPatients + unIsolatedPatients);
-    if (unknownWithNoSymptoms >= 1) {
-      let newPatients = [];
-      for (let i = 0; i < unknownWithNoSymptoms; i++) {
-        newPatients.push({
-          infectionDay: round,
-          healthCond: "no symptoms",
-          known: false,
-          isolated: false,
-        });
+      isolatedPatients = isolatedPatients * (infectionRate / 10);
+      unIsolatedPatients = unIsolatedPatients * infectionRate;
+      unknownWithNoSymptoms = Math.floor(isolatedPatients + unIsolatedPatients);
+      if (unknownWithNoSymptoms >= 1) {
+        let newPatients = [];
+        for (let i = 0; i < unknownWithNoSymptoms; i++) {
+          newPatients.push({
+            infectionDay: round,
+            healthCond: "no symptoms",
+            known: false,
+            isolated: false,
+          });
+        }
+        addPatients(state, newPatients);
       }
-      addPatients(state, newPatients);
     }
   };
 
   const createNotifications = () => {
     const tomorrow = round + 1;
-    const [morning, afternoon] = getRandomTime();
+    const [morning] = getRandomTime();
 
     const selectTextByState = (topic, value) => {
       for (let i = 0; i < topic.length; i++) {
@@ -147,22 +245,11 @@ function CoronaApp() {
       return msg;
     }
 
-    function getDailyReport() {
-      let report = <DailyReport patients={patients} beds={beds} />;
-      return report;
-    }
-
     addNotification([
       {
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: getDailyReport(),
-      },
-      {
-        isNew: true,
-        day: tomorrow,
-        hour: afternoon,
         content: selectMsg(),
       },
     ]);
@@ -179,26 +266,37 @@ function CoronaApp() {
   function keepInRange(state) {
     if (state.nationalHappiness >= 100) {
       state.nationalHappiness = 100;
-      console.log("happiness: " + state.nationalHappiness);
     }
     if (state.economicState >= 100) {
-      state.conomicState = 100;
-      console.log("economic state: " + state.economicState);
+      state.economicState = 100;
     }
-    if (nationalHappiness <= 0) {
+    if (state.nationalHappiness <= 0) {
       state.nationalHappiness = 0;
     }
-    if (setEconomicState <= 0) {
-      state.conomicState = 0;
+    if (state.economicState <= 0) {
+      state.economicState = 0;
     }
   }
 
+  const isSick = function (patient) {
+    if (patient.healthCond !== "healed" && patient.healthCond !== "dead") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const allCured = function () {
+    for (let i = 0; i < patients.length; i++) {
+      if (patients[i].known === true && isSick(patients[i])) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   function isGameOver(state) {
-    if (
-      patients.length < 1 ||
-      state.economicState < 1 ||
-      state.nationalHappiness < 1
-    ) {
+    if (allCured() || state.economicState < 1 || state.nationalHappiness < 1) {
       setGameStart(false);
       setGameOver(true);
     }
@@ -226,6 +324,8 @@ function CoronaApp() {
       />
       <GameOver
         // className={gameOver ? "show" : "hide"}
+        resetGame={resetGame}
+        allCured={allCured}
         gameStart={gameStart}
         setGameStart={setGameStart}
         gameOver={gameOver}
@@ -237,6 +337,7 @@ function CoronaApp() {
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
           {/* <Debug
+            resetGame={resetGame}
             infectionRate={infectionRate}
             economicState={economicState}
             nationalHappiness={nationalHappiness}
@@ -244,6 +345,7 @@ function CoronaApp() {
             beds={beds}
           /> */}
           <Details round={round} />
+          <DailyReport patients={patients} beds={beds} />
           <ChoicePanel
             gameStart={gameStart}
             updateState={updateState}
@@ -301,7 +403,7 @@ export default CoronaApp;
 
 const Content = styled.div`
   min-height: 100%;
-  font-size: 90%;
+  font-size: 92%;
   line-height: 1.3;
 `;
 const Footer = styled.footer`

@@ -33,6 +33,7 @@ const DecisionPanel = ({
       economicState: economicState,
       infectionRate: infectionRate,
     };
+
     if (action === "economy") {
       if (document.getElementById("economy_0").checked) {
         state.nationalHappiness = state.nationalHappiness + 3;
@@ -47,10 +48,13 @@ const DecisionPanel = ({
     } else if (action === "healthcare") {
       if (document.getElementById("healthcare_0").checked) {
         state.economicState = state.economicState - 2;
-        if (Math.random() < 0.1) {
-          // vaccine developed, all patients cured
+        if (Math.random() < 0.2) {
+          // vaccine developed, all known patients cured. win.
           for (let i = 0; i < state.patients.length; i++) {
-            if (state.patients[i].healthCond !== "healed") {
+            if (
+              state.patients[i].known === true &&
+              state.patients[i].healthCond !== "healed"
+            ) {
               state.patients[i].healthCond = "healed";
             }
           }
@@ -72,7 +76,6 @@ const DecisionPanel = ({
             state.patients[i].known = true;
           }
         }
-        // return state.patients;
       }
     } else if (action === "press_conf") {
       if (document.getElementById("press_conf_0").checked) {
@@ -128,11 +131,6 @@ const DecisionPanel = ({
         state.nationalHappiness = state.nationalHappiness - 2;
         state.infectionRate = state.infectionRate * 0.9;
       }
-      // if (document.getElementById("policy_close_1").checked) {
-      //   state.economicState = state.economicState - 2;
-      //   state.nationalHappiness = state.nationalHappiness - 2;
-      //   state.infectionRate = state.infectionRate * 0.9;
-      // }
       if (document.getElementById("policy_close_1").checked) {
         state.economicState = state.economicState - 2;
         state.nationalHappiness = state.nationalHappiness - 1;
@@ -166,13 +164,28 @@ const DecisionPanel = ({
         state.infectionRate = state.infectionRate * 0.87;
       }
     }
-    updateState(state);
-    setBeds(state.beds);
-    setPatients(state.patients);
-    setNationalHappiness(state.nationalHappiness);
-    setEconomicState(state.economicState);
-    setInfectionRate(state.infectionRate);
-    setAction("initial_action");
+
+    if (
+      selectionMadeFrom(document.getElementsByClassName("form-check-input"))
+    ) {
+      updateState(state);
+      setBeds(state.beds);
+      setPatients(state.patients);
+      setNationalHappiness(state.nationalHappiness);
+      setEconomicState(state.economicState);
+      setInfectionRate(state.infectionRate);
+      setAction("initial_action");
+    }
+  };
+
+  const selectionMadeFrom = (array) => {
+    let isSelection = false;
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].checked) {
+        isSelection = true;
+      }
+    }
+    return isSelection;
   };
 
   let component;
