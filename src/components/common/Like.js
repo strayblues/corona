@@ -21,11 +21,11 @@ export default Like;
 const Container = styled.div`
   display: block;
   margin-top: 12px;
-  width: 16%;
+  width: 50%;
   margin: auto;
-  @media screen and (min-device-width: 375px) and (max-device-width: 812px) {
+  @media screen and (min-width: 812px) {
     margin-top: 18px;
-    width: 50%;
+    width: 16%;
     margin: auto;
   }
 `;
