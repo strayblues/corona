@@ -221,7 +221,7 @@ function CoronaApp() {
 
   const createNotifications = () => {
     const tomorrow = round + 1;
-    const [morning, afternoon] = getRandomTime();
+    const [morning] = getRandomTime();
 
     const selectTextByState = (topic, value) => {
       for (let i = 0; i < topic.length; i++) {
@@ -245,22 +245,11 @@ function CoronaApp() {
       return msg;
     }
 
-    function getDailyReport() {
-      let report = <DailyReport patients={patients} beds={beds} />;
-      return report;
-    }
-
     addNotification([
       {
         isNew: true,
         day: tomorrow,
         hour: morning,
-        content: getDailyReport(),
-      },
-      {
-        isNew: true,
-        day: tomorrow,
-        hour: afternoon,
         content: selectMsg(),
       },
     ]);
@@ -356,6 +345,7 @@ function CoronaApp() {
             beds={beds}
           />
           <Details round={round} />
+          <DailyReport patients={patients} beds={beds} />
           <ChoicePanel
             gameStart={gameStart}
             updateState={updateState}

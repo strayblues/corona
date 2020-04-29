@@ -53,21 +53,19 @@ const DailyReport = ({ patients, beds }) => {
 
   return (
     <>
-      <Container>
-        <div>
-          {report
-            .filter((items) => items.number > 0)
-            .map((items) => {
-              return (
-                <>
-                  <ReportItem>
-                    <Text>{items.text}</Text>
-                    <Number>{items.number} </Number>
-                  </ReportItem>
-                </>
-              );
-            })}
-        </div>
+      <Container className="modal-content">
+        {report
+          .filter((items) => items.number > 0)
+          .map((items) => {
+            return (
+              <>
+                <ReportItem>
+                  <Text>{items.text}</Text>
+                  <Number>{items.number} </Number>
+                </ReportItem>
+              </>
+            );
+          })}
       </Container>
     </>
   );
@@ -77,19 +75,26 @@ export default DailyReport;
 
 const Text = styled.span`
   color: #bc261f;
+  color: white;
   display: inline-block;
   margin-left: 2px;
 `;
 const Number = styled.span`
   color: #bc261f;
+  color: white;
   display: inline-block;
 `;
 const Container = styled.div`
   padding: 6px 0;
+  width: 37%;
+  margin: 0 31.5%;
+  background: white;
+  flex-direction: row;
 `;
 
 const ReportItem = styled.div`
   background: #eee;
+  background: #c90000;
   margin: 3px;
   border-radius: 10px;
   padding: 0 7px 2px;
