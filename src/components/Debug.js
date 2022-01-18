@@ -31,6 +31,7 @@ const Debug = ({
     return beds;
   }
 
+  // eslint-disable-next-line no-unused-vars
   const report = [
     {
       status: "חולים ידועים: ",
