@@ -26,6 +26,18 @@ const ChoicePanel = ({
       economicState: economicState,
       infectionRate: infectionRate,
     };
+    document.getElementById("action-dialog").animate(
+      [
+        {opacity: 1},
+        {opacity: 0.1}
+      ],
+      {
+        duration: 400,
+        iterations: 2,
+        direction: "alternate",
+        easing: "ease-in-out"
+      }
+    );
     if (document.getElementById("immediate_action").checked) {
       const decisions = ["economy", "healthcare", "press_conf", "public_data"];
       let random_decision =
@@ -49,7 +61,7 @@ const ChoicePanel = ({
 
   if (action === "initial_action") {
     return (
-      <Container className={gameStart ? "show top-container" : "hide"}>
+      <Container id="action-dialog" fade={false} className={gameStart ? "show top-container" : "hide"}>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
