@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import banner from "../images/banner11-sm.png";
 import styled from "styled-components";
-import Like from "./common/Like";
+// import Like from "./common/Like";
 import Share from "./common/Share";
 import NewGame from "./NewGame";
 import GameOver from "./GameOver";
@@ -9,6 +9,7 @@ import Details from "./Details";
 import NotificationPanel from "./NotificationPanel";
 import ChoicePanel from "./ChoicePanel";
 import DecisionPanel from "./DecisionPanel";
+// eslint-disable-next-line
 import Debug from "./Debug";
 import { getRandomTime } from "./Time";
 import economy from "../data/economy.json";
@@ -336,7 +337,8 @@ function CoronaApp() {
       />
       <Game>
         <Content className={gameStart ? "show" : "hide"}>
-          {/* <Debug
+          {// eslint-disable-next-line
+          /* <Debug
             resetGame={resetGame}
             infectionRate={infectionRate}
             economicState={economicState}
@@ -391,7 +393,7 @@ function CoronaApp() {
         <Footer>
           <Social>
             <Share />
-            <Like />
+            {/* <Like /> */}
           </Social>
         </Footer>
       </Game>
