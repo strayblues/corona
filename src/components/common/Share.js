@@ -15,19 +15,19 @@ const Share = () => {
     <Container>
       <FacebookShareButton
         className="social-btn"
-        url={"https://corona.codepink.dev"}
+        url={"https://covid.codepink.dev"}
       >
         <FacebookIcon round size="30" />
       </FacebookShareButton>
       <TwitterShareButton
         className="social-btn"
-        url={"https://corona.codepink.dev"}
+        url={"https://covid.codepink.dev"}
       >
         <TwitterIcon round size="30" />
       </TwitterShareButton>
       <WhatsappShareButton
         className="social-btn"
-        url={"https://corona.codepink.dev"}
+        url={"https://covid.codepink.dev"}
       >
         <WhatsappIcon round size="30" />
       </WhatsappShareButton>
@@ -35,20 +35,20 @@ const Share = () => {
       {/* <Facebook className="social-container facebook-container">
         <FacebookShareButton
           className="btn-share btn-facebook"
-          url={"https://corona.codepink.dev"}
+          url={"https://covid.codepink.dev"}
         >
           שתפו בפייסבוק
         </FacebookShareButton>
         <FacebookShareCount
           className="btn-count btn-facebook"
-          url={"https://corona.codepink.dev"}
+          url={"https://covid.codepink.dev"}
         ></FacebookShareCount>
       </Facebook>
       <br />
       <Twitter className="social-container twitter-container">
         <TwitterShareButton
           className="btn-share btn-twitter"
-          url={"https://corona.codepink.dev"}
+          url={"https://covid.codepink.dev"}
         >
           שתפו בטוויטר
         </TwitterShareButton>
