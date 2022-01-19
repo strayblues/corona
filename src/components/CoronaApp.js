@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import banner from "../images/banner11-sm.png";
+import banner from "../images/banner.png";
 import styled from "styled-components";
 // import Like from "./common/Like";
 import Share from "./common/Share";
