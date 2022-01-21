@@ -46,68 +46,25 @@ function CoronaApp() {
   const [patients, setPatients] = useState(createPatients());
 
   function createPatients() {
-    return [
-      {
+    // initialize array
+    const patients = [];
+    // create 10 patient objects
+    for (var i=0; i<10; i++) {
+      let patient = {
         infectionDay: 0,
         healthCond: "no symptoms",
         known: true,
-        isolated: true,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: true,
-        isolated: true,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: true,
-        isolated: true,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: true,
-        isolated: true,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: true,
-        isolated: true,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: true,
-        isolated: true,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: true,
-        isolated: true,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: false,
-        isolated: false,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: false,
-        isolated: false,
-      },
-      {
-        infectionDay: 0,
-        healthCond: "no symptoms",
-        known: false,
-        isolated: false,
-      },
-    ];
+        isolated: true
+      }
+      // push newly created pantients into array
+      patients.push(patient);
+    }
+    // modify 3 of the patients
+    for (var j=0; j<3; j++){
+      patients[j].isolated = false;
+    }
+    // enjoy your pandemic
+    return patients;
   }
 
   function resetGame() {
