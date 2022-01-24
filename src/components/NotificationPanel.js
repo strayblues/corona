@@ -13,7 +13,7 @@ const NotificationPanel = ({
       <div className="modal-dialog" role="document">
         <div className="modal-content modal-content-messages">
           <div className="modal-header">
-            <h5 className="modal-title">חדשות <i class="fas fa-cat"></i></h5>
+            <h5 className="modal-title">חדשות <i className="fas fa-cat"></i></h5>
           </div>
           <div className="modal-body">
             <Scrollable>
