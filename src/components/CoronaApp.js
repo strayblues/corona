@@ -366,7 +366,6 @@ function CoronaApp() {
         <Footer>
           <Social>
             <Share />
-            {/* <Like /> */}
           </Social>
         </Footer>
       </Game>

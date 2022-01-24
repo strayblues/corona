@@ -27,28 +27,28 @@ const DailyReport = ({ patients, beds }) => {
   const report = [
     {
       text: "מקרי הדבקה מאומתים: ",
-      number: getKnownPatients(),
+      number: getKnownPatients()
     },
     {
       text: "חולים מאושפזים: ",
-      number: getPatientsBy("hospitalized"),
+      number: getPatientsBy("hospitalized")
     },
     {
       text: "חולים בהתאוששות: ",
-      number: getPatientsBy("in recovery"),
+      number: getPatientsBy("in recovery")
     },
     {
-      text: "חולים שהחלימו: ",
-      number: getPatientsBy("healed"),
+      text: "מחלימים: ",
+      number: getPatientsBy("healed")
     },
     {
       text: "חולים שמתו: ",
-      number: getPatientsBy("dead"),
+      number: getPatientsBy("dead")
     },
     {
       text: "מיטות פנויות: ",
-      number: getBeds(),
-    },
+      number: getBeds()
+    }
   ];
 
   return (
