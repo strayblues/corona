@@ -17,6 +17,19 @@ import happiness from "../data/happiness.json";
 import random from "../data/random.json";
 import DailyReport from "./DailyReport";
 
+/* Randomize array in-place using Durstenfeld shuffle algorithm */
+const shuffleArray = function (array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+};
+
+// Shuffle random news in advance
+shuffleArray(random);
+
 function CoronaApp() {
   const POPULATION = 8700000;
   const [gameStart, setGameStart] = useState(false);
@@ -85,7 +98,7 @@ function CoronaApp() {
         hour: "7:00",
         content:
           "בוקר טוב ראש הממשלה, מבין 8.7 מיליון תושבים, ידועים לנו כרגע 7 חולי קורונה שחזרו מספינת הדיאמונד פרינסס. אנו ממתינים להוראותיך כיצד להתקדם. בכל סיבוב ניתן יהיה לבצע פעולה אחת, ויתקבלו הודעות מגורמים שונים במערכת הפוליטית ומחוץ לה. האם תצליח/י לנצח את המגיפה בלי שהמדינה תקרוס?",
-      },
+      }
     ]);
   }
 
@@ -97,8 +110,11 @@ function CoronaApp() {
     setNotifications(notifications.concat(notification));
   };
 
-  const selectRandomText = (topic) => {
-    return topic[Math.floor(Math.random() * topic.length)].content;
+  // The random news array is already shuffled. This function just moves the
+  // first element to the end and then returns the new first element.
+  const selectRandomText = (array) => {
+    array.push(array.splice([0], 1)[0]);
+    return array[0].content;
   };
 
   function updatePatients(state) {
