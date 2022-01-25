@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import banner from "../images/banner-sm.png";
 import styled from "styled-components";
 // import Like from "./common/Like";
@@ -17,17 +17,18 @@ import happiness from "../data/happiness.json";
 import random from "../data/random.json";
 import DailyReport from "./DailyReport";
 import Utils from "../utils";
+import useLocalStorage from "../useLocalStorage"
 
 // Shuffle random news in advance
 Utils.shuffleArray(random);
 
 function CoronaApp() {
   const POPULATION = 8700000;
-  const [gameStart, setGameStart] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
-  const [round, setRound] = useState(1);
-  const [action, setAction] = useState("initial_action");
-  const [notifications, setNotifications] = useState([
+  const [gameStart, setGameStart] = useLocalStorage("gameStart", false);
+  const [gameOver, setGameOver] = useLocalStorage("gameOver", false);
+  const [round, setRound] = useLocalStorage("round", 1);
+  const [action, setAction] = useLocalStorage("action", "initial_action");
+  const [notifications, setNotifications] = useLocalStorage("notifications", [
     {
       isNew: true,
       day: 1,
@@ -43,11 +44,11 @@ function CoronaApp() {
     }
     setNotifications(notifications.slice());
   };
-  const [beds, setBeds] = useState(200);
-  const [infectionRate, setInfectionRate] = useState(0.3);
-  const [economicState, setEconomicState] = useState(80);
-  const [nationalHappiness, setNationalHappiness] = useState(80);
-  const [patients, setPatients] = useState(createPatients());
+  const [beds, setBeds] = useLocalStorage("beds", 200);
+  const [infectionRate, setInfectionRate] = useLocalStorage("infectionRate", 0.3);
+  const [economicState, setEconomicState] = useLocalStorage("economicState", 80);
+  const [nationalHappiness, setNationalHappiness] = useLocalStorage("nationalHappiness", 80);
+  const [patients, setPatients] = useLocalStorage("patients", createPatients());
 
   function createPatients() {
     // initialize array
@@ -72,7 +73,7 @@ function CoronaApp() {
   }
 
   function resetGame() {
-    alert("Reset");
+    alert("Reset"); // Yo, that's not in Hebrew
     setGameStart(false);
     setGameOver(false);
     setRound(1);
@@ -314,7 +315,7 @@ function CoronaApp() {
             setNationalHappiness={setNationalHappiness}
             economicState={economicState}
             setEconomicState={setEconomicState}
-            infectionRate={setInfectionRate}
+            infectionRate={infectionRate}
             setInfectionRate={setInfectionRate}
             beds={beds}
             setBeds={setBeds}
