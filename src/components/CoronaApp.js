@@ -16,19 +16,10 @@ import economy from "../data/economy.json";
 import happiness from "../data/happiness.json";
 import random from "../data/random.json";
 import DailyReport from "./DailyReport";
-
-/* Randomize array in-place using Durstenfeld shuffle algorithm */
-const shuffleArray = function (array) {
-  for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      let temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-  }
-};
+import Utils from "../utils";
 
 // Shuffle random news in advance
-shuffleArray(random);
+Utils.shuffleArray(random);
 
 function CoronaApp() {
   const POPULATION = 8700000;
@@ -108,13 +99,6 @@ function CoronaApp() {
 
   const addNotification = (notification) => {
     setNotifications(notifications.concat(notification));
-  };
-
-  // The random news array is already shuffled. This function just moves the
-  // first element to the end and then returns the new first element.
-  const selectRandomText = (array) => {
-    array.push(array.splice([0], 1)[0]);
-    return array[0].content;
   };
 
   function updatePatients(state) {
@@ -213,7 +197,7 @@ function CoronaApp() {
       } else if (count % 4 === 1) {
         msg = selectTextByState(happiness, nationalHappiness);
       } else {
-        msg = selectRandomText(random);
+        msg = Utils.selectFromShuffled(random).content;
       }
 
       return msg;

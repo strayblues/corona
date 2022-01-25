@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import ConfirmButton from "./common/ConfirmButton";
+import Utils from "../utils";
 
+const decisions = Utils.shuffleArray(["economy", "healthcare", "press_conf", "public_data"]);
 const ChoicePanel = ({
   gameStart,
   updateState,
@@ -39,9 +41,8 @@ const ChoicePanel = ({
       }
     );
     if (document.getElementById("immediate_action").checked) {
-      const decisions = ["economy", "healthcare", "press_conf", "public_data"];
-      let random_decision =
-        decisions[Math.floor(Math.random() * decisions.length)];
+      // grab shuffled decisions, move first to end of array and pick the new first
+      let random_decision = Utils.selectFromShuffled(decisions);
       setAction(random_decision);
     } else if (document.getElementById("isolate").checked) {
       setAction("isolate");
@@ -80,7 +81,7 @@ const ChoicePanel = ({
                     className="form-check-label"
                     htmlFor="immediate_action"
                   >
-                    פעולה מיידית >>>
+                    פעולה מיידית {">>>"}
                   </label>
                 </div>
                 <div className="form-check">
